@@ -1541,12 +1541,108 @@ class DenoisingStage(PipelineStage):
         guidance: torch.Tensor,
         **kwargs,
     ):
-        return current_model(
+        # task_7 fix: cast timestep to bfloat16 to match FSDP2 MixedPrecisionPolicy
+        # behavior on the training side.  FSDP2's pre-forward hook casts every
+        # float32 input to param_dtype (bf16) before SD3Transformer2DModel.forward().
+        # Without this cast the rollout passes a float32 timestep while training
+        # passes a bf16 timestep → CombinedTimestepTextProjEmbeddings (time_text_embed)
+        # produces different outputs → 1 bf16 ULP error propagates through all 24 blocks.
+        if latent_model_input.dtype == torch.bfloat16 and timestep.dtype != torch.bfloat16:
+            timestep = timestep.to(torch.bfloat16)
+
+        # task_7 fix part 2: cast all floating-point kwargs (pooled_projections,
+        # encoder_hidden_states, etc.) to bfloat16 to match FSDP2
+        # MixedPrecisionPolicy pre-forward hook behavior on the training side.
+        # On the training side, FSDP2 pre-forward hooks cast ALL float tensor inputs
+        # to param_dtype=bf16 before SD3Transformer2DModel.forward().
+        # On the rollout side the conditioning-cast block (lines ~706-716) is gated
+        # on `not autocast_enabled`, which is False in normal inference → skipped.
+        # As a result pooled_projections arrives as float32 on rollout but bf16 on
+        # training → CombinedTimestepTextProjEmbeddings sees different dtype inputs
+        # → residual time_text_embed divergence persists even after timestep fix.
+        if latent_model_input.dtype == torch.bfloat16:
+            for _k7pp in list(kwargs.keys()):
+                _v7pp = kwargs[_k7pp]
+                if isinstance(_v7pp, torch.Tensor) and _v7pp.is_floating_point() and _v7pp.dtype != torch.bfloat16:
+                    kwargs[_k7pp] = _v7pp.to(torch.bfloat16)
+
+        # task_7 fix part 3: cast norm_q/norm_k/norm_added_q/norm_added_k weights to fp32
+        # to match training side.  Diffusers initialises these RMSNorm weights as fp32
+        # regardless of torch_dtype; the rollout loader forces them to bf16 via
+        # set_default_torch_dtype(bfloat16) during meta initialisation.
+        # RMSNorm with fp32 weight: bf16_input*rsqrt(fp32) → fp32 output (type-promotion,
+        # weight.dtype branch not taken).  RMSNorm with bf16 weight → bf16 output.
+        # This mismatch propagates through all 24 blocks, causing a systematic 1-ULP diff.
+        # We cast once per model instance (guarded by _task7_norm_cast_done flag).
+        if latent_model_input.dtype == torch.bfloat16:
+            if not getattr(current_model, "_task7_norm_cast_done", False):
+                try:
+                    _base7 = current_model
+                    for _attr7 in ("base_model", "model"):
+                        if hasattr(_base7, _attr7) and hasattr(getattr(_base7, _attr7), "transformer_blocks"):
+                            _base7 = getattr(_base7, _attr7)
+                            break
+                    if hasattr(_base7, "transformer_blocks"):
+                        _nc7 = 0
+                        for _blk7 in _base7.transformer_blocks:
+                            for _attn_attr7 in ("attn", "attn2"):  # task_7 fix part 3b: also handle dual-attn attn2
+                                _attn7 = getattr(_blk7, _attn_attr7, None)
+                                if _attn7 is not None:
+                                    for _nn7 in ("norm_q", "norm_k", "norm_added_q", "norm_added_k"):
+                                        _nm7 = getattr(_attn7, _nn7, None)
+                                        if _nm7 is not None and hasattr(_nm7, "weight"):
+                                            if _nm7.weight.dtype != torch.float32:
+                                                _nm7.weight.data = _nm7.weight.data.to(torch.float32)
+                                                _nc7 += 1
+                    current_model._task7_norm_cast_done = True
+                except Exception as _e7fix3:
+                    pass
+
+        # task_7 fix part 4: install forward pre-hooks on each JointTransformerBlock
+        # to upcast hidden_states to fp32 before block forward.  Training side has
+        # fp32 hidden_states at block0 input (somehow upcast by FSDP2 or PEFT
+        # interaction), which makes its in-block residual-add accumulate in fp32.
+        # Rollout was accumulating in bf16 — causing 1-ULP divergence at norm2_input
+        # and all downstream ops.  Upcasting at block entry matches training.
+        if latent_model_input.dtype == torch.bfloat16:
+            if not getattr(current_model, "_task7_block_fp32_hook_done", False):
+                try:
+                    _base7b = current_model
+                    for _attr7b in ("base_model", "model"):
+                        if hasattr(_base7b, _attr7b) and hasattr(getattr(_base7b, _attr7b), "transformer_blocks"):
+                            _base7b = getattr(_base7b, _attr7b)
+                            break
+                    if hasattr(_base7b, "transformer_blocks"):
+                        def _upcast_hidden_states_hook(module, args, kwargs):
+                            _new_kwargs = dict(kwargs)
+                            _hs = _new_kwargs.get("hidden_states")
+                            if isinstance(_hs, torch.Tensor) and _hs.dtype == torch.bfloat16:
+                                _new_kwargs["hidden_states"] = _hs.to(torch.float32)
+                            # task_7 fix part 4b: also upcast encoder_hidden_states
+                            # so the context-stream residual-add in the block runs
+                            # in fp32 (matches training side).
+                            _ehs = _new_kwargs.get("encoder_hidden_states")
+                            if isinstance(_ehs, torch.Tensor) and _ehs.dtype == torch.bfloat16:
+                                _new_kwargs["encoder_hidden_states"] = _ehs.to(torch.float32)
+                            return args, _new_kwargs
+                        _nb7 = 0
+                        for _blk7b in _base7b.transformer_blocks:
+                            _blk7b.register_forward_pre_hook(
+                                _upcast_hidden_states_hook, with_kwargs=True
+                            )
+                            _nb7 += 1
+                    current_model._task7_block_fp32_hook_done = True
+                except Exception as _e7fix4:
+                    pass
+
+        _noise_pred_out = current_model(
             hidden_states=latent_model_input,
             timestep=timestep,
             guidance=guidance,
             **kwargs,
         )
+
+        return _noise_pred_out
 
     def _predict_noise_with_batched_cfg(
         self,
