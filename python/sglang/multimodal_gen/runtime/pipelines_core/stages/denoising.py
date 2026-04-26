@@ -1223,8 +1223,18 @@ class DenoisingStage(PipelineStage):
                                 _noise_group_ids = getattr(
                                     batch, "noise_group_ids", None
                                 )
+                                # SDE noise injection: by default use global RNG
+                                # (generator=None) for per-rollout stochastic noise.
+                                # Deterministic per-step generators can be restored
+                                # via DIFFUSIONRL_SDE_DETERMINISTIC=1 env flag for
+                                # reproducibility (reproducible trajectories across runs).
+                                import os as _os
+                                _use_deterministic_sde = _os.environ.get(
+                                    "DIFFUSIONRL_SDE_DETERMINISTIC", ""
+                                ) == "1"
                                 if (
-                                    _noise_group_ids is not None
+                                    _use_deterministic_sde
+                                    and _noise_group_ids is not None
                                     and batch.seed is not None
                                 ):
                                     _step_gens = _make_step_generators(
@@ -1234,7 +1244,7 @@ class DenoisingStage(PipelineStage):
                                         _noise_group_ids,
                                     )
                                 else:
-                                    _step_gens = batch.generator
+                                    _step_gens = None
                                 latents, step_log_prob, _, _ = (
                                     self.scheduler.sde_step_with_logprob(
                                         model_output=noise_pred,
