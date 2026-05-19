@@ -324,6 +324,19 @@ class FlowMatchEulerDiscreteScheduler(SchedulerMixin, ConfigMixin, BaseScheduler
 
         # 1. Prepare default sigmas
         is_timesteps_provided = timesteps is not None
+        # External-sigmas pass-through (SGLang parity patch): when the caller
+        # supplies ``sigmas`` directly (trainer-side ships canonical pre-shifted
+        # values, see DiffusionRL_main_uni
+        # ``rollout/engine/sglang/request.py:143``), treat them as already-final
+        # — do NOT re-apply ``sd3_time_shift`` in step 2 below. Without this
+        # guard, externally-supplied schedules get double-shifted: trainer
+        # sends ``[1.0, 0.964, …, 0.25, 0]`` (canonical for shift=3, T=10),
+        # we then map it through ``shift·σ/(1+(shift-1)·σ)`` again, producing
+        # ``[1.0, 0.988, …, 0.50, 0]`` — drifting from the trainer's
+        # ``segment.sigmas`` by up to 0.27 at the last non-zero step. The
+        # dynamic-shifting branch is left untouched: ``mu`` only makes sense
+        # with the diffusers-default sigma layout (no external override path).
+        is_sigmas_provided = sigmas is not None
 
         timesteps_array: np.ndarray | None = None
         if is_timesteps_provided:
@@ -349,9 +362,13 @@ class FlowMatchEulerDiscreteScheduler(SchedulerMixin, ConfigMixin, BaseScheduler
             assert mu is not None, "mu cannot be None when use_dynamic_shifting is True"
             sigmas_array = self.time_shift(mu, 1.0, sigmas_array)
         else:
-            sigmas_array = (
-                self.shift * sigmas_array / (1 + (self.shift - 1) * sigmas_array)
-            )
+            if not is_sigmas_provided:
+                # Internal-generated sigmas (linspace from timesteps): apply
+                # the canonical sd3_time_shift to land at the trainer schedule.
+                sigmas_array = (
+                    self.shift * sigmas_array / (1 + (self.shift - 1) * sigmas_array)
+                )
+            # else: caller supplied sigmas; values are already in "final" form.
 
         # 3. If required, stretch the sigmas schedule to terminate at the configured `shift_terminal` value
         if self.config.shift_terminal:
