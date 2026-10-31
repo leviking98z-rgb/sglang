@@ -1,0 +1,194 @@
+{
+  "EXTEND": {
+    "total_kernel_ms": 1936.891903000001,
+    "note": "sum of per-kernel durations on rank 0; overlapping kernels are not wall time",
+    "top_kernels": [
+      {
+        "name": "fused_moe_kernel",
+        "sum_ms": 361.8129090000003,
+        "share": 0.1868007752211663,
+        "count": 576
+      },
+      {
+        "name": "nvjet_sm90_tst_128x256_64x4_2x1_v_bz_coopA_TNN",
+        "sum_ms": 240.3927049999999,
+        "share": 0.12411260774422256,
+        "count": 588
+      },
+      {
+        "name": "nvjet_sm90_tst_160x128_64x5_1x2_h_bz_splitK_TNN",
+        "sum_ms": 231.5744120000001,
+        "share": 0.11955980178414735,
+        "count": 582
+      },
+      {
+        "name": "nvjet_sm90_tst_128x192_64x5_2x1_v_bz_coopB_TNN",
+        "sum_ms": 180.63726899999986,
+        "share": 0.09326140953979699,
+        "count": 288
+      },
+      {
+        "name": "ncclDevKernel_AllReduce_Sum_bf16_RING_LL(ncclDevKernelArgsStorage<4096ul>)",
+        "sum_ms": 153.21861199999984,
+        "share": 0.07910540168126241,
+        "count": 588
+      },
+      {
+        "name": "void sglang::hc_combine_kernel<4l, 2560l, true, __nv_bfloat16>(sglang::HcCombineParams)",
+        "sum_ms": 101.13735300000005,
+        "share": 0.052216312558977115,
+        "count": 576
+      },
+      {
+        "name": "nvjet_sm90_tst_320x128_64x3_1x2_h_bz_coopB_TNT",
+        "sum_ms": 91.12773499999997,
+        "share": 0.04704843613567417,
+        "count": 582
+      },
+      {
+        "name": "_sparse_gqa_prefill",
+        "sum_ms": 76.455334,
+        "share": 0.03947320647145064,
+        "count": 72
+      },
+      {
+        "name": "triton_poi_fused_mean_mul_sigmoid_view_1",
+        "sum_ms": 68.90522000000003,
+        "share": 0.035575150008771546,
+        "count": 582
+      },
+      {
+        "name": "void sglang::grouped_gemma_rmsnorm_kernel<2560l, true, __nv_bfloat16>(sglang::GroupedGemmaRMSNormParams)",
+        "sum_ms": 64.59300700000007,
+        "share": 0.03334879292951438,
+        "count": 600
+      },
+      {
+        "name": "nvjet_sm90_tst_128x160_64x5_2x1_v_bz_TNT",
+        "sum_ms": 51.36138800000002,
+        "share": 0.02651742615085938,
+        "count": 288
+      },
+      {
+        "name": "void moe_sum_reduce_warp_per_token_vec_kernel<8>(c10::BFloat16 const*, c10::BFloat16*, long, long, long, long, long, long, float)",
+        "sum_ms": 40.76476399999995,
+        "share": 0.02104648376962105,
+        "count": 288
+      },
+      {
+        "name": "nvjet_sm90_tst_160x128_64x5_1x2_h_bz_TNN",
+        "sum_ms": 34.08016799999999,
+        "share": 0.01759528652436107,
+        "count": 288
+      },
+      {
+        "name": "_router_triton_kernel",
+        "sum_ms": 26.548195000000003,
+        "share": 0.013706596098047702,
+        "count": 288
+      },
+      {
+        "name": "_fused_gate_sigmoid_mul_add_kernel",
+        "sum_ms": 17.900695999999993,
+        "share": 0.009241969555592686,
+        "count": 288
+      }
+    ]
+  },
+  "DECODE": {
+    "total_kernel_ms": 101.88258399999994,
+    "note": "sum of per-kernel durations on rank 0; overlapping kernels are not wall time",
+    "top_kernels": [
+      {
+        "name": "fused_moe_kernel",
+        "sum_ms": 25.44455499999998,
+        "share": 0.2497439110888667,
+        "count": 576
+      },
+      {
+        "name": "void sglang::hc_combine_kernel<4l, 2560l, true, __nv_bfloat16>(sglang::HcCombineParams)",
+        "sum_ms": 11.112162000000001,
+        "share": 0.1090683173092666,
+        "count": 576
+      },
+      {
+        "name": "void sglang::act_and_mul_kernel<__nv_bfloat16, (sglang::ActivationKind)0, true, false, false, false, false, false>(sglang::ActivationParams)",
+        "sum_ms": 8.55793299999999,
+        "share": 0.08399799714541982,
+        "count": 576
+      },
+      {
+        "name": "void flashinfer::trtllm_allreduce_fusion::allreduce_fusion_kernel_oneshot_lamport<(flashinfer::trtllm_allreduce_fusion::AllReduceFusionPattern)0, __nv_bfloat16, 8, true, false>(flashinfer::trtllm_allreduce_fusion::AllReduceFusionParams<__nv_bfloat16>)",
+        "sum_ms": 7.664058000000006,
+        "share": 0.07522441715848129,
+        "count": 588
+      },
+      {
+        "name": "kernel_cutlass_kernel_flash_attncuteflash_fwd_sm90FlashAttentionForwardSm90_object_at__tensorptrbf16gmemalign16o3i64div8i64div81i64div24_tensor000o111012_tensor000o111012_tensorptrbf16_gm_0",
+        "sum_ms": 5.889425,
+        "share": 0.0578060034284172,
+        "count": 72
+      },
+      {
+        "name": "nvjet_sm90_tst_144x64_64x8_2x1_v_bz_TNN",
+        "sum_ms": 4.349721999999989,
+        "share": 0.04269347938799816,
+        "count": 588
+      },
+      {
+        "name": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_bf16_256x64_32x4_tn_align2>(cutlass_80_tensorop_bf16_s16816gemm_bf16_256x64_32x4_tn_align2::Params)",
+        "sum_ms": 4.325153,
+        "share": 0.04245232924206165,
+        "count": 216
+      },
+      {
+        "name": "nvjet_sm90_tst_64x32_64x16_1x2_h_bz_splitK_TNT",
+        "sum_ms": 3.892528999999989,
+        "share": 0.03820602940341591,
+        "count": 582
+      },
+      {
+        "name": "_compact_kv",
+        "sum_ms": 3.3917379999999993,
+        "share": 0.03329065544705856,
+        "count": 72
+      },
+      {
+        "name": "nvjet_sm90_tst_8x64_64x16_4x1_v_bz_TNN",
+        "sum_ms": 2.721521000000002,
+        "share": 0.026712327987283905,
+        "count": 288
+      },
+      {
+        "name": "nvjet_sm90_tst_40x64_64x16_2x1_v_bz_TNN",
+        "sum_ms": 2.658187000000002,
+        "share": 0.026090690828964484,
+        "count": 582
+      },
+      {
+        "name": "fused_recurrent_gated_delta_rule_packed_decode_kernel",
+        "sum_ms": 2.5573069999999998,
+        "share": 0.02510053141172785,
+        "count": 216
+      },
+      {
+        "name": "nvjet_sm90_tst_64x8_64x16_1x2_h_bz_TNT",
+        "sum_ms": 1.819759000000001,
+        "share": 0.017861335358357242,
+        "count": 288
+      },
+      {
+        "name": "void moe_sum_reduce_kernel_general<c10::BFloat16>(c10::BFloat16 const*, c10::BFloat16*, long, long, long, long, long, int, at::OpMathType<c10::BFloat16>::type)",
+        "sum_ms": 1.6447470000000006,
+        "share": 0.016143554034711186,
+        "count": 288
+      },
+      {
+        "name": "_router_triton_kernel",
+        "sum_ms": 1.589193999999999,
+        "share": 0.01559828910503487,
+        "count": 288
+      }
+    ]
+  }
+}
