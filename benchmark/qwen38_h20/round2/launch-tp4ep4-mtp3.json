@@ -1,0 +1,112 @@
+{
+  "engine": {
+    "repository": "sgl-project/sglang",
+    "branch": "main",
+    "commit": "a4a6eddd25343905245db7a8b54bcf24d9483c8b",
+    "engine_source_modified": true,
+    "patch_commits": [
+      "fc2ad6c",
+      "4b1c9d3"
+    ],
+    "patch_description": "Host-side return for empty grouped Gemma RMSNorm, plus 33 passing regression tests",
+    "patched_kernel_sha256": "37a1c53f132a5dc05e250ca5d94237e3acb65d9150fd0ff7a88b409a18a78267"
+  },
+  "model": {
+    "id": "Qwen/Qwen3.8-Flash-Next",
+    "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+    "weights": "bfloat16",
+    "recurrent_state": "bfloat16",
+    "native_context_limit": 262144,
+    "ple_embedding_on_cpu": true
+  },
+  "layout": {
+    "gpus": 32,
+    "nodes": 4,
+    "gpus_per_node": 8,
+    "replicas_per_node": 2,
+    "tp": 4,
+    "ep": 4,
+    "replica_base_gpu_ids": [
+      0,
+      4
+    ],
+    "replica_ports": [
+      31000,
+      31001
+    ]
+  },
+  "server_arguments": {
+    "mem_fraction_static": 0.82,
+    "max_running_requests": 64,
+    "cuda_graph_max_bs_decode": 64,
+    "chunked_prefill_size": 8192,
+    "linear_attn_prefill_backend": "flashinfer",
+    "linear_attn_decode_backend": null,
+    "reasoning_parser": "qwen3",
+    "tool_call_parser": "qwen3_coder",
+    "watchdog_timeout": 1200,
+    "model_loader_extra_config": {
+      "enable_multithread_load": true
+    },
+    "speculative_algorithm": "NEXTN",
+    "speculative_num_steps": 3,
+    "speculative_num_draft_tokens": 4,
+    "speculative_eagle_topk": 1,
+    "linear_attn_verify_backend": "triton"
+  },
+  "environment": {
+    "SGLANG_MOE_CONFIG_DIR": "${QWEN38_PROJECT}/data/moe-tuned-plain-tp4ep4",
+    "SGLANG_OPT_FUSE_SWIGLU_INTERLEAVED": "0",
+    "MAX_JOBS": "8"
+  },
+  "moe_config": {
+    "repository_root": "benchmark/qwen38_h20/moe-searches/plain",
+    "filename": "configs/triton_3_8_0/E=128,N=640,device_name=NVIDIA_H20.json",
+    "sha256": "2d788a1da86fbd8d74529745396b9abc3794fbbdff979cfd1e9101e050077286"
+  },
+  "router": {
+    "package": "sglang-router",
+    "version": "0.3.2",
+    "policy": "round_robin",
+    "port": 30000,
+    "prometheus_port": 29000
+  },
+  "measurement": {
+    "timing": "requests",
+    "benchmark_sha256": "a1a03f1ad129421ee241041c01dc116959d68af104bd315afda95803877aae41",
+    "seed": 20261031,
+    "input_output_shapes": [
+      [
+        1024,
+        256
+      ],
+      [
+        8192,
+        1024
+      ]
+    ],
+    "concurrency": [
+      1,
+      16,
+      64,
+      128,
+      256
+    ],
+    "matrix_requests": "max(8, 2 * concurrency)",
+    "peak_requests": 512,
+    "peak_repetitions": 3,
+    "short_steady_requests": 2048,
+    "short_steady_repetitions": 3,
+    "ignore_eos": true,
+    "prefix_cache_flushed_before_each_timed_run": true
+  },
+  "effective_backends": {
+    "linear_attn_prefill": "flashinfer",
+    "linear_attn_decode": "triton",
+    "moe": "triton",
+    "linear_attn_verify": "triton"
+  },
+  "validation_status": "Independent 8-H20 repeated confirmation complete; complete32 validation pending",
+  "resolved_speculative_algorithm": "EAGLE; main normalizes NEXTN to this name and loads model-embedded MTP weights",
+  "selection_note": "MTP3 confirmed against same-node control. Retain original MoE table, BF16 recurrent state, round-robin routing, 8K prefill chunks and existing NUMA binding."
+}
