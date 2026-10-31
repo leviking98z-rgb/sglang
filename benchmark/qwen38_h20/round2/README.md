@@ -1,4 +1,4 @@
-# Further optimization: measurements in progress
+# Further optimization: screening complete, full32 validation pending
 
 The first-round deployment and complete 32-GPU comparison remain documented in
 the parent directory. This directory records a second round of experiments;
@@ -18,19 +18,24 @@ independent longer repetitions and a subsequent complete 32-GPU comparison.
 The response checks cover basic chat and 8K retrieval, not application quality.
 
 Independent longer confirmation on one unchanged eight-GPU cohort is complete
-for MTP3. Both configurations use the empty-launch guard, TP4/EP4, two replicas,
-8K chunks and the original MoE table. At concurrency 64, three repetitions of
+for the control, MTP3, and MTP3 plus 16K chunks. All use the empty-launch guard,
+TP4/EP4, two replicas and the original MoE table. At concurrency 64, three repetitions of
 512 requests per shape gave these output-token/s medians:
 
 | Configuration | 1024/256 | 8192/1024 |
 |---|---:|---:|
-| Original control | 2496.3 | 1967.2 |
-| NEXTN3 / four verification tokens | 3078.7 | 2383.6 |
-| Change | +23.3% | +21.2% |
+| Original control, 8K chunks | 2496.3 | 1967.2 |
+| NEXTN3 / four verification tokens, 8K chunks | 3078.7 | 2383.6 |
+| NEXTN3 / four verification tokens, 16K chunks | 3017.9 | 2409.7 |
+| Selected 8K MTP3 versus control | +23.3% | +21.2% |
 
 All six longer measurements and both initial 128-request measurements are
 retained for each configuration in [confirmation](confirmation/comparison.json).
 These are eight-GPU results; the full 32-GPU follow-up is still pending.
+The 16K combination changed short/long throughput by -1.98%/+1.09% relative to
+8K MTP3. Its equally weighted geometric mean was -0.45%, so 8K remains selected.
+The [launch configuration](launch-tp4ep4-mtp3.json) is being rolled out for the
+complete 32-GPU protocol.
 
 Results already established on the unchanged node-0 control layout:
 
@@ -59,7 +64,7 @@ Other completed screens cover 4K/16K prefill chunks, decode scheduling steps,
 scheduler receive intervals, lazy Mamba cache checkpointing, prefill scheduling intervals,
 maximum running batch 32, and FP32 FlashInfer MTP verification. None is selected
 from the initial two-run screen. The longer MTP plus 16K chunk confirmation is
-still running. Patched attention DP4 completed its initial screen, and DP4 plus
+complete and does not improve the combined workload score. Patched attention DP4 completed its initial screen, and DP4 plus
 MTP completed three repetitions per shape; neither beat the selected TP4 MTP
 layout on both workloads. Attention DP8 at memory fraction 0.82 ran out of memory
 while capturing a prefill graph. Its 0.72 retry passed initial measurements but

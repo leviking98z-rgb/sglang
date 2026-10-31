@@ -1,5 +1,5 @@
 {
-  "status": "in_progress",
+  "status": "All bounded8GPU screens complete; selected MTP3/8K/originalMoE, full32 rollout and validation pending",
   "engine_commit": "a4a6eddd25343905245db7a8b54bcf24d9483c8b",
   "gpus_per_comparison": 8,
   "concurrency": 64,
@@ -512,5 +512,32 @@
       "note": "Equal8GPU budget; TP8/EP8 attentionDP4 with MTP3, BF16, mem0.72 and graph32. These are shorter screens; compare to the separately retained longer TP4 MTP confirmation with its protocol difference explicit."
     }
   ],
-  "source_note": "Controls used pinned main. Later candidates and confirmation use host-side zero-token RMSNorm guard fc2ad6c; nonempty device code unchanged; see kernel-fix.json."
+  "source_note": "Controls used pinned main. Later candidates and confirmation use host-side zero-token RMSNorm guard fc2ad6c; nonempty device code unchanged; see kernel-fix.json.",
+  "followup_protocols": {
+    "longer_confirmation": {
+      "file": "confirmation/comparison.json",
+      "gpus": 8,
+      "concurrency": 64,
+      "repetitions": 3,
+      "requests_per_shape_per_repetition": 512,
+      "initial_matrix_requests_per_shape": 128,
+      "configurations": [
+        "control",
+        "mtp3",
+        "mtp3chunk16k"
+      ]
+    },
+    "mtp_moe_comparison": {
+      "file": "moe-comparison/comparison.json",
+      "gpus": 8,
+      "concurrency": 64,
+      "repetitions": 3,
+      "requests_per_shape_per_repetition": 128,
+      "configurations": [
+        "original",
+        "expanded"
+      ]
+    }
+  },
+  "selected_configuration": "launch-tp4ep4-mtp3.json"
 }

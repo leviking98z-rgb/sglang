@@ -1,5 +1,5 @@
 {
-  "status": "independent eight-GPU MTP3 confirmation complete; 16K-combination and full32 validation pending",
+  "status": "Independent equal-eight-GPU control, MTP3 and MTP3+16K confirmations complete; full32 validation pending",
   "gpus": 8,
   "tp": 4,
   "ep": 4,
@@ -68,11 +68,46 @@
           "median_mean_tpot_ms": 23.986036902578242
         }
       }
+    },
+    "mtp3chunk16k": {
+      "aggregate_sha256": "5841064b011dd4452ecdec9aa1212ae51054589270f1e2cbb4681577b024bf7a",
+      "metrics": {
+        "1024": {
+          "output_tokens_per_second": [
+            3008.3127119058418,
+            3017.90958739831,
+            3033.5606218905727
+          ],
+          "median": 3017.90958739831,
+          "observed_min": 3008.3127119058418,
+          "observed_max": 3033.5606218905727,
+          "median_mean_ttft_ms": 553.7783959774174,
+          "median_mean_tpot_ms": 18.489443222245196
+        },
+        "8192": {
+          "output_tokens_per_second": [
+            2406.7384793092456,
+            2409.6691542366098,
+            2422.089101134079
+          ],
+          "median": 2409.6691542366098,
+          "observed_min": 2406.7384793092456,
+          "observed_max": 2422.089101134079,
+          "median_mean_ttft_ms": 2166.9311981842156,
+          "median_mean_tpot_ms": 23.72153422482665
+        }
+      }
     }
   },
   "gain_percent": {
     "1024": 23.33206441384119,
     "8192": 21.168749605568713
   },
-  "range_note": "Observed min/max, not confidence intervals. Initial 128-request matrix points are retained separately and excluded from primary medians."
+  "range_note": "Observed min/max, not confidence intervals. Initial 128-request matrix points are retained separately and excluded from primary medians.",
+  "mtp3chunk16k_vs_mtp3_gain_percent": {
+    "1024": -1.9752148990823226,
+    "8192": 1.0939694183962123
+  },
+  "mtp3chunk16k_vs_mtp3_equal_shape_geometric_mean_gain_percent": -0.4524504207309321,
+  "selection": "MTP3 with8192-token prefill chunks, original MoE table, BF16 recurrent state and Triton verification. 16K chunks trade slightly higher long throughput for lower short throughput and do not improve the equal-shape geometric mean."
 }
