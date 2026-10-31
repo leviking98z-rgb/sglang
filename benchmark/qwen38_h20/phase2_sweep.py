@@ -163,6 +163,22 @@ def run(plan):
                             str(multiplier), "--timing", "requests",
                         ], environment(),
                     )
+                    wait_healthy(plan["workers"])
+                    expected = {url.rstrip("/") for url in plan["workers"]}
+                    if plan["url"].rstrip("/") not in expected:
+                        with urllib.request.urlopen(
+                            plan["url"] + "/workers", timeout=15
+                        ) as response:
+                            snapshot = json.load(response)
+                        healthy = {
+                            worker["url"].rstrip("/")
+                            for worker in snapshot["workers"]
+                            if worker["is_healthy"]
+                        }
+                        if healthy != expected or len(snapshot["workers"]) != len(expected):
+                            raise RuntimeError("router worker set changed during confirmation")
+                        with (directory / (label + "-confirm-router.json")).open("x") as stream:
+                            json.dump(snapshot, stream, indent=2)
                 entry["status"] = "complete"
             except (OSError, RuntimeError, subprocess.CalledProcessError) as exc:
                 entry.update(status="failed", error=repr(exc))
