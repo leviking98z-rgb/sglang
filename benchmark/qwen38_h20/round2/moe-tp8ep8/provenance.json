@@ -1,0 +1,23 @@
+{
+  "tuner_provenance": {
+    "source_sha256": "342555c255d43528e64b45426f970599ca101edd47208f92c9596d36706077fd",
+    "fused_swiglu": false
+  },
+  "search_space_sha256": "9b67dfae81c4892435c42c1188e61c449bc2499f37b86c1cbb9fd98bd0f4fd31",
+  "tp": 8,
+  "ep": 8,
+  "gpus": 8,
+  "search_configurations": 74,
+  "batch_sizes": [
+    1,
+    8,
+    16,
+    32,
+    64,
+    512,
+    4096,
+    8192
+  ],
+  "configuration_sha256": "ef12fb5ad095ff5f31a0a588649e51e2771c7fd31892983d49548d84cf8d9ea3",
+  "purpose": "EP8 attention-DP screening; end-to-end measurements determine selection"
+}
