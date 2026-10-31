@@ -72,6 +72,22 @@ try:
         "note": "Profiling run; excluded from throughput comparisons.",
     }
     (directory / "profile_workload.json").write_text(json.dumps(result, indent=2))
-finally:
-    post("/stop_profile", {})
-print(json.dumps({"directory": str(directory), "completed": args.concurrency}))
+except BaseException:
+    try:
+        post("/stop_profile", {})
+    except OSError:
+        pass
+    raise
+# num_steps automatically stops and exports the traces during generation.
+# A second stop would return an error because profiling already finished.
+traces = list(directory.glob("*.trace.json.gz"))
+assert traces, "no profiler traces were exported"
+print(
+    json.dumps(
+        {
+            "directory": str(directory),
+            "completed": args.concurrency,
+            "traces": len(traces),
+        }
+    )
+)

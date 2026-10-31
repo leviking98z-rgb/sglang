@@ -1,4 +1,5 @@
 import argparse
+import errno
 import json
 import os
 import signal
@@ -31,8 +32,17 @@ if args.action == "start":
     if record.exists():
         raise RuntimeError("attempt already exists; inspect its original record")
     for port in [args.port]:
-        with socket.socket() as sock:
-            sock.bind(("0.0.0.0", port))
+        deadline = time.monotonic() + 60
+        while True:
+            try:
+                with socket.socket() as sock:
+                    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+                    sock.bind(("0.0.0.0", port))
+                break
+            except OSError as exc:
+                if exc.errno != errno.EADDRINUSE or time.monotonic() >= deadline:
+                    raise
+                time.sleep(1)
     command = [
         PYTHON,
         "-m",
