@@ -17,6 +17,21 @@ All samples are retained in the CSV files and
 independent longer repetitions and a subsequent complete 32-GPU comparison.
 The response checks cover basic chat and 8K retrieval, not application quality.
 
+Independent longer confirmation on one unchanged eight-GPU cohort is complete
+for MTP3. Both configurations use the empty-launch guard, TP4/EP4, two replicas,
+8K chunks and the original MoE table. At concurrency 64, three repetitions of
+512 requests per shape gave these output-token/s medians:
+
+| Configuration | 1024/256 | 8192/1024 |
+|---|---:|---:|
+| Original control | 2496.3 | 1967.2 |
+| NEXTN3 / four verification tokens | 3078.7 | 2383.6 |
+| Change | +23.3% | +21.2% |
+
+All six longer measurements and both initial 128-request measurements are
+retained for each configuration in [confirmation](confirmation/comparison.json).
+These are eight-GPU results; the full 32-GPU follow-up is still pending.
+
 Results already established on the unchanged node-0 control layout:
 
 | Router policy | Short output token/s | Long output token/s |

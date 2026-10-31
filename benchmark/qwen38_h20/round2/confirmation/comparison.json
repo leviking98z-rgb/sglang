@@ -1,0 +1,78 @@
+{
+  "status": "independent eight-GPU MTP3 confirmation complete; 16K-combination and full32 validation pending",
+  "gpus": 8,
+  "tp": 4,
+  "ep": 4,
+  "replicas": 2,
+  "concurrency": 64,
+  "primary_requests_per_shape_per_repetition": 512,
+  "primary_repetitions": 3,
+  "total_timed_requests_including_initial_matrix_per_configuration": 3328,
+  "engine_base_commit": "a4a6eddd25343905245db7a8b54bcf24d9483c8b",
+  "host_guard_patch_on_both": "fc2ad6c",
+  "configurations": {
+    "control": {
+      "aggregate_sha256": "49804c4ae650c0824daeb94eea89402f5237713ca16f9a8ccacaa4c719a9aa9d",
+      "metrics": {
+        "1024": {
+          "output_tokens_per_second": [
+            2475.0324556668697,
+            2657.2281738671177,
+            2496.285906492363
+          ],
+          "median": 2496.285906492363,
+          "observed_min": 2475.0324556668697,
+          "observed_max": 2657.2281738671177,
+          "median_mean_ttft_ms": 1428.7776860445547,
+          "median_mean_tpot_ms": 18.97264841098519
+        },
+        "8192": {
+          "output_tokens_per_second": [
+            1969.5599890762467,
+            1966.5422875903844,
+            1967.168415495344
+          ],
+          "median": 1967.168415495344,
+          "observed_min": 1966.5422875903844,
+          "observed_max": 1969.5599890762467,
+          "median_mean_ttft_ms": 4541.115162085645,
+          "median_mean_tpot_ms": 28.061777721123175
+        }
+      }
+    },
+    "mtp3": {
+      "aggregate_sha256": "a90018fe4a1e6e89919a13e29ca4096b3996b1166ed3bcbe2783a6910548207a",
+      "metrics": {
+        "1024": {
+          "output_tokens_per_second": [
+            3085.8614339653027,
+            3055.1781661281143,
+            3078.720942148801
+          ],
+          "median": 3078.720942148801,
+          "observed_min": 3055.1781661281143,
+          "observed_max": 3085.8614339653027,
+          "median_mean_ttft_ms": 518.7937017417994,
+          "median_mean_tpot_ms": 18.36087793580655
+        },
+        "8192": {
+          "output_tokens_per_second": [
+            2403.8516567405118,
+            2371.6234973942105,
+            2383.593371691387
+          ],
+          "median": 2383.593371691387,
+          "observed_min": 2371.6234973942105,
+          "observed_max": 2403.8516567405118,
+          "median_mean_ttft_ms": 2142.886274927605,
+          "median_mean_tpot_ms": 23.986036902578242
+        }
+      }
+    }
+  },
+  "gain_percent": {
+    "1024": 23.33206441384119,
+    "8192": 21.168749605568713
+  },
+  "range_note": "Observed min/max, not confidence intervals. Initial 128-request matrix points are retained separately and excluded from primary medians."
+}
