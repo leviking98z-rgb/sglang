@@ -212,6 +212,14 @@ optimized deployment use this same workflow. `report.py` checks request and toke
 counts again and exports aggregate and per-request CSV files without deployment
 addresses or generated text.
 
+`phase2_sweep.py` runs bounded, equal-eight-GPU node-local sweeps and restores
+the starting configuration. Plans may set `stage_peak_repeats: 0` and
+`confirmation: {"repeats": 3, "prompt_multiplier": 8}` for longer confirmation:
+the response checks and two initial 128-request matrix measurements run first,
+then three 512-request repetitions of each shape. Apply the same plan to both
+the control and candidate. Retain the initial measurements separately; fresh
+processes showed substantial variation in their first short measurement.
+
 `compare.py` requires the same complete 19-measurement protocol on both sides:
 10 matrix points, six 512-request peak repetitions, and three 2,048-request
 short repetitions. It checks 11,088 successful requests per configuration and

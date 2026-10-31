@@ -140,10 +140,29 @@ def run(plan):
                     [
                         scripts / "run_stage.py", "--attempt", stage,
                         "--url", plan["url"], "--workers", *plan["workers"],
-                        "--concurrency", "64", "--peak-repeats", "1",
+                        "--concurrency", "64", "--peak-repeats",
+                        str(plan.get("stage_peak_repeats", 1)),
                         "--health-wait", "60", "--timing", "requests",
                     ], environment(),
                 )
+                confirmation = plan.get("confirmation")
+                if confirmation:
+                    repeats = int(confirmation.get("repeats", 3))
+                    multiplier = int(confirmation.get("prompt_multiplier", 8))
+                    if repeats < 3 or multiplier < 4:
+                        raise ValueError("confirmation needs at least three longer runs")
+                    entry["confirmation"] = stage + "-confirm"
+                    save()
+                    command(
+                        label + "-confirm",
+                        [
+                            scripts / "run_benchmarks.py", "--attempt",
+                            entry["confirmation"], "--url", plan["url"],
+                            "--workers", *plan["workers"], "--concurrency", "64",
+                            "--repeats", str(repeats), "--prompt-multiplier",
+                            str(multiplier), "--timing", "requests",
+                        ], environment(),
+                    )
                 entry["status"] = "complete"
             except (OSError, RuntimeError, subprocess.CalledProcessError) as exc:
                 entry.update(status="failed", error=repr(exc))
