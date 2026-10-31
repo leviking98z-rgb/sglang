@@ -1,0 +1,32 @@
+{
+  "engine_commit": "a4a6eddd25343905245db7a8b54bcf24d9483c8b",
+  "candidates": [
+    {
+      "name": "mtp5",
+      "gpus": 8,
+      "tp": 4,
+      "ep": 4,
+      "replicas": 2,
+      "speculative_num_steps": 5,
+      "speculative_num_draft_tokens": 6,
+      "speculative_eagle_topk": 1,
+      "linear_attn_verify_backend": "triton",
+      "status": "startup_failed",
+      "throughput_result": null,
+      "reason": "Qwen QSA requires speculative_num_draft_tokens <= the QSA compress ratio (4): the pending index-key ring holds one group; got 6",
+      "source": "python/sglang/srt/layers/attention/qwen_sparse_attn_backend.py:295"
+    },
+    {
+      "name": "attndp4-unpatched",
+      "gpus": 8,
+      "tp": 8,
+      "ep": 8,
+      "attn_dp_size": 4,
+      "replicas": 1,
+      "status": "short_response_failed",
+      "throughput_result": null,
+      "reason": "Zero-token grouped Gemma RMSNorm CUDA launch on idle attention-DP ranks; HTTP502 on first chat request.",
+      "next_action": "Retest with the empty-launch guard recorded in kernel-fix.json"
+    }
+  ]
+}

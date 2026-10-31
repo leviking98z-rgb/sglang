@@ -34,5 +34,8 @@ throughput results.
 
 The [EP8 tuning result](moe-tp8ep8/provenance.json) uses main's official MoE tuner,
 74 kernel configurations and eight batch sizes. It prepares the attention-DP
-experiments; it does not by itself establish an end-to-end gain. Engine source
-remains unmodified.
+experiments; it does not by itself establish an end-to-end gain. Initial controls and candidates used the unmodified main source. During the
+attention-DP experiment, a zero-token grouped Gemma RMSNorm launch failed.
+The fork now includes a host-side empty-launch guard in `fc2ad6c`, plus empty,
+nonempty and CUDA-graph regression coverage in `4b1c9d3`. Confirmation and final
+results must record this patch explicitly; no upstream PR was opened.

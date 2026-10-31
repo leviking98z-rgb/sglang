@@ -1,0 +1,36 @@
+{
+  "base_engine_commit": "a4a6eddd25343905245db7a8b54bcf24d9483c8b",
+  "patch_commit": "fc2ad6c",
+  "test_commit": "4b1c9d3",
+  "kernel": "python/sglang/kernels/jit/csrc/elementwise/grouped_gemma_rmsnorm.cuh",
+  "kernel_sha256": "37a1c53f132a5dc05e250ca5d94237e3acb65d9150fd0ff7a88b409a18a78267",
+  "original_kernel_sha256": "3e3edc531db065d31d124229716b5a6ad1acadd009f9b63c745aa063a175a697",
+  "original_reproduction": {
+    "input_shape": [
+      0,
+      10240
+    ],
+    "group_size": 2560,
+    "dtype": "bfloat16",
+    "result": "CUDA error: invalid argument at zero-block launch"
+  },
+  "change": "After tensor validation, return when the computed CUDA grid has zero blocks. The nonempty device kernel and launch dimensions are unchanged.",
+  "validation": {
+    "device": "NVIDIA H20",
+    "pytest_version": "8.4.2",
+    "passed": 33,
+    "seconds": 62.97,
+    "returncode": 0,
+    "scope": [
+      "BF16 and FP16 numerical checks against float64 reference",
+      "empty and nonempty input",
+      "preallocated output",
+      "CUDA Graph capture and replay with empty and nonempty calls",
+      "bad group-size rejection"
+    ],
+    "log_sha256": "a69bee7686045384d0bd799904d2b141ff26183d341f26bf86b4a00be6b25339"
+  },
+  "inference_dependencies_changed": false,
+  "upstream_pr_opened": false,
+  "performance_claim": "Functional prerequisite for attention-DP evaluation; no serving speedup claimed from this guard alone."
+}
