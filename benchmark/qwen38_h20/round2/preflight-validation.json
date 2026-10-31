@@ -1,0 +1,803 @@
+{
+  "created_unix": 1793467629.9953423,
+  "gpus": 32,
+  "healthy_replicas": 8,
+  "cohorts": [
+    {
+      "cohort_index": 0,
+      "verified_unix": 1793466867.161328,
+      "engine_base_commit": "a4a6eddd25343905245db7a8b54bcf24d9483c8b",
+      "source_archive_sha256": "74fae994f8950c0f1cbe0545b298c5b751140f2956f5f74aafea900ec7568c24",
+      "patched_kernel_sha256": "37a1c53f132a5dc05e250ca5d94237e3acb65d9150fd0ff7a88b409a18a78267",
+      "moe_config_sha256": "2d788a1da86fbd8d74529745396b9abc3794fbbdff979cfd1e9101e050077286",
+      "raw_preflight_sha256": "ea7e092add111fad0d3b05315ef6010c802e0b6408ff01b511919a7411d62dc0",
+      "replicas": [
+        {
+          "local_replica_index": 0,
+          "process_identity_verified": true,
+          "health_status": 200,
+          "resolved_arguments": {
+            "tp_size": 4,
+            "ep_size": 4,
+            "base_gpu_id": 0,
+            "dtype": "auto",
+            "mamba_ssm_dtype": "bfloat16",
+            "max_running_requests": 64,
+            "cuda_graph_max_bs_decode": 64,
+            "chunked_prefill_size": 8192,
+            "mem_fraction_static": 0.82,
+            "linear_attn_prefill_backend": "flashinfer",
+            "linear_attn_decode_backend": null,
+            "linear_attn_verify_backend": "triton",
+            "context_length": null,
+            "quantization": null,
+            "ple_offload_embedding": true,
+            "speculative_algorithm": "EAGLE",
+            "speculative_num_steps": 3,
+            "speculative_num_draft_tokens": 4,
+            "speculative_eagle_topk": 1,
+            "enable_auto_numa_bind": null,
+            "attn_dp_size": 1,
+            "max_prefill_tokens": 16384
+          },
+          "moe_config_acknowledgements": 4,
+          "error_events": 0,
+          "retraction_log_lines": 0,
+          "effective_linear_backends": {
+            "decode": "triton",
+            "prefill": "flashinfer",
+            "verify": "triton"
+          },
+          "runtime_capacity": [
+            {
+              "effective_max_running_requests_per_dp": 55,
+              "memory_usage": {
+                "weight": 60.131,
+                "kvcache": 7.028,
+                "startup_available": 9.343,
+                "token_capacity": 577856,
+                "token_capacity_swa": null,
+                "graph": {
+                  "prefill": 4.438,
+                  "decode": 0.0,
+                  "target_verify": 0.738,
+                  "draft_prefill": 0.555,
+                  "draft_decode": 0.295,
+                  "draft_extend": 0.453
+                }
+              }
+            }
+          ]
+        },
+        {
+          "local_replica_index": 1,
+          "process_identity_verified": true,
+          "health_status": 200,
+          "resolved_arguments": {
+            "tp_size": 4,
+            "ep_size": 4,
+            "base_gpu_id": 4,
+            "dtype": "auto",
+            "mamba_ssm_dtype": "bfloat16",
+            "max_running_requests": 64,
+            "cuda_graph_max_bs_decode": 64,
+            "chunked_prefill_size": 8192,
+            "mem_fraction_static": 0.82,
+            "linear_attn_prefill_backend": "flashinfer",
+            "linear_attn_decode_backend": null,
+            "linear_attn_verify_backend": "triton",
+            "context_length": null,
+            "quantization": null,
+            "ple_offload_embedding": true,
+            "speculative_algorithm": "EAGLE",
+            "speculative_num_steps": 3,
+            "speculative_num_draft_tokens": 4,
+            "speculative_eagle_topk": 1,
+            "enable_auto_numa_bind": null,
+            "attn_dp_size": 1,
+            "max_prefill_tokens": 16384
+          },
+          "moe_config_acknowledgements": 4,
+          "error_events": 0,
+          "retraction_log_lines": 0,
+          "effective_linear_backends": {
+            "decode": "triton",
+            "prefill": "flashinfer",
+            "verify": "triton"
+          },
+          "runtime_capacity": [
+            {
+              "effective_max_running_requests_per_dp": 55,
+              "memory_usage": {
+                "weight": 60.131,
+                "kvcache": 7.028,
+                "startup_available": 9.343,
+                "token_capacity": 577856,
+                "token_capacity_swa": null,
+                "graph": {
+                  "prefill": 4.438,
+                  "decode": 0.0,
+                  "target_verify": 0.738,
+                  "draft_prefill": 0.555,
+                  "draft_decode": 0.295,
+                  "draft_extend": 0.453
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "gpus": [
+        {
+          "gpu": 0,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88189,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 1,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87897,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 2,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87897,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 3,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87417,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 4,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88189,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 5,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87897,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 6,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87897,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 7,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87417,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        }
+      ],
+      "legacy_idle_context_memory_mib": [],
+      "additional_sub_gib_context_memory_mib": [
+        382,
+        382
+      ]
+    },
+    {
+      "cohort_index": 1,
+      "verified_unix": 1793466751.8406374,
+      "engine_base_commit": "a4a6eddd25343905245db7a8b54bcf24d9483c8b",
+      "source_archive_sha256": "74fae994f8950c0f1cbe0545b298c5b751140f2956f5f74aafea900ec7568c24",
+      "patched_kernel_sha256": "37a1c53f132a5dc05e250ca5d94237e3acb65d9150fd0ff7a88b409a18a78267",
+      "moe_config_sha256": "2d788a1da86fbd8d74529745396b9abc3794fbbdff979cfd1e9101e050077286",
+      "raw_preflight_sha256": "e693f9bb8b41512e09b3ecfe6783521c1e4fd1e7d34b6cd7c25823c91984bcb0",
+      "replicas": [
+        {
+          "local_replica_index": 0,
+          "process_identity_verified": true,
+          "health_status": 200,
+          "resolved_arguments": {
+            "tp_size": 4,
+            "ep_size": 4,
+            "base_gpu_id": 0,
+            "dtype": "auto",
+            "mamba_ssm_dtype": "bfloat16",
+            "max_running_requests": 64,
+            "cuda_graph_max_bs_decode": 64,
+            "chunked_prefill_size": 8192,
+            "mem_fraction_static": 0.82,
+            "linear_attn_prefill_backend": "flashinfer",
+            "linear_attn_decode_backend": null,
+            "linear_attn_verify_backend": "triton",
+            "context_length": null,
+            "quantization": null,
+            "ple_offload_embedding": true,
+            "speculative_algorithm": "EAGLE",
+            "speculative_num_steps": 3,
+            "speculative_num_draft_tokens": 4,
+            "speculative_eagle_topk": 1,
+            "enable_auto_numa_bind": null,
+            "attn_dp_size": 1,
+            "max_prefill_tokens": 16384
+          },
+          "moe_config_acknowledgements": 4,
+          "error_events": 0,
+          "retraction_log_lines": 0,
+          "effective_linear_backends": {
+            "decode": "triton",
+            "prefill": "flashinfer",
+            "verify": "triton"
+          },
+          "runtime_capacity": [
+            {
+              "effective_max_running_requests_per_dp": 55,
+              "memory_usage": {
+                "weight": 58.702,
+                "kvcache": 7.215,
+                "startup_available": 9.097,
+                "token_capacity": 593216,
+                "token_capacity_swa": null,
+                "graph": {
+                  "prefill": 4.438,
+                  "decode": 0.0,
+                  "target_verify": 0.738,
+                  "draft_prefill": 0.555,
+                  "draft_decode": 0.295,
+                  "draft_extend": 0.453
+                }
+              }
+            }
+          ]
+        },
+        {
+          "local_replica_index": 1,
+          "process_identity_verified": true,
+          "health_status": 200,
+          "resolved_arguments": {
+            "tp_size": 4,
+            "ep_size": 4,
+            "base_gpu_id": 4,
+            "dtype": "auto",
+            "mamba_ssm_dtype": "bfloat16",
+            "max_running_requests": 64,
+            "cuda_graph_max_bs_decode": 64,
+            "chunked_prefill_size": 8192,
+            "mem_fraction_static": 0.82,
+            "linear_attn_prefill_backend": "flashinfer",
+            "linear_attn_decode_backend": null,
+            "linear_attn_verify_backend": "triton",
+            "context_length": null,
+            "quantization": null,
+            "ple_offload_embedding": true,
+            "speculative_algorithm": "EAGLE",
+            "speculative_num_steps": 3,
+            "speculative_num_draft_tokens": 4,
+            "speculative_eagle_topk": 1,
+            "enable_auto_numa_bind": null,
+            "attn_dp_size": 1,
+            "max_prefill_tokens": 16384
+          },
+          "moe_config_acknowledgements": 4,
+          "error_events": 0,
+          "retraction_log_lines": 0,
+          "effective_linear_backends": {
+            "decode": "triton",
+            "prefill": "flashinfer",
+            "verify": "triton"
+          },
+          "runtime_capacity": [
+            {
+              "effective_max_running_requests_per_dp": 55,
+              "memory_usage": {
+                "weight": 58.702,
+                "kvcache": 7.215,
+                "startup_available": 9.097,
+                "token_capacity": 593216,
+                "token_capacity_swa": null,
+                "graph": {
+                  "prefill": 4.438,
+                  "decode": 0.0,
+                  "target_verify": 0.738,
+                  "draft_prefill": 0.555,
+                  "draft_decode": 0.295,
+                  "draft_extend": 0.453
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "gpus": [
+        {
+          "gpu": 0,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88441,
+          "memory_total_mib": 97871,
+          "util_percent": 17
+        },
+        {
+          "gpu": 1,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88149,
+          "memory_total_mib": 97871,
+          "util_percent": 18
+        },
+        {
+          "gpu": 2,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88149,
+          "memory_total_mib": 97871,
+          "util_percent": 5
+        },
+        {
+          "gpu": 3,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87669,
+          "memory_total_mib": 97871,
+          "util_percent": 16
+        },
+        {
+          "gpu": 4,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88441,
+          "memory_total_mib": 97871,
+          "util_percent": 9
+        },
+        {
+          "gpu": 5,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88149,
+          "memory_total_mib": 97871,
+          "util_percent": 21
+        },
+        {
+          "gpu": 6,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88149,
+          "memory_total_mib": 97871,
+          "util_percent": 18
+        },
+        {
+          "gpu": 7,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87669,
+          "memory_total_mib": 97871,
+          "util_percent": 8
+        }
+      ],
+      "legacy_idle_context_memory_mib": [],
+      "additional_sub_gib_context_memory_mib": [
+        382,
+        382
+      ]
+    },
+    {
+      "cohort_index": 2,
+      "verified_unix": 1793467474.7736967,
+      "engine_base_commit": "a4a6eddd25343905245db7a8b54bcf24d9483c8b",
+      "source_archive_sha256": "74fae994f8950c0f1cbe0545b298c5b751140f2956f5f74aafea900ec7568c24",
+      "patched_kernel_sha256": "37a1c53f132a5dc05e250ca5d94237e3acb65d9150fd0ff7a88b409a18a78267",
+      "moe_config_sha256": "2d788a1da86fbd8d74529745396b9abc3794fbbdff979cfd1e9101e050077286",
+      "raw_preflight_sha256": "7652e0fa6b20c7f96c0a2a353165e18dea21ba6060fb17d9673db1d6fdcf4741",
+      "replicas": [
+        {
+          "local_replica_index": 0,
+          "process_identity_verified": true,
+          "health_status": 200,
+          "resolved_arguments": {
+            "tp_size": 4,
+            "ep_size": 4,
+            "base_gpu_id": 0,
+            "dtype": "auto",
+            "mamba_ssm_dtype": "bfloat16",
+            "max_running_requests": 64,
+            "cuda_graph_max_bs_decode": 64,
+            "chunked_prefill_size": 8192,
+            "mem_fraction_static": 0.82,
+            "linear_attn_prefill_backend": "flashinfer",
+            "linear_attn_decode_backend": null,
+            "linear_attn_verify_backend": "triton",
+            "context_length": null,
+            "quantization": null,
+            "ple_offload_embedding": true,
+            "speculative_algorithm": "EAGLE",
+            "speculative_num_steps": 3,
+            "speculative_num_draft_tokens": 4,
+            "speculative_eagle_topk": 1,
+            "enable_auto_numa_bind": null,
+            "attn_dp_size": 1,
+            "max_prefill_tokens": 16384
+          },
+          "moe_config_acknowledgements": 4,
+          "error_events": 0,
+          "retraction_log_lines": 0,
+          "effective_linear_backends": {
+            "decode": "triton",
+            "prefill": "flashinfer",
+            "verify": "triton"
+          },
+          "runtime_capacity": [
+            {
+              "effective_max_running_requests_per_dp": 40,
+              "memory_usage": {
+                "weight": 60.131,
+                "kvcache": 5.238,
+                "startup_available": 8.915,
+                "token_capacity": 430656,
+                "token_capacity_swa": null,
+                "graph": {
+                  "prefill": 4.42,
+                  "decode": 0.0,
+                  "target_verify": 0.59,
+                  "draft_prefill": 0.553,
+                  "draft_decode": 0.254,
+                  "draft_extend": 0.33
+                }
+              }
+            }
+          ]
+        },
+        {
+          "local_replica_index": 1,
+          "process_identity_verified": true,
+          "health_status": 200,
+          "resolved_arguments": {
+            "tp_size": 4,
+            "ep_size": 4,
+            "base_gpu_id": 4,
+            "dtype": "auto",
+            "mamba_ssm_dtype": "bfloat16",
+            "max_running_requests": 64,
+            "cuda_graph_max_bs_decode": 64,
+            "chunked_prefill_size": 8192,
+            "mem_fraction_static": 0.82,
+            "linear_attn_prefill_backend": "flashinfer",
+            "linear_attn_decode_backend": null,
+            "linear_attn_verify_backend": "triton",
+            "context_length": null,
+            "quantization": null,
+            "ple_offload_embedding": true,
+            "speculative_algorithm": "EAGLE",
+            "speculative_num_steps": 3,
+            "speculative_num_draft_tokens": 4,
+            "speculative_eagle_topk": 1,
+            "enable_auto_numa_bind": null,
+            "attn_dp_size": 1,
+            "max_prefill_tokens": 16384
+          },
+          "moe_config_acknowledgements": 4,
+          "error_events": 0,
+          "retraction_log_lines": 0,
+          "effective_linear_backends": {
+            "decode": "triton",
+            "prefill": "flashinfer",
+            "verify": "triton"
+          },
+          "runtime_capacity": [
+            {
+              "effective_max_running_requests_per_dp": 40,
+              "memory_usage": {
+                "weight": 60.131,
+                "kvcache": 5.238,
+                "startup_available": 8.868,
+                "token_capacity": 430656,
+                "token_capacity_swa": null,
+                "graph": {
+                  "prefill": 4.42,
+                  "decode": 0.0,
+                  "target_verify": 0.592,
+                  "draft_prefill": 0.553,
+                  "draft_decode": 0.254,
+                  "draft_extend": 0.33
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "gpus": [
+        {
+          "gpu": 0,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88629,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 1,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88386,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 2,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88384,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 3,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87904,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 4,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88677,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 5,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88386,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 6,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88384,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 7,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87664,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        }
+      ],
+      "legacy_idle_context_memory_mib": [
+        4610,
+        4658,
+        4658,
+        4658,
+        4658,
+        4658,
+        4658,
+        4418
+      ],
+      "additional_sub_gib_context_memory_mib": [
+        382,
+        382
+      ]
+    },
+    {
+      "cohort_index": 3,
+      "verified_unix": 1793467400.1330616,
+      "engine_base_commit": "a4a6eddd25343905245db7a8b54bcf24d9483c8b",
+      "source_archive_sha256": "74fae994f8950c0f1cbe0545b298c5b751140f2956f5f74aafea900ec7568c24",
+      "patched_kernel_sha256": "37a1c53f132a5dc05e250ca5d94237e3acb65d9150fd0ff7a88b409a18a78267",
+      "moe_config_sha256": "2d788a1da86fbd8d74529745396b9abc3794fbbdff979cfd1e9101e050077286",
+      "raw_preflight_sha256": "d505425393b2e2a85cbe0678200562d7ce386bb0ac70678f95ff44a4049692d6",
+      "replicas": [
+        {
+          "local_replica_index": 0,
+          "process_identity_verified": true,
+          "health_status": 200,
+          "resolved_arguments": {
+            "tp_size": 4,
+            "ep_size": 4,
+            "base_gpu_id": 0,
+            "dtype": "auto",
+            "mamba_ssm_dtype": "bfloat16",
+            "max_running_requests": 64,
+            "cuda_graph_max_bs_decode": 64,
+            "chunked_prefill_size": 8192,
+            "mem_fraction_static": 0.82,
+            "linear_attn_prefill_backend": "flashinfer",
+            "linear_attn_decode_backend": null,
+            "linear_attn_verify_backend": "triton",
+            "context_length": null,
+            "quantization": null,
+            "ple_offload_embedding": true,
+            "speculative_algorithm": "EAGLE",
+            "speculative_num_steps": 3,
+            "speculative_num_draft_tokens": 4,
+            "speculative_eagle_topk": 1,
+            "enable_auto_numa_bind": null,
+            "attn_dp_size": 1,
+            "max_prefill_tokens": 16384
+          },
+          "moe_config_acknowledgements": 4,
+          "error_events": 0,
+          "retraction_log_lines": 0,
+          "effective_linear_backends": {
+            "decode": "triton",
+            "prefill": "flashinfer",
+            "verify": "triton"
+          },
+          "runtime_capacity": [
+            {
+              "effective_max_running_requests_per_dp": 55,
+              "memory_usage": {
+                "weight": 60.131,
+                "kvcache": 7.028,
+                "startup_available": 9.343,
+                "token_capacity": 577856,
+                "token_capacity_swa": null,
+                "graph": {
+                  "prefill": 4.438,
+                  "decode": 0.0,
+                  "target_verify": 0.738,
+                  "draft_prefill": 0.555,
+                  "draft_decode": 0.295,
+                  "draft_extend": 0.453
+                }
+              }
+            }
+          ]
+        },
+        {
+          "local_replica_index": 1,
+          "process_identity_verified": true,
+          "health_status": 200,
+          "resolved_arguments": {
+            "tp_size": 4,
+            "ep_size": 4,
+            "base_gpu_id": 4,
+            "dtype": "auto",
+            "mamba_ssm_dtype": "bfloat16",
+            "max_running_requests": 64,
+            "cuda_graph_max_bs_decode": 64,
+            "chunked_prefill_size": 8192,
+            "mem_fraction_static": 0.82,
+            "linear_attn_prefill_backend": "flashinfer",
+            "linear_attn_decode_backend": null,
+            "linear_attn_verify_backend": "triton",
+            "context_length": null,
+            "quantization": null,
+            "ple_offload_embedding": true,
+            "speculative_algorithm": "EAGLE",
+            "speculative_num_steps": 3,
+            "speculative_num_draft_tokens": 4,
+            "speculative_eagle_topk": 1,
+            "enable_auto_numa_bind": null,
+            "attn_dp_size": 1,
+            "max_prefill_tokens": 16384
+          },
+          "moe_config_acknowledgements": 4,
+          "error_events": 0,
+          "retraction_log_lines": 0,
+          "effective_linear_backends": {
+            "decode": "triton",
+            "prefill": "flashinfer",
+            "verify": "triton"
+          },
+          "runtime_capacity": [
+            {
+              "effective_max_running_requests_per_dp": 55,
+              "memory_usage": {
+                "weight": 60.131,
+                "kvcache": 7.028,
+                "startup_available": 9.343,
+                "token_capacity": 577856,
+                "token_capacity_swa": null,
+                "graph": {
+                  "prefill": 4.438,
+                  "decode": 0.0,
+                  "target_verify": 0.738,
+                  "draft_prefill": 0.555,
+                  "draft_decode": 0.295,
+                  "draft_extend": 0.453
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "gpus": [
+        {
+          "gpu": 0,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88189,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 1,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87897,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 2,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87897,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 3,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87417,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 4,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88189,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 5,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87897,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 6,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87897,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        },
+        {
+          "gpu": 7,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87417,
+          "memory_total_mib": 97871,
+          "util_percent": 0
+        }
+      ],
+      "legacy_idle_context_memory_mib": [],
+      "additional_sub_gib_context_memory_mib": [
+        382,
+        382
+      ]
+    }
+  ],
+  "scope": "All eight actual launch processes, normalized server arguments, source/archive hashes, MoE loading and linear-backend logs checked before timing. Basic response checks are recorded by the full stage separately.",
+  "spin_observation": {
+    "verified_unix": 1793467461.3252168,
+    "nodes": [
+      {
+        "node_index": 0,
+        "observed_at": "2026-10-31T17:23:59Z",
+        "spin_on": false,
+        "active_gpu_ids": [],
+        "real_workload": true
+      },
+      {
+        "node_index": 1,
+        "observed_at": "2026-10-31T17:23:19Z",
+        "spin_on": false,
+        "active_gpu_ids": [],
+        "real_workload": true
+      },
+      {
+        "node_index": 2,
+        "observed_at": "2026-10-31T17:23:18Z",
+        "spin_on": false,
+        "active_gpu_ids": [],
+        "real_workload": true
+      },
+      {
+        "node_index": 3,
+        "observed_at": "2026-10-31T17:23:29Z",
+        "spin_on": false,
+        "active_gpu_ids": [],
+        "real_workload": true
+      }
+    ]
+  },
+  "capacity_note": "Effective running capacity is40 on the cohort with pre-existing idle CUDA contexts and55 elsewhere; configured max-running remains64. Runtime memory_usage.weight is the before/after available-GPU-memory delta, not a parameter-byte count; Spin exit during one cohort startup changes that diagnostic delta. All replicas use the same BF16 checkpoint, revision and launch parameters."
+}
