@@ -55,6 +55,32 @@
       "requested_requests": 128,
       "reason": "Both replicas raised device-side assert in hybrid linear attention metadata while replaying a prefill CUDA graph. Single-request chat and 8K retrieval smoke checks had passed.",
       "interpretation": "Rejected as unstable for this workload; partial run is not a throughput measurement. No engine patch was made for this candidate."
+    },
+    {
+      "name": "attndp8-mem72-patched",
+      "gpus": 8,
+      "tp": 8,
+      "ep": 8,
+      "attn_dp_size": 8,
+      "replicas": 1,
+      "mem_fraction_static": 0.72,
+      "status": "repeat_failed_incomplete_streams",
+      "successful_initial_measurements": {
+        "requests_per_shape": 128,
+        "short_output_tokens_per_second": 2134.25,
+        "long_output_tokens_per_second": 2083.99
+      },
+      "failed_repeat": {
+        "shape": [
+          1024,
+          256
+        ],
+        "completed": 123,
+        "requested": 128,
+        "error_count": 5,
+        "client_error": "ClientPayloadError: Response payload is not completed; TransferEncodingError: Not enough data to satisfy transfer length header."
+      },
+      "selection": "Rejected pending full successful repeated validation. Root cause of the truncated streams has not been established. The incomplete repeat is not a throughput result."
     }
   ]
 }
