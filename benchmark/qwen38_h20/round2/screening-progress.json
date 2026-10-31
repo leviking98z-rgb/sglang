@@ -479,6 +479,37 @@
         }
       },
       "status": "exploratory"
+    },
+    {
+      "kind": "candidate",
+      "name": "attndp4mtp3",
+      "control_cohort": 2,
+      "metrics": {
+        "1024": {
+          "samples": [
+            1687.8445731632569,
+            2918.3799224634404,
+            3037.852879753545
+          ],
+          "median": 2918.3799224634404,
+          "minimum": 1687.8445731632569,
+          "maximum": 3037.852879753545
+        },
+        "8192": {
+          "samples": [
+            1824.9458077483935,
+            1680.1617477073908,
+            1839.3962199703728
+          ],
+          "median": 1824.9458077483935,
+          "minimum": 1680.1617477073908,
+          "maximum": 1839.3962199703728
+        }
+      },
+      "repetitions": 3,
+      "requests_per_repetition": 128,
+      "status": "not_selected",
+      "note": "Equal8GPU budget; TP8/EP8 attentionDP4 with MTP3, BF16, mem0.72 and graph32. These are shorter screens; compare to the separately retained longer TP4 MTP confirmation with its protocol difference explicit."
     }
   ],
   "source_note": "Controls used pinned main. Later candidates and confirmation use host-side zero-token RMSNorm guard fc2ad6c; nonempty device code unchanged; see kernel-fix.json."
