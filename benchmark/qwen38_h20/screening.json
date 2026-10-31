@@ -1,0 +1,468 @@
+{
+  "scope": "8-GPU screening only; full32 baseline comparison is reported separately",
+  "selection": "geometric mean across both shapes at concurrency64, 128 requests per measurement; repeat close candidates",
+  "engine_commit": "a4a6eddd25343905245db7a8b54bcf24d9483c8b",
+  "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+  "entries": [
+    {
+      "configuration": "baseline8-control",
+      "gpus": 8,
+      "tp": 8,
+      "ep": 1,
+      "replicas": 1,
+      "mem_fraction": 0.85,
+      "ssm_dtype": "bfloat16",
+      "mtp": false,
+      "interleaved_swiglu": false,
+      "shapes": [
+        {
+          "input_tokens": 1024,
+          "output_tokens": 256,
+          "output_tps_samples": [
+            2076.403801400184
+          ],
+          "median_output_tps": 2076.403801400184,
+          "observed_min": 2076.403801400184,
+          "observed_max": 2076.403801400184
+        },
+        {
+          "input_tokens": 8192,
+          "output_tokens": 1024,
+          "output_tps_samples": [
+            1444.7114530744195
+          ],
+          "median_output_tps": 1444.7114530744195,
+          "observed_min": 1444.7114530744195,
+          "observed_max": 1444.7114530744195
+        }
+      ],
+      "geomean_output_tps": 1731.9943282499826,
+      "csv_sources": [
+        {
+          "path": "results/baseline8-control/aggregate.csv",
+          "sha256": "05ff9848e0e3a01b4c61c3ed33f6aa1cd6028fccb93287c425c69f498e8911ef"
+        }
+      ],
+      "linear_attn_prefill_backend": "triton",
+      "linear_attn_decode_backend": "triton",
+      "max_running_requests": 128,
+      "cuda_graph_max_bs_decode": 128,
+      "chunked_prefill_size": 8192,
+      "ple_embedding_on_cpu": true,
+      "moe_backend": "triton"
+    },
+    {
+      "configuration": "flashinfer-tp8",
+      "gpus": 8,
+      "tp": 8,
+      "ep": 1,
+      "replicas": 1,
+      "mem_fraction": 0.85,
+      "ssm_dtype": "bfloat16",
+      "mtp": false,
+      "interleaved_swiglu": false,
+      "shapes": [
+        {
+          "input_tokens": 1024,
+          "output_tokens": 256,
+          "output_tps_samples": [
+            2106.9095623111675
+          ],
+          "median_output_tps": 2106.9095623111675,
+          "observed_min": 2106.9095623111675,
+          "observed_max": 2106.9095623111675
+        },
+        {
+          "input_tokens": 8192,
+          "output_tokens": 1024,
+          "output_tps_samples": [
+            1454.8784796715474
+          ],
+          "median_output_tps": 1454.8784796715474,
+          "observed_min": 1454.8784796715474,
+          "observed_max": 1454.8784796715474
+        }
+      ],
+      "geomean_output_tps": 1750.799069231166,
+      "csv_sources": [
+        {
+          "path": "results/screen-fi-tp8/aggregate.csv",
+          "sha256": "e4e6ca858eabe3e727a43430d833cf921b059554c4b2dce68231f9e8d1b0266b"
+        }
+      ],
+      "linear_attn_prefill_backend": "flashinfer",
+      "linear_attn_decode_backend": "triton",
+      "max_running_requests": 128,
+      "cuda_graph_max_bs_decode": 128,
+      "chunked_prefill_size": 8192,
+      "ple_embedding_on_cpu": true,
+      "moe_backend": "triton"
+    },
+    {
+      "configuration": "flashinfer-tp8ep8",
+      "gpus": 8,
+      "tp": 8,
+      "ep": 8,
+      "replicas": 1,
+      "mem_fraction": 0.85,
+      "ssm_dtype": "bfloat16",
+      "mtp": false,
+      "interleaved_swiglu": false,
+      "shapes": [
+        {
+          "input_tokens": 1024,
+          "output_tokens": 256,
+          "output_tps_samples": [
+            2221.854617629921
+          ],
+          "median_output_tps": 2221.854617629921,
+          "observed_min": 2221.854617629921,
+          "observed_max": 2221.854617629921
+        },
+        {
+          "input_tokens": 8192,
+          "output_tokens": 1024,
+          "output_tps_samples": [
+            1505.1787299233783
+          ],
+          "median_output_tps": 1505.1787299233783,
+          "observed_min": 1505.1787299233783,
+          "observed_max": 1505.1787299233783
+        }
+      ],
+      "geomean_output_tps": 1828.739541716807,
+      "csv_sources": [
+        {
+          "path": "results/screen-fi-tp8ep8/aggregate.csv",
+          "sha256": "76ed704ee6e63be2bbb37d6512ee1870462ec9a4f3ea7f3bc3ca3052c2ff7d93"
+        }
+      ],
+      "linear_attn_prefill_backend": "flashinfer",
+      "linear_attn_decode_backend": "triton",
+      "max_running_requests": 128,
+      "cuda_graph_max_bs_decode": 128,
+      "chunked_prefill_size": 8192,
+      "ple_embedding_on_cpu": true,
+      "moe_backend": "triton"
+    },
+    {
+      "configuration": "flashinfer-tp4ep4",
+      "gpus": 8,
+      "tp": 4,
+      "ep": 4,
+      "replicas": 2,
+      "mem_fraction": 0.85,
+      "ssm_dtype": "bfloat16",
+      "mtp": false,
+      "interleaved_swiglu": false,
+      "shapes": [
+        {
+          "input_tokens": 1024,
+          "output_tokens": 256,
+          "output_tps_samples": [
+            2543.7715783649237
+          ],
+          "median_output_tps": 2543.7715783649237,
+          "observed_min": 2543.7715783649237,
+          "observed_max": 2543.7715783649237
+        },
+        {
+          "input_tokens": 8192,
+          "output_tokens": 1024,
+          "output_tps_samples": [
+            1931.1943039468931
+          ],
+          "median_output_tps": 1931.1943039468931,
+          "observed_min": 1931.1943039468931,
+          "observed_max": 1931.1943039468931
+        }
+      ],
+      "geomean_output_tps": 2216.4199021576073,
+      "csv_sources": [
+        {
+          "path": "results/screen-fi-tp4ep4/aggregate.csv",
+          "sha256": "63152983c22521574fdfa23d974e234dcac94f6ba6b18cace7bffd49391b52d9"
+        }
+      ],
+      "linear_attn_prefill_backend": "flashinfer",
+      "linear_attn_decode_backend": "triton",
+      "max_running_requests": 64,
+      "cuda_graph_max_bs_decode": 64,
+      "chunked_prefill_size": 8192,
+      "ple_embedding_on_cpu": true,
+      "moe_backend": "triton"
+    },
+    {
+      "configuration": "flashinfer-mtp-tp8",
+      "gpus": 8,
+      "tp": 8,
+      "ep": 1,
+      "replicas": 1,
+      "mem_fraction": 0.8,
+      "ssm_dtype": "float32",
+      "mtp": true,
+      "interleaved_swiglu": false,
+      "shapes": [
+        {
+          "input_tokens": 1024,
+          "output_tokens": 256,
+          "output_tps_samples": [
+            2040.2868635818554
+          ],
+          "median_output_tps": 2040.2868635818554,
+          "observed_min": 2040.2868635818554,
+          "observed_max": 2040.2868635818554
+        },
+        {
+          "input_tokens": 8192,
+          "output_tokens": 1024,
+          "output_tps_samples": [
+            1596.7877724066045
+          ],
+          "median_output_tps": 1596.7877724066045,
+          "observed_min": 1596.7877724066045,
+          "observed_max": 1596.7877724066045
+        }
+      ],
+      "geomean_output_tps": 1804.9667908217393,
+      "csv_sources": [
+        {
+          "path": "results/screen-fi-mtp-tp8/aggregate.csv",
+          "sha256": "ea809aa7e5d48f7621d1752471f8b3b75ba102839679a108ed88a62ffe9d9cd1"
+        }
+      ],
+      "linear_attn_prefill_backend": "flashinfer",
+      "linear_attn_decode_backend": "flashinfer",
+      "max_running_requests": 128,
+      "cuda_graph_max_bs_decode": 64,
+      "chunked_prefill_size": 8192,
+      "ple_embedding_on_cpu": true,
+      "moe_backend": "triton",
+      "speculative_algorithm": "NEXTN",
+      "speculative_num_steps": 3,
+      "speculative_num_draft_tokens": 4
+    },
+    {
+      "configuration": "flashinfer-fused-tp8ep8",
+      "gpus": 8,
+      "tp": 8,
+      "ep": 8,
+      "replicas": 1,
+      "mem_fraction": 0.85,
+      "ssm_dtype": "bfloat16",
+      "mtp": false,
+      "interleaved_swiglu": true,
+      "shapes": [
+        {
+          "input_tokens": 1024,
+          "output_tokens": 256,
+          "output_tps_samples": [
+            1836.0781054185068
+          ],
+          "median_output_tps": 1836.0781054185068,
+          "observed_min": 1836.0781054185068,
+          "observed_max": 1836.0781054185068
+        },
+        {
+          "input_tokens": 8192,
+          "output_tokens": 1024,
+          "output_tps_samples": [
+            1518.8355554002546
+          ],
+          "median_output_tps": 1518.8355554002546,
+          "observed_min": 1518.8355554002546,
+          "observed_max": 1518.8355554002546
+        }
+      ],
+      "geomean_output_tps": 1669.9403309704107,
+      "csv_sources": [
+        {
+          "path": "results/screen-fi-fused-tp8ep8/aggregate.csv",
+          "sha256": "034acf7d70297a9dc4f62aeffa8fab5a5f534c61efca7f65b27a6b42de4f1a1d"
+        }
+      ],
+      "linear_attn_prefill_backend": "flashinfer",
+      "linear_attn_decode_backend": "triton",
+      "max_running_requests": 128,
+      "cuda_graph_max_bs_decode": 128,
+      "chunked_prefill_size": 8192,
+      "ple_embedding_on_cpu": true,
+      "moe_backend": "triton"
+    },
+    {
+      "configuration": "flashinfer-fused-tp4ep4",
+      "gpus": 8,
+      "tp": 4,
+      "ep": 4,
+      "replicas": 2,
+      "mem_fraction": 0.85,
+      "ssm_dtype": "bfloat16",
+      "mtp": false,
+      "interleaved_swiglu": true,
+      "shapes": [
+        {
+          "input_tokens": 1024,
+          "output_tokens": 256,
+          "output_tps_samples": [
+            2061.258583990118,
+            2562.083673600014,
+            2562.0721429015634
+          ],
+          "median_output_tps": 2562.0721429015634,
+          "observed_min": 2061.258583990118,
+          "observed_max": 2562.083673600014
+        },
+        {
+          "input_tokens": 8192,
+          "output_tokens": 1024,
+          "output_tps_samples": [
+            1939.0714497822516,
+            1938.8996267971595,
+            1936.7783957396566
+          ],
+          "median_output_tps": 1938.8996267971595,
+          "observed_min": 1936.7783957396566,
+          "observed_max": 1939.0714497822516
+        }
+      ],
+      "geomean_output_tps": 2228.811504299823,
+      "csv_sources": [
+        {
+          "path": "results/screen-fi-fused-tp4ep4/aggregate.csv",
+          "sha256": "a4f999cfc5b42c8e0a7f25e87a9c07157a99a365ad60588316baea24e714e721"
+        },
+        {
+          "path": "results/screen-fi-fused-tp4ep4-repeat/aggregate.csv",
+          "sha256": "3e8a13e2c3267d24b93ecc744e5df1bdcb0ad0e7f260e759ed94c2e61b8da99c"
+        }
+      ],
+      "linear_attn_prefill_backend": "flashinfer",
+      "linear_attn_decode_backend": "triton",
+      "max_running_requests": 64,
+      "cuda_graph_max_bs_decode": 64,
+      "chunked_prefill_size": 8192,
+      "ple_embedding_on_cpu": true,
+      "moe_backend": "triton"
+    },
+    {
+      "configuration": "flashinfer-plain-tp4ep4-lowmem",
+      "gpus": 8,
+      "tp": 4,
+      "ep": 4,
+      "replicas": 2,
+      "mem_fraction": 0.82,
+      "ssm_dtype": "bfloat16",
+      "mtp": false,
+      "interleaved_swiglu": false,
+      "shapes": [
+        {
+          "input_tokens": 1024,
+          "output_tokens": 256,
+          "output_tps_samples": [
+            2038.8701427609967,
+            2552.344726373042,
+            2551.7844979244373
+          ],
+          "median_output_tps": 2551.7844979244373,
+          "observed_min": 2038.8701427609967,
+          "observed_max": 2552.344726373042
+        },
+        {
+          "input_tokens": 8192,
+          "output_tokens": 1024,
+          "output_tps_samples": [
+            1938.827209530617,
+            1940.4424195406345,
+            1937.0531389930768
+          ],
+          "median_output_tps": 1938.827209530617,
+          "observed_min": 1937.0531389930768,
+          "observed_max": 1940.4424195406345
+        }
+      ],
+      "geomean_output_tps": 2224.290722327979,
+      "csv_sources": [
+        {
+          "path": "results/screen-plain-tp4ep4-lowmem/aggregate.csv",
+          "sha256": "4ee0d6f4457e83f914426a8d94d3b0691250a3dc9dd00fb5d3ef2e21957f4415"
+        }
+      ],
+      "linear_attn_prefill_backend": "flashinfer",
+      "linear_attn_decode_backend": "triton",
+      "max_running_requests": 64,
+      "cuda_graph_max_bs_decode": 64,
+      "chunked_prefill_size": 8192,
+      "ple_embedding_on_cpu": true,
+      "moe_backend": "triton"
+    },
+    {
+      "configuration": "flashinfer-tuned-tp4ep4",
+      "gpus": 8,
+      "tp": 4,
+      "ep": 4,
+      "replicas": 2,
+      "mem_fraction": 0.82,
+      "ssm_dtype": "bfloat16",
+      "mtp": false,
+      "interleaved_swiglu": false,
+      "shapes": [
+        {
+          "input_tokens": 1024,
+          "output_tokens": 256,
+          "output_tps_samples": [
+            2097.7687824195395,
+            2596.2302174386296,
+            2608.159735953148
+          ],
+          "median_output_tps": 2596.2302174386296,
+          "observed_min": 2097.7687824195395,
+          "observed_max": 2608.159735953148
+        },
+        {
+          "input_tokens": 8192,
+          "output_tokens": 1024,
+          "output_tps_samples": [
+            1963.9277540712023,
+            1963.820794458846,
+            1963.6149373935443
+          ],
+          "median_output_tps": 1963.820794458846,
+          "observed_min": 1963.6149373935443,
+          "observed_max": 1963.9277540712023
+        }
+      ],
+      "geomean_output_tps": 2257.992667881894,
+      "csv_sources": [
+        {
+          "path": "results/screen-tuned-plain-tp4ep4/aggregate.csv",
+          "sha256": "0a2a98de95028e2b9004b0b6fe7c205f3744c71218d59157d2d2629b13ccb4b9"
+        },
+        {
+          "path": "results/screen-tuned-plain-tp4ep4-repeat/aggregate.csv",
+          "sha256": "d77576c6928a9f348c65c78a0161ece1d7be340ba61da8dfde0b8faaf83873f8"
+        }
+      ],
+      "linear_attn_prefill_backend": "flashinfer",
+      "linear_attn_decode_backend": "triton",
+      "max_running_requests": 64,
+      "cuda_graph_max_bs_decode": 64,
+      "chunked_prefill_size": 8192,
+      "ple_embedding_on_cpu": true,
+      "moe_backend": "triton",
+      "moe_config_sha256": "2d788a1da86fbd8d74529745396b9abc3794fbbdff979cfd1e9101e050077286"
+    }
+  ],
+  "selected_for_full32": "flashinfer-tuned-tp4ep4",
+  "limitations": [
+    "Cohorts ran on different owned nodes; small kernel-only differences cannot be isolated from node variation.",
+    "First C64-only short measurements show startup effects; all samples are retained and repeated candidates use medians.",
+    "These are synthetic text requests, not a model-quality evaluation."
+  ],
+  "incomplete_candidate": {
+    "configuration": "flashinfer-cutlass-tp4ep4-fused-finalize",
+    "status": "not healthy within1800-second startup window",
+    "performance_measurements": 0,
+    "observed_compiler_processes": 171,
+    "cleanup": "only owned task process tree stopped; all eight GPUs verified empty before next candidate"
+  }
+}
