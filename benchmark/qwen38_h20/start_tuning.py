@@ -57,6 +57,7 @@ env["PYTHONPATH"] = (
 env["RAY_ADDRESS"] = "local"
 env["RAY_TMPDIR"] = "/tmp/q38-" + hashlib.sha256(args.attempt.encode()).hexdigest()[:8]
 env["RAY_USAGE_STATS_ENABLED"] = "0"
+env["RAY_OVERRIDE_RESOURCES"] = json.dumps({"CPU": 16})
 env["RAY_DEFAULT_OBJECT_STORE_MAX_MEMORY_BYTES"] = str(2 * 1024**3)
 env["RAY_DEDUP_LOGS"] = "0"
 log = PROJECT / "logs" / (args.attempt + ".log")
@@ -78,6 +79,7 @@ info = {
     "directory": str(directory),
     "started_unix": time.time(),
     "ray_address": "local",
+    "ray_cpus": 16,
     "ray_tmpdir": env["RAY_TMPDIR"],
     "pythonpath": env["PYTHONPATH"],
     "search_space_sha256": hashlib.sha256(
