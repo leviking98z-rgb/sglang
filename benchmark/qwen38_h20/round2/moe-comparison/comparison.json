@@ -1,0 +1,70 @@
+{
+  "status": "complete",
+  "gpus": 8,
+  "tp": 4,
+  "ep": 4,
+  "replicas": 2,
+  "concurrency": 64,
+  "repetitions_per_shape": 3,
+  "requests_per_repetition": 128,
+  "configuration_difference": "Only SGLANG_MOE_CONFIG_DIR; both MTP3, BF16, chunk8192, mem0.82, graph64",
+  "configurations": {
+    "original": {
+      "aggregate_sha256": "a0fe14003e076c6fc97e181f501041bced35102777c7e03044c994d767e697a2",
+      "metrics": {
+        "1024": {
+          "output_tokens_per_second": [
+            1761.0320971015324,
+            3082.6503002699983,
+            3145.346772713924
+          ],
+          "median": 3082.6503002699983,
+          "observed_min": 1761.0320971015324,
+          "observed_max": 3145.346772713924
+        },
+        "8192": {
+          "output_tokens_per_second": [
+            2307.1526507011154,
+            2314.2371463919008,
+            2316.379083728857
+          ],
+          "median": 2314.2371463919008,
+          "observed_min": 2307.1526507011154,
+          "observed_max": 2316.379083728857
+        }
+      }
+    },
+    "expanded": {
+      "aggregate_sha256": "b9bac00c46acf14da1bf7fe70eef4e2c7d3a0ae110ae847bbbf095bacd571a55",
+      "metrics": {
+        "1024": {
+          "output_tokens_per_second": [
+            2329.5389972860253,
+            3089.1394716754976,
+            3069.927685009408
+          ],
+          "median": 3069.927685009408,
+          "observed_min": 2329.5389972860253,
+          "observed_max": 3089.1394716754976
+        },
+        "8192": {
+          "output_tokens_per_second": [
+            2337.458441739597,
+            2326.3985851099296,
+            2321.0581858423784
+          ],
+          "median": 2326.3985851099296,
+          "observed_min": 2321.0581858423784,
+          "observed_max": 2337.458441739597
+        }
+      }
+    }
+  },
+  "gain_percent": {
+    "1024": -0.4127167865740744,
+    "8192": 0.5255052939146632
+  },
+  "equal_shape_geometric_mean_gain_percent": 0.055294541957295884,
+  "decision": "Retain original eight-point table. Expanded table has no consistent gain across both shapes; sub-percent changes do not establish a repeatable throughput improvement.",
+  "range_note": "Observed ranges, not confidence intervals. Cold first-short effects retained; no measurements discarded."
+}

@@ -58,10 +58,13 @@ results must record this patch explicitly; no upstream PR was opened.
 Other completed screens cover 4K/16K prefill chunks, decode scheduling steps,
 scheduler receive intervals, lazy Mamba cache checkpointing, prefill scheduling intervals,
 maximum running batch 32, and FP32 FlashInfer MTP verification. None is selected
-from the initial two-run screen. A 16K chunk and patched attention DP4 remain
-confirmation candidates. Attention DP8 at memory fraction 0.82 ran out of memory
-while capturing a prefill graph and is being retried with more temporary-buffer
-headroom. Mixed prefill/decode passed single-request smoke checks but failed its
+from the initial two-run screen. The longer MTP plus 16K chunk confirmation is
+still running. Patched attention DP4 completed its initial screen, and DP4 plus
+MTP completed three repetitions per shape; neither beat the selected TP4 MTP
+layout on both workloads. Attention DP8 at memory fraction 0.82 ran out of memory
+while capturing a prefill graph. Its 0.72 retry passed initial measurements but
+lost five streams in a subsequent repetition; the root cause is not established.
+Mixed prefill/decode passed single-request smoke checks but failed its
 first concurrent run with a CUDA device assertion; its partial output is excluded
 from the successful-results CSV files. Details are in
 [failed-candidates.json](failed-candidates.json).
@@ -71,3 +74,12 @@ replicas and the GPU topology. No affinity change or NUMA performance gain is
 claimed. The MTP confirmation retains BF16 recurrent state, three NEXTN steps,
 four verification tokens and Triton verification. Five steps exceed the current
 QSA verification-width limit; that startup failure is recorded separately.
+
+The official MoE tuner also tested seven additional MTP-relevant token batches:
+4, 96, 128, 160, 192, 256 and 16384. The new versioned table preserves all eight
+original points. In the same-node three-repeat MTP3 comparison, the expanded
+table changed short/long median throughput by -0.41%/+0.53%, or +0.06% for their
+equally weighted geometric mean. This does not establish a consistent gain, so
+the original table remains selected. Both tables, all six measurements per
+configuration, and the decision are retained in
+[moe-comparison](moe-comparison/comparison.json).
