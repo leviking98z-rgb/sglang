@@ -49,15 +49,21 @@ def health(url):
 def router_snapshot(label):
     if args.url.rstrip("/") in {url.rstrip("/") for url in args.workers}:
         return
-    with urllib.request.urlopen(args.url + "/workers", timeout=15) as response:
-        data = json.load(response)
     expected = {url.rstrip("/") for url in args.workers}
-    healthy = {
-        worker["url"].rstrip("/") for worker in data["workers"] if worker["is_healthy"]
-    }
-    assert healthy == expected and len(data["workers"]) == len(expected), (
-        "router worker set changed"
-    )
+    deadline = time.monotonic() + (120 if label == "before_matrix" else 0)
+    while True:
+        with urllib.request.urlopen(args.url + "/workers", timeout=15) as response:
+            data = json.load(response)
+        healthy = {
+            worker["url"].rstrip("/")
+            for worker in data["workers"]
+            if worker["is_healthy"]
+        }
+        if healthy == expected and len(data["workers"]) == len(expected):
+            break
+        if time.monotonic() >= deadline:
+            raise AssertionError("router worker set changed or never became ready")
+        time.sleep(2)
     data["verified_unix"] = time.time()
     with (directory / ("router_workers_" + label + ".json")).open("x") as stream:
         json.dump(data, stream, indent=2)
