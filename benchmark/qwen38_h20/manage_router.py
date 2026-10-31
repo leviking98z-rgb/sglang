@@ -14,6 +14,10 @@ parser.add_argument("action", choices=["start", "stop", "status"])
 parser.add_argument("--attempt", required=True)
 parser.add_argument("--port", type=int, default=30000)
 parser.add_argument("--prometheus-port", type=int)
+parser.add_argument(
+    "--policy", choices=["round_robin", "power_of_two", "cache_aware"],
+    default="round_robin",
+)
 parser.add_argument("--workers", nargs="+")
 args = parser.parse_args()
 if not args.attempt.replace("-", "").replace("_", "").isalnum():
@@ -40,7 +44,7 @@ if args.action == "start":
         "--prometheus-port",
         str(metrics_port),
         "--policy",
-        "round_robin",
+        args.policy,
         "--worker-urls",
         *args.workers,
     ]
