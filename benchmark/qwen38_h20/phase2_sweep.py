@@ -33,7 +33,7 @@ def run(plan):
                 stderr=subprocess.STDOUT, stdin=subprocess.DEVNULL, check=True,
             )
 
-    def wait_healthy():
+    def wait_healthy(urls):
         deadline = time.monotonic() + plan.get("health_wait", 900)
         while time.monotonic() < deadline:
             for service in active:
@@ -46,7 +46,7 @@ def run(plan):
                 if exited:
                     raise RuntimeError(service + " exited during startup; inspect its log")
             ready = []
-            for url in plan["workers"]:
+            for url in urls:
                 try:
                     with urllib.request.urlopen(url + "/health", timeout=5) as response:
                         ready.append(response.status == 200)
@@ -70,13 +70,17 @@ def run(plan):
         env = environment()
         env.update(config.get("environment", {}))
         commands = []
-        for index in range(2):
+        tp = int(config.get("tp", 4))
+        replicas = int(config.get("replicas", 2))
+        if tp * replicas != 8:
+            raise ValueError("screening must use exactly eight GPUs")
+        for index in range(replicas):
             service = f"{attempt}-{label}-{index}"
             active.append(service)
             argv = [
                 scripts / "manage_service.py", "start", "--attempt", service,
-                "--tp", "4", "--ep", str(config.get("ep", 4)),
-                "--base-gpu", str(index * 4), "--port", str(31000 + index),
+                "--tp", str(tp), "--ep", str(config.get("ep", 4)),
+                "--base-gpu", str(index * tp), "--port", str(31000 + index),
                 "--max-running", str(config.get("max_running", 64)),
                 "--graph-bs", str(config.get("graph_bs", 64)),
                 "--mem-fraction", str(config.get("mem_fraction", 0.82)),
@@ -94,7 +98,10 @@ def run(plan):
             futures = [pool.submit(command, label, argv, env) for label, argv in commands]
             for future in futures:
                 future.result()
-        wait_healthy()
+        wait_healthy(
+            plan.get("restore_workers", plan["workers"])
+            if label == "restored" else plan["workers"]
+        )
 
     save()
     try:
