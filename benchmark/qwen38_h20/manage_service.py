@@ -20,6 +20,7 @@ parser.add_argument("--max-running", type=int, default=128)
 parser.add_argument("--graph-bs", type=int)
 parser.add_argument("--chunk-size", type=int, default=8192)
 parser.add_argument("--mem-fraction", type=float, default=0.85)
+parser.add_argument("--ssm-dtype", choices=["bfloat16", "float32"], default="bfloat16")
 parser.add_argument("--extra", nargs=argparse.REMAINDER, default=[])
 args = parser.parse_args()
 if not args.attempt.replace("-", "").replace("_", "").isalnum():
@@ -53,7 +54,7 @@ if args.action == "start":
         "--mem-fraction-static",
         str(args.mem_fraction),
         "--mamba-ssm-dtype",
-        "bfloat16",
+        args.ssm_dtype,
         "--max-running-requests",
         str(args.max_running),
         "--cuda-graph-max-bs-decode",
@@ -96,6 +97,7 @@ if args.action == "start":
                 "SGLANG_CACHE_DIR",
                 "SGLANG_JIT_CACHE_DIR",
                 "PYTHONPYCACHEPREFIX",
+                "SGLANG_MOE_CONFIG_DIR",
             ]
         },
     }

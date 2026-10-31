@@ -4,7 +4,7 @@ Operational scripts for four 8-GPU nodes, with a fixed source and model revision
 
 - SGLang main: `a4a6eddd25343905245db7a8b54bcf24d9483c8b`
 - Model: `Qwen/Qwen3.8-Flash-Next`, revision `de4b8e4d43b917e7706784d8bb445c9af86a3540`
-- BF16 weights and BF16 recurrent state; no speculative decoding.
+- Baseline: BF16 weights and BF16 recurrent state, without speculative decoding.
 - PyTorch 2.14.1 (CUDA 13.0), FlashInfer 0.7.2, SGLang kernel 0.4.10.
 
 ## Runtime layout
@@ -53,9 +53,12 @@ python3 "$QWEN38_PROJECT/scripts/manage_service.py" start \
   --extra --model-loader-extra-config '{"enable_multithread_load":true}'
 ```
 
-The baseline uses one TP8 replica per node (four replicas). The candidate layouts
-use FlashInfer linear attention, expert parallelism, two TP4 replicas per node,
-and GPU-resident PLE embeddings where memory permits. Supply candidate flags
+The baseline uses one TP8 replica per node (four replicas). Candidate layouts
+cover FlashInfer prefill, expert parallelism, two TP4 replicas per node,
+and native NEXTN/MTP. FlashInfer decode on H20 (SM90) requires FP32 recurrent
+state; use `--ssm-dtype float32` for that candidate. The other candidates keep
+BF16 state and Triton decode. GPU-resident PLE embeddings and kernel tuning
+can be evaluated on the best layout where memory permits. Supply candidate flags
 after `--extra`; command records preserve the resolved CLI inputs.
 
 ```bash
