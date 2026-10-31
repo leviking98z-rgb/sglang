@@ -6,6 +6,7 @@ import json
 import subprocess
 import time
 import urllib.request
+from pathlib import Path
 
 from runtime import PROJECT, PYTHON, environment
 
@@ -35,6 +36,15 @@ def run(plan):
     def wait_healthy():
         deadline = time.monotonic() + plan.get("health_wait", 900)
         while time.monotonic() < deadline:
+            for service in active:
+                record = json.loads((PROJECT / "logs" / (service + ".process.json")).read_text())
+                proc = Path("/proc") / str(record["pid"])
+                try:
+                    exited = (proc / "stat").read_text().rsplit(")", 1)[1].split()[0] == "Z"
+                except FileNotFoundError:
+                    exited = True
+                if exited:
+                    raise RuntimeError(service + " exited during startup; inspect its log")
             ready = []
             for url in plan["workers"]:
                 try:
@@ -91,7 +101,10 @@ def run(plan):
         control = PROJECT / "results" / plan["wait_for_benchmark"] / "manifest.json"
         deadline = time.monotonic() + 1800
         while time.monotonic() < deadline:
-            data = json.loads(control.read_text()) if control.exists() else {}
+            try:
+                data = json.loads(control.read_text())
+            except (FileNotFoundError, json.JSONDecodeError):
+                data = {}
             if data.get("status") == "complete":
                 break
             if data.get("status") == "failed":
