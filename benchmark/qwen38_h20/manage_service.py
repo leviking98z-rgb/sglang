@@ -108,6 +108,8 @@ if args.action == "start":
                 "SGLANG_JIT_CACHE_DIR",
                 "PYTHONPYCACHEPREFIX",
                 "SGLANG_MOE_CONFIG_DIR",
+                "SGLANG_OPT_FUSE_SWIGLU_INTERLEAVED",
+                "SGLANG_FLASHINFER_MOE_FUSED_FINALIZE",
             ]
         },
     }
