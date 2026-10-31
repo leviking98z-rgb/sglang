@@ -128,3 +128,8 @@ unchanged. Publish a successful tuning result under
 environment variable. For EP configurations the microbenchmark's local expert
 routing approximates the serving workload; accept a tuning change only after
 an end-to-end serving comparison and response checks.
+
+With `--fused-swiglu`, the helper creates a SHA-tagged derivative of the pinned
+tuner that calls `fused_experts` directly with `fuse_swiglu_interleaved=True`.
+The public `fused_moe` wrapper at this commit does not accept this argument.
+Both source and derivative hashes are recorded; engine files remain untouched.

@@ -42,20 +42,34 @@ provenance = {"source_sha256": source_sha, "fused_swiglu": args.fused_swiglu}
 if args.fused_swiglu:
     needle = "                block_shape=block_shape,\n            )"
     text = source.decode()
+    import_needle = (
+        "from sglang.srt.layers.moe.moe_runner.triton_utils.fused_moe import fused_moe"
+    )
+    assert text.count(import_needle) == 1
+    text = text.replace(
+        import_needle,
+        "from sglang.srt.layers.moe.moe_runner.triton_utils.fused_moe import fused_experts as fused_moe",
+    )
     assert text.count(needle) == 1
     generated = text.replace(
         needle,
         "                block_shape=block_shape,\n"
         "                fuse_swiglu_interleaved=True,\n            )",
     ).encode()
-    tuner = PROJECT / "scripts/tuning_fused_moe_interleaved.py"
+    generated_sha = hashlib.sha256(generated).hexdigest()
+    tuner = PROJECT / (
+        "scripts/tuning_fused_moe_interleaved_" + generated_sha[:12] + ".py"
+    )
     if tuner.exists():
         assert tuner.read_bytes() == generated
     else:
         temporary = tuner.with_suffix(".tmp-" + str(time.time_ns()))
         temporary.write_bytes(generated)
         temporary.replace(tuner)
-    provenance["generated_sha256"] = hashlib.sha256(generated).hexdigest()
+    provenance["generated_sha256"] = generated_sha
+    provenance["entrypoint"] = (
+        "fused_experts (supports fuse_swiglu_interleaved); wrapper fused_moe does not"
+    )
 (directory / "tuner_provenance.json").write_text(json.dumps(provenance, indent=2))
 command = [
     PYTHON,
