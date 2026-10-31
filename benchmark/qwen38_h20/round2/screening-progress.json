@@ -339,6 +339,147 @@
         }
       },
       "status": "exploratory"
+    },
+    {
+      "kind": "candidate",
+      "name": "mtp3-fi32",
+      "control_cohort": 1,
+      "metrics": {
+        "1024": {
+          "samples": [
+            2066.8707986978748,
+            2660.093784042823
+          ],
+          "median": 2363.482291370349,
+          "minimum": 2066.8707986978748,
+          "maximum": 2660.093784042823,
+          "change_percent": -9.043047823556073
+        },
+        "8192": {
+          "samples": [
+            2158.1015588417176,
+            2088.472357601293
+          ],
+          "median": 2123.2869582215053,
+          "minimum": 2088.472357601293,
+          "maximum": 2158.1015588417176,
+          "change_percent": 8.21591646550408
+        }
+      },
+      "status": "exploratory"
+    },
+    {
+      "kind": "candidate",
+      "name": "batch32",
+      "control_cohort": 3,
+      "metrics": {
+        "1024": {
+          "samples": [
+            2073.9033223651363,
+            2601.4204705429534
+          ],
+          "median": 2337.661896454045,
+          "minimum": 2073.9033223651363,
+          "maximum": 2601.4204705429534,
+          "change_percent": -10.303464555631148
+        },
+        "8192": {
+          "samples": [
+            1958.6549579635416,
+            1959.1057493604992
+          ],
+          "median": 1958.8803536620203,
+          "minimum": 1958.6549579635416,
+          "maximum": 1959.1057493604992,
+          "change_percent": -0.13106894437502348
+        }
+      },
+      "status": "exploratory"
+    },
+    {
+      "kind": "candidate",
+      "name": "lazy",
+      "control_cohort": 2,
+      "metrics": {
+        "1024": {
+          "samples": [
+            2071.283467941749,
+            2610.816306398367
+          ],
+          "median": 2341.0498871700584,
+          "minimum": 2071.283467941749,
+          "maximum": 2610.816306398367,
+          "change_percent": -10.712001722752317
+        },
+        "8192": {
+          "samples": [
+            1972.6724967194318,
+            1969.6899928367652
+          ],
+          "median": 1971.1812447780985,
+          "minimum": 1969.6899928367652,
+          "maximum": 1972.6724967194318,
+          "change_percent": -0.262250356372018
+        }
+      },
+      "status": "exploratory"
+    },
+    {
+      "kind": "candidate",
+      "name": "attndp4fix",
+      "control_cohort": 0,
+      "metrics": {
+        "1024": {
+          "samples": [
+            1785.3244072950972,
+            2607.7755988590548
+          ],
+          "median": 2196.550003077076,
+          "minimum": 1785.3244072950972,
+          "maximum": 2607.7755988590548,
+          "change_percent": -15.754278517997044
+        },
+        "8192": {
+          "samples": [
+            2050.8502027466848,
+            2054.1206542914665
+          ],
+          "median": 2052.485428519076,
+          "minimum": 2050.8502027466848,
+          "maximum": 2054.1206542914665,
+          "change_percent": 4.749677911957884
+        }
+      },
+      "status": "exploratory"
+    },
+    {
+      "kind": "candidate",
+      "name": "interval4",
+      "control_cohort": 3,
+      "metrics": {
+        "1024": {
+          "samples": [
+            2063.6220468391552,
+            2601.2498928614596
+          ],
+          "median": 2332.4359698503076,
+          "minimum": 2063.6220468391552,
+          "maximum": 2601.2498928614596,
+          "change_percent": -10.503984362003838
+        },
+        "8192": {
+          "samples": [
+            1928.319780075879,
+            1921.895752048822
+          ],
+          "median": 1925.1077660623505,
+          "minimum": 1921.895752048822,
+          "maximum": 1928.319780075879,
+          "change_percent": -1.8528852953615171
+        }
+      },
+      "status": "exploratory"
     }
-  ]
+  ],
+  "source_note": "Controls used pinned main. Later candidates and confirmation use host-side zero-token RMSNorm guard fc2ad6c; nonempty device code unchanged; see kernel-fix.json."
 }

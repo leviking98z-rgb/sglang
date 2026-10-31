@@ -27,6 +27,20 @@
       "throughput_result": null,
       "reason": "Zero-token grouped Gemma RMSNorm CUDA launch on idle attention-DP ranks; HTTP502 on first chat request.",
       "next_action": "Retest with the empty-launch guard recorded in kernel-fix.json"
+    },
+    {
+      "name": "attndp8-mem82",
+      "gpus": 8,
+      "tp": 8,
+      "ep": 8,
+      "attn_dp_size": 8,
+      "replicas": 1,
+      "mem_fraction_static": 0.82,
+      "global_chunked_prefill_size": 65536,
+      "per_rank_chunked_prefill_size": 8192,
+      "status": "prefill_graph_capture_oom",
+      "throughput_result": null,
+      "next_action": "Retry with static memory fraction 0.72 to reserve larger temporary-buffer headroom."
     }
   ]
 }
