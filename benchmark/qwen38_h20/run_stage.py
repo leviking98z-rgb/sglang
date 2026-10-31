@@ -18,6 +18,7 @@ parser.add_argument("--router-port", type=int, default=30000)
 parser.add_argument("--health-wait", type=int, default=900)
 parser.add_argument("--concurrency", nargs="+", type=int, default=[1, 16, 64, 128, 256])
 parser.add_argument("--peak-repeats", type=int, default=3)
+parser.add_argument("--timing", choices=["upstream", "requests"], default="requests")
 args = parser.parse_args()
 if not args.attempt.replace("-", "").replace("_", "").isalnum():
     raise ValueError("invalid attempt")
@@ -43,6 +44,23 @@ def health(url):
             return {"url": url, "ready": response.status == 200}
     except OSError as exc:
         return {"url": url, "ready": False, "error": str(exc)}
+
+
+def router_snapshot(label):
+    if args.url.rstrip("/") in {url.rstrip("/") for url in args.workers}:
+        return
+    with urllib.request.urlopen(args.url + "/workers", timeout=15) as response:
+        data = json.load(response)
+    expected = {url.rstrip("/") for url in args.workers}
+    healthy = {
+        worker["url"].rstrip("/") for worker in data["workers"] if worker["is_healthy"]
+    }
+    assert healthy == expected and len(data["workers"]) == len(expected), (
+        "router worker set changed"
+    )
+    data["verified_unix"] = time.time()
+    with (directory / ("router_workers_" + label + ".json")).open("x") as stream:
+        json.dump(data, stream, indent=2)
 
 
 def step(name, arguments):
@@ -121,6 +139,7 @@ try:
             time.sleep(2)
         else:
             raise RuntimeError("router did not become healthy")
+    router_snapshot("before_matrix")
     step(
         "matrix",
         [
@@ -133,8 +152,11 @@ try:
             *args.workers,
             "--concurrency",
             *map(str, args.concurrency),
+            "--timing",
+            args.timing,
         ],
     )
+    router_snapshot("after_matrix")
     if args.peak_repeats:
         step(
             "peak_repeats",
@@ -150,8 +172,11 @@ try:
                 str(max(args.concurrency)),
                 "--repeats",
                 str(args.peak_repeats),
+                "--timing",
+                args.timing,
             ],
         )
+        router_snapshot("after_peak")
     manifest["status"] = "complete"
 except Exception as exc:
     manifest["status"] = "failed"

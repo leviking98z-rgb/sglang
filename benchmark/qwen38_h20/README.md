@@ -76,7 +76,13 @@ checks establish basic service behavior; they are not a model quality evaluation
 ## Measurement
 
 The benchmark invokes the pinned main branch's `sglang.benchmark.serving` module
-through the round-robin router. Defaults:
+through the round-robin router. `prepare_benchmark.py` verifies the source SHA256
+and generates a separate benchmark script with one timing change: stop the timer
+immediately after all request tasks finish, before the post-run `/server_info`
+query. The original benchmark and all engine source files remain untouched.
+This removes metadata-query latency from the throughput denominator; the
+unmodified upstream mode remains available with `--timing upstream`.
+Comparisons must use the same timing mode on both configurations. Defaults:
 
 - Exact 1024/256 and 8192/1024 input/output token lengths.
 - Concurrency 1, 16, 64, 128 and 256; unlimited arrival rate.
@@ -92,3 +98,10 @@ Each run retains the exact command, timings, raw per-request metrics and logs in
 output tokens/s together with concurrency, TTFT and TPOT, and retain repeated
 measurements for the chosen operating point. Synthetic random-token workloads
 measure serving performance and do not represent an application quality test.
+
+`run_stage.py` validates every worker with short and 8K-context prompts, verifies
+the exact healthy router worker set before and after measurements, runs the full
+matrix, then repeats the largest concurrency three times. The baseline and the
+optimized deployment use this same workflow. `report.py` checks request and token
+counts again and exports aggregate and per-request CSV files without deployment
+addresses or generated text.

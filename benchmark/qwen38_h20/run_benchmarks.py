@@ -5,6 +5,7 @@ import subprocess
 import time
 import urllib.request
 
+from prepare_benchmark import prepare
 from runtime import MODEL, MODEL_NAME, PROJECT, PYTHON, environment
 
 parser = argparse.ArgumentParser()
@@ -14,7 +15,14 @@ parser.add_argument("--workers", nargs="+", required=True)
 parser.add_argument("--concurrency", nargs="+", type=int, default=[1, 16, 64, 128, 256])
 parser.add_argument("--shapes", nargs="+", default=["1024:256", "8192:1024"])
 parser.add_argument("--repeats", type=int, default=1)
+parser.add_argument("--timing", choices=["upstream", "requests"], default="requests")
 args = parser.parse_args()
+if args.timing == "requests":
+    benchmark_path, benchmark_provenance = prepare()
+    benchmark_entry = [str(benchmark_path)]
+else:
+    benchmark_entry = ["-m", "sglang.benchmark.serving"]
+    benchmark_provenance = {"change": "unmodified upstream timing"}
 result_dir = PROJECT / "results" / args.attempt
 result_dir.mkdir(exist_ok=False)
 manifest = {
@@ -27,6 +35,8 @@ manifest = {
     "started_unix": time.time(),
     "runs": [],
     "warmups": [],
+    "timing": args.timing,
+    "benchmark_provenance": benchmark_provenance,
     "cache_policy": "warm every worker, then flush every worker before each timed run",
 }
 (result_dir / "manifest.json").write_text(json.dumps(manifest, indent=2))
@@ -91,8 +101,7 @@ try:
                 run_id = f"i{input_len}-o{output_len}-c{concurrency}-r{repeat}"
                 command = [
                     PYTHON,
-                    "-m",
-                    "sglang.benchmark.serving",
+                    *benchmark_entry,
                     "--backend",
                     "sglang",
                     "--base-url",
