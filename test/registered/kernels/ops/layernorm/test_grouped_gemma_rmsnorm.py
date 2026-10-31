@@ -1,6 +1,5 @@
 import pytest
 import torch
-
 from sglang.kernels.ops.layernorm.grouped_gemma_rmsnorm import grouped_gemma_rmsnorm
 from sglang.test.ci.ci_register import register_cuda_ci
 
@@ -27,8 +26,8 @@ def _reference_grouped_gemma_rmsnorm(
 # fp64 reference on 4xB300 (sm103): bf16 max rel err 3.9e-3 (1 ulp), fp16
 # 4.9e-4 (0.5 ulp). The kernel computes in fp32 like the eager reference.
 _TOLERANCES = {
-    torch.bfloat16: dict(rtol=5e-3, atol=5e-3),
-    torch.float16: dict(rtol=1e-3, atol=1e-3),
+    torch.bfloat16: {"rtol": 5e-3, "atol": 5e-3},
+    torch.float16: {"rtol": 1e-3, "atol": 1e-3},
 }
 
 
