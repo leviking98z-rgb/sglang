@@ -123,6 +123,14 @@ optimized deployment use this same workflow. `report.py` checks request and toke
 counts again and exports aggregate and per-request CSV files without deployment
 addresses or generated text.
 
+`compare.py` requires the same complete 19-measurement protocol on both sides:
+10 matrix points, six 512-request peak repetitions, and three 2,048-request
+short repetitions. It checks 11,088 successful requests per configuration and
+matching benchmark hashes, then compares the median of the three short steady
+repetitions and the median of the three long peak repetitions. Its JSON includes
+every primary repetition and observed min/max; these ranges are not confidence
+intervals. `plot.py` plots the ten matrix points separately.
+
 `profile_service.py` captures a separate six-step prefill/decode trace using
 SGLang's native profiler API. Profiling requests are excluded from the serving
 throughput measurements.
