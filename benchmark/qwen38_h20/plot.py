@@ -13,11 +13,13 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--baseline", type=Path, required=True)
 parser.add_argument("--optimized", type=Path, required=True)
 parser.add_argument("--output", type=Path, required=True)
+parser.add_argument("--baseline-label", default="Baseline")
+parser.add_argument("--optimized-label", default="Optimized")
 args = parser.parse_args()
 fig, axes = plt.subplots(2, 2, figsize=(11, 7), constrained_layout=True)
 for path, label, color in [
-    (args.baseline, "Baseline", "#737373"),
-    (args.optimized, "Optimized", "#1269b0"),
+    (args.baseline, args.baseline_label, "#737373"),
+    (args.optimized, args.optimized_label, "#1269b0"),
 ]:
     with path.open() as stream:
         rows = [
