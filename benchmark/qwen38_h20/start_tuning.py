@@ -12,6 +12,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--attempt", required=True)
 parser.add_argument("--tp", type=int, required=True)
 parser.add_argument("--ep", type=int, required=True)
+parser.add_argument("--fused-swiglu", action="store_true")
 parser.add_argument(
     "--batches", nargs="+", type=int, default=[1, 16, 32, 64, 128, 1024, 4096, 8192]
 )
@@ -29,12 +30,36 @@ if apps:
     raise RuntimeError("GPU processes remain; stop and verify owned services first")
 directory = PROJECT / "results" / args.attempt
 directory.mkdir(exist_ok=False)
+tuner = (
+    PROJECT
+    / "workdir/sglang/benchmark/kernels/fused_moe_triton/tuning_fused_moe_triton.py"
+)
+tuner_directory = tuner.parent
+source = tuner.read_bytes()
+source_sha = hashlib.sha256(source).hexdigest()
+assert source_sha == "342555c255d43528e64b45426f970599ca101edd47208f92c9596d36706077fd"
+provenance = {"source_sha256": source_sha, "fused_swiglu": args.fused_swiglu}
+if args.fused_swiglu:
+    needle = "                block_shape=block_shape,\n            )"
+    text = source.decode()
+    assert text.count(needle) == 1
+    generated = text.replace(
+        needle,
+        "                block_shape=block_shape,\n"
+        "                fuse_swiglu_interleaved=True,\n            )",
+    ).encode()
+    tuner = PROJECT / "scripts/tuning_fused_moe_interleaved.py"
+    if tuner.exists():
+        assert tuner.read_bytes() == generated
+    else:
+        temporary = tuner.with_suffix(".tmp-" + str(time.time_ns()))
+        temporary.write_bytes(generated)
+        temporary.replace(tuner)
+    provenance["generated_sha256"] = hashlib.sha256(generated).hexdigest()
+(directory / "tuner_provenance.json").write_text(json.dumps(provenance, indent=2))
 command = [
     PYTHON,
-    str(
-        PROJECT
-        / "workdir/sglang/benchmark/kernels/fused_moe_triton/tuning_fused_moe_triton.py"
-    ),
+    str(tuner),
     "--model",
     MODEL,
     "--tp-size",
@@ -52,7 +77,11 @@ command = [
 env = environment()
 env["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,4,5,6,7"
 env["PYTHONPATH"] = (
-    str(PROJECT / "workdir/tuning_extra") + ":" + env.get("PYTHONPATH", "")
+    str(PROJECT / "workdir/tuning_extra")
+    + ":"
+    + str(tuner_directory)
+    + ":"
+    + env.get("PYTHONPATH", "")
 )
 env["RAY_ADDRESS"] = "local"
 env["RAY_TMPDIR"] = "/tmp/q38-" + hashlib.sha256(args.attempt.encode()).hexdigest()[:8]
@@ -80,6 +109,7 @@ info = {
     "started_unix": time.time(),
     "ray_address": "local",
     "ray_cpus": 16,
+    "tuner_provenance": provenance,
     "ray_tmpdir": env["RAY_TMPDIR"],
     "pythonpath": env["PYTHONPATH"],
     "search_space_sha256": hashlib.sha256(
