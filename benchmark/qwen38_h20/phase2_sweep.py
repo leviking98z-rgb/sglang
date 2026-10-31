@@ -121,7 +121,7 @@ def run(plan):
             raise RuntimeError("control benchmark did not finish")
         state["status"] = "screening"
         save()
-        for config in plan["candidates"]:
+        for index, config in enumerate(plan["candidates"]):
             label = config["name"]
             if not label.replace("-", "").isalnum():
                 raise ValueError("invalid candidate name")
@@ -129,10 +129,22 @@ def run(plan):
             state["candidates"].append(entry)
             state["current_candidate"] = label
             save()
-            stop(label)
-            changed = True
+            reuse_control = index == 0 and plan.get("reuse_initial_control", False)
+            if reuse_control:
+                control = {key: value for key, value in config.items() if key != "name"}
+                if control != plan["restore_config"] or len(active) != int(config.get("replicas", 2)):
+                    raise ValueError("reused control must match the original configuration")
+                state["active_services"] = active.copy()
+                entry["reused_initial_services"] = True
+                save()
+            else:
+                stop(label)
+                changed = True
             try:
-                start(label, config)
+                if reuse_control:
+                    wait_healthy(plan["workers"])
+                else:
+                    start(label, config)
                 stage = f"{attempt}-{label}"
                 entry["stage"] = stage
                 command(
