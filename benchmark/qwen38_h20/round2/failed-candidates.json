@@ -41,6 +41,20 @@
       "status": "prefill_graph_capture_oom",
       "throughput_result": null,
       "next_action": "Retry with static memory fraction 0.72 to reserve larger temporary-buffer headroom."
+    },
+    {
+      "name": "mixed",
+      "gpus": 8,
+      "tp": 4,
+      "ep": 4,
+      "replicas": 2,
+      "requested_flag": "--enable-mixed-chunk",
+      "status": "device_assert_during_first_concurrency64_run",
+      "throughput_result": null,
+      "completed_requests": 2,
+      "requested_requests": 128,
+      "reason": "Both replicas raised device-side assert in hybrid linear attention metadata while replaying a prefill CUDA graph. Single-request chat and 8K retrieval smoke checks had passed.",
+      "interpretation": "Rejected as unstable for this workload; partial run is not a throughput measurement. No engine patch was made for this candidate."
     }
   ]
 }

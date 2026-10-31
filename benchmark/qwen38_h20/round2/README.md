@@ -39,3 +39,20 @@ attention-DP experiment, a zero-token grouped Gemma RMSNorm launch failed.
 The fork now includes a host-side empty-launch guard in `fc2ad6c`, plus empty,
 nonempty and CUDA-graph regression coverage in `4b1c9d3`. Confirmation and final
 results must record this patch explicitly; no upstream PR was opened.
+
+Other completed screens cover 4K/16K prefill chunks, decode scheduling steps,
+scheduler receive intervals, lazy GDN metadata, prefill scheduling intervals,
+maximum running batch 32, and FP32 FlashInfer MTP verification. None is selected
+from the initial two-run screen. A 16K chunk and patched attention DP4 remain
+confirmation candidates. Attention DP8 at memory fraction 0.82 ran out of memory
+while capturing a prefill graph and is being retried with more temporary-buffer
+headroom. Mixed prefill/decode passed single-request smoke checks but failed its
+first concurrent run with a CUDA device assertion; its partial output is excluded
+from the successful-results CSV files. Details are in
+[failed-candidates.json](failed-candidates.json).
+
+The existing NUMA binding was verified against the CPU affinity of both TP4
+replicas and the GPU topology. No affinity change or NUMA performance gain is
+claimed. The MTP confirmation retains BF16 recurrent state, three NEXTN steps,
+four verification tokens and Triton verification. Five steps exceed the current
+QSA verification-width limit; that startup failure is recorded separately.
