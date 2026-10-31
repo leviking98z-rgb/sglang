@@ -1,0 +1,332 @@
+{
+  "cohorts": [
+    {
+      "cohort_index": 0,
+      "verified_unix": 1793451692.9980404,
+      "replicas": [
+        {
+          "local_replica_index": 0,
+          "process_identity_verified": true,
+          "health_status": 200,
+          "base_gpu": 0,
+          "moe_config_acknowledgements": 4,
+          "error_events": 0,
+          "retraction_log_lines": 0
+        },
+        {
+          "local_replica_index": 1,
+          "process_identity_verified": true,
+          "health_status": 200,
+          "base_gpu": 4,
+          "moe_config_acknowledgements": 4,
+          "error_events": 0,
+          "retraction_log_lines": 0
+        }
+      ],
+      "moe_config_sha256": "2d788a1da86fbd8d74529745396b9abc3794fbbdff979cfd1e9101e050077286",
+      "gpus": [
+        {
+          "gpu": 0,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88279,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 1,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87987,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 2,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87987,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 3,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87507,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 4,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88279,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 5,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87987,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 6,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87987,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 7,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87507,
+          "memory_total_mib": 97871
+        }
+      ],
+      "legacy_idle_context_memory_mib": [],
+      "telemetry_stopped": true
+    },
+    {
+      "cohort_index": 1,
+      "verified_unix": 1793451692.5871992,
+      "replicas": [
+        {
+          "local_replica_index": 0,
+          "process_identity_verified": true,
+          "health_status": 200,
+          "base_gpu": 0,
+          "moe_config_acknowledgements": 4,
+          "error_events": 0,
+          "retraction_log_lines": 0
+        },
+        {
+          "local_replica_index": 1,
+          "process_identity_verified": true,
+          "health_status": 200,
+          "base_gpu": 4,
+          "moe_config_acknowledgements": 4,
+          "error_events": 0,
+          "retraction_log_lines": 0
+        }
+      ],
+      "moe_config_sha256": "2d788a1da86fbd8d74529745396b9abc3794fbbdff979cfd1e9101e050077286",
+      "gpus": [
+        {
+          "gpu": 0,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88279,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 1,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87987,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 2,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87987,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 3,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87507,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 4,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88279,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 5,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87987,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 6,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87987,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 7,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87507,
+          "memory_total_mib": 97871
+        }
+      ],
+      "legacy_idle_context_memory_mib": [],
+      "telemetry_stopped": true
+    },
+    {
+      "cohort_index": 2,
+      "verified_unix": 1793451691.1901698,
+      "replicas": [
+        {
+          "local_replica_index": 0,
+          "process_identity_verified": true,
+          "health_status": 200,
+          "base_gpu": 0,
+          "moe_config_acknowledgements": 4,
+          "error_events": 0,
+          "retraction_log_lines": 0
+        },
+        {
+          "local_replica_index": 1,
+          "process_identity_verified": true,
+          "health_status": 200,
+          "base_gpu": 4,
+          "moe_config_acknowledgements": 4,
+          "error_events": 0,
+          "retraction_log_lines": 0
+        }
+      ],
+      "moe_config_sha256": "2d788a1da86fbd8d74529745396b9abc3794fbbdff979cfd1e9101e050077286",
+      "gpus": [
+        {
+          "gpu": 0,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 89049,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 1,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88804,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 2,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88804,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 3,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88324,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 4,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 89099,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 5,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88804,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 6,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88804,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 7,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88084,
+          "memory_total_mib": 97871
+        }
+      ],
+      "legacy_idle_context_memory_mib": [
+        4610,
+        4658,
+        4658,
+        4658,
+        4658,
+        4658,
+        4658,
+        4418
+      ],
+      "telemetry_stopped": true
+    },
+    {
+      "cohort_index": 3,
+      "verified_unix": 1793451692.4742918,
+      "replicas": [
+        {
+          "local_replica_index": 0,
+          "process_identity_verified": true,
+          "health_status": 200,
+          "base_gpu": 0,
+          "moe_config_acknowledgements": 4,
+          "error_events": 0,
+          "retraction_log_lines": 0
+        },
+        {
+          "local_replica_index": 1,
+          "process_identity_verified": true,
+          "health_status": 200,
+          "base_gpu": 4,
+          "moe_config_acknowledgements": 4,
+          "error_events": 0,
+          "retraction_log_lines": 0
+        }
+      ],
+      "moe_config_sha256": "2d788a1da86fbd8d74529745396b9abc3794fbbdff979cfd1e9101e050077286",
+      "gpus": [
+        {
+          "gpu": 0,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88289,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 1,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87997,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 2,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87997,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 3,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87517,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 4,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88293,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 5,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88001,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 6,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 88001,
+          "memory_total_mib": 97871
+        },
+        {
+          "gpu": 7,
+          "name": "NVIDIA H20",
+          "memory_used_mib": 87521,
+          "memory_total_mib": 97871
+        }
+      ],
+      "legacy_idle_context_memory_mib": [],
+      "telemetry_stopped": true
+    }
+  ],
+  "healthy_replicas": 8,
+  "gpus": 32,
+  "runtime_error_events": 0,
+  "retraction_log_lines": 0,
+  "final_api": {
+    "verified_unix": 1793451780.4361646,
+    "healthy_workers": 8,
+    "model_discovery_passed": true,
+    "deterministic_chat_check_passed": true
+  },
+  "scope": "Health, process identity, configuration acknowledgements and captured runtime logs after all performance measurements; basic response checks only."
+}

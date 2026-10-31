@@ -1,0 +1,264 @@
+{
+  "scope": "32-GPU activity during the 8192/1024 concurrency256 matrix run",
+  "sampling_span_seconds": 3.2618820667266846,
+  "gpu_count": 32,
+  "min_utilization_percent": 98,
+  "cohorts": [
+    {
+      "cohort_index": 0,
+      "unix": 1793450689.8485756,
+      "phase": "optimized32-01-matrix",
+      "run": "i8192-o1024-c256-r0",
+      "gpus": [
+        {
+          "gpu": 0,
+          "name": "NVIDIA H20",
+          "utilization_percent": 98,
+          "memory_used_mib": 88065,
+          "power_watts": 421.92
+        },
+        {
+          "gpu": 1,
+          "name": "NVIDIA H20",
+          "utilization_percent": 98,
+          "memory_used_mib": 87773,
+          "power_watts": 426.23
+        },
+        {
+          "gpu": 2,
+          "name": "NVIDIA H20",
+          "utilization_percent": 98,
+          "memory_used_mib": 87773,
+          "power_watts": 411.56
+        },
+        {
+          "gpu": 3,
+          "name": "NVIDIA H20",
+          "utilization_percent": 98,
+          "memory_used_mib": 87293,
+          "power_watts": 424.58
+        },
+        {
+          "gpu": 4,
+          "name": "NVIDIA H20",
+          "utilization_percent": 98,
+          "memory_used_mib": 88065,
+          "power_watts": 424.48
+        },
+        {
+          "gpu": 5,
+          "name": "NVIDIA H20",
+          "utilization_percent": 98,
+          "memory_used_mib": 87773,
+          "power_watts": 420.46
+        },
+        {
+          "gpu": 6,
+          "name": "NVIDIA H20",
+          "utilization_percent": 99,
+          "memory_used_mib": 87773,
+          "power_watts": 413.59
+        },
+        {
+          "gpu": 7,
+          "name": "NVIDIA H20",
+          "utilization_percent": 99,
+          "memory_used_mib": 87293,
+          "power_watts": 410.47
+        }
+      ]
+    },
+    {
+      "cohort_index": 1,
+      "unix": 1793450687.7270923,
+      "phase": "optimized32-01-matrix",
+      "run": "i8192-o1024-c256-r0",
+      "gpus": [
+        {
+          "gpu": 0,
+          "name": "NVIDIA H20",
+          "utilization_percent": 98,
+          "memory_used_mib": 88063,
+          "power_watts": 427.4
+        },
+        {
+          "gpu": 1,
+          "name": "NVIDIA H20",
+          "utilization_percent": 99,
+          "memory_used_mib": 87773,
+          "power_watts": 421.39
+        },
+        {
+          "gpu": 2,
+          "name": "NVIDIA H20",
+          "utilization_percent": 99,
+          "memory_used_mib": 87773,
+          "power_watts": 409.21
+        },
+        {
+          "gpu": 3,
+          "name": "NVIDIA H20",
+          "utilization_percent": 99,
+          "memory_used_mib": 87293,
+          "power_watts": 409.71
+        },
+        {
+          "gpu": 4,
+          "name": "NVIDIA H20",
+          "utilization_percent": 99,
+          "memory_used_mib": 88103,
+          "power_watts": 420.62
+        },
+        {
+          "gpu": 5,
+          "name": "NVIDIA H20",
+          "utilization_percent": 99,
+          "memory_used_mib": 87811,
+          "power_watts": 426.25
+        },
+        {
+          "gpu": 6,
+          "name": "NVIDIA H20",
+          "utilization_percent": 99,
+          "memory_used_mib": 87811,
+          "power_watts": 408.54
+        },
+        {
+          "gpu": 7,
+          "name": "NVIDIA H20",
+          "utilization_percent": 99,
+          "memory_used_mib": 87331,
+          "power_watts": 405.36
+        }
+      ]
+    },
+    {
+      "cohort_index": 2,
+      "unix": 1793450690.9889743,
+      "phase": "optimized32-01-matrix",
+      "run": "i8192-o1024-c256-r0",
+      "gpus": [
+        {
+          "gpu": 0,
+          "name": "NVIDIA H20",
+          "utilization_percent": 98,
+          "memory_used_mib": 88879,
+          "power_watts": 410.78
+        },
+        {
+          "gpu": 1,
+          "name": "NVIDIA H20",
+          "utilization_percent": 99,
+          "memory_used_mib": 88634,
+          "power_watts": 415.96
+        },
+        {
+          "gpu": 2,
+          "name": "NVIDIA H20",
+          "utilization_percent": 99,
+          "memory_used_mib": 88634,
+          "power_watts": 408.08
+        },
+        {
+          "gpu": 3,
+          "name": "NVIDIA H20",
+          "utilization_percent": 99,
+          "memory_used_mib": 88154,
+          "power_watts": 391.65
+        },
+        {
+          "gpu": 4,
+          "name": "NVIDIA H20",
+          "utilization_percent": 98,
+          "memory_used_mib": 88889,
+          "power_watts": 421.51
+        },
+        {
+          "gpu": 5,
+          "name": "NVIDIA H20",
+          "utilization_percent": 99,
+          "memory_used_mib": 88596,
+          "power_watts": 417.57
+        },
+        {
+          "gpu": 6,
+          "name": "NVIDIA H20",
+          "utilization_percent": 99,
+          "memory_used_mib": 88594,
+          "power_watts": 397.6
+        },
+        {
+          "gpu": 7,
+          "name": "NVIDIA H20",
+          "utilization_percent": 98,
+          "memory_used_mib": 87874,
+          "power_watts": 398.55
+        }
+      ]
+    },
+    {
+      "cohort_index": 3,
+      "unix": 1793450690.6388707,
+      "phase": "optimized32-01-matrix",
+      "run": "i8192-o1024-c256-r0",
+      "gpus": [
+        {
+          "gpu": 0,
+          "name": "NVIDIA H20",
+          "utilization_percent": 98,
+          "memory_used_mib": 88117,
+          "power_watts": 421.11
+        },
+        {
+          "gpu": 1,
+          "name": "NVIDIA H20",
+          "utilization_percent": 98,
+          "memory_used_mib": 87825,
+          "power_watts": 427.67
+        },
+        {
+          "gpu": 2,
+          "name": "NVIDIA H20",
+          "utilization_percent": 98,
+          "memory_used_mib": 87825,
+          "power_watts": 419.68
+        },
+        {
+          "gpu": 3,
+          "name": "NVIDIA H20",
+          "utilization_percent": 98,
+          "memory_used_mib": 87345,
+          "power_watts": 426.37
+        },
+        {
+          "gpu": 4,
+          "name": "NVIDIA H20",
+          "utilization_percent": 98,
+          "memory_used_mib": 88117,
+          "power_watts": 427.76
+        },
+        {
+          "gpu": 5,
+          "name": "NVIDIA H20",
+          "utilization_percent": 98,
+          "memory_used_mib": 87825,
+          "power_watts": 436.96
+        },
+        {
+          "gpu": 6,
+          "name": "NVIDIA H20",
+          "utilization_percent": 98,
+          "memory_used_mib": 87825,
+          "power_watts": 403.58
+        },
+        {
+          "gpu": 7,
+          "name": "NVIDIA H20",
+          "utilization_percent": 98,
+          "memory_used_mib": 87345,
+          "power_watts": 410.92
+        }
+      ]
+    }
+  ]
+}

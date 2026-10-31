@@ -35,7 +35,7 @@
     "cuda_graph_max_bs_decode": 64,
     "chunked_prefill_size": 8192,
     "linear_attn_prefill_backend": "flashinfer",
-    "linear_attn_decode_backend": "triton",
+    "linear_attn_decode_backend": null,
     "reasoning_parser": "qwen3",
     "tool_call_parser": "qwen3_coder",
     "watchdog_timeout": 1200,
@@ -89,5 +89,10 @@
     "short_steady_repetitions": 3,
     "ignore_eos": true,
     "prefix_cache_flushed_before_each_timed_run": true
+  },
+  "effective_backends": {
+    "linear_attn_prefill": "flashinfer",
+    "linear_attn_decode": "triton",
+    "moe": "triton"
   }
 }

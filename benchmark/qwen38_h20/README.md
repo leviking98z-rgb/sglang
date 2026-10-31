@@ -10,6 +10,63 @@ Operational scripts for four 8-GPU nodes, with a fixed source and model revision
 `packages-tested.txt` records the observed package versions, with local paths
 and editable references removed. It is an environment record, not a resolver lock.
 
+## Measured result
+
+The deployed configuration uses eight TP4/EP4 replicas on four eight-H20 nodes,
+with two replicas per node. It keeps BF16 weights and recurrent state, CPU PLE
+embedding offload, the model's native 262,144-token context limit, FlashInfer GDN
+prefill, Triton GDN decode, and the tuned Triton MoE configuration. Per-replica
+settings are 64 running requests, decode CUDA graphs through batch 64,
+8,192-token prefill chunks and static memory fraction 0.82. Interleaved SwiGLU
+fusion and speculative decoding are disabled. The baseline uses four TP8/EP1
+replicas and the default Triton GDN path.
+
+At concurrency 256, output throughput across all 32 GPUs is:
+
+| Input/output tokens | Requests per repetition | Baseline token/s | Optimized token/s | Change |
+|---|---:|---:|---:|---:|
+| 1024/256 | 2048 | 7,967.2 | 9,677.1 | +21.5% |
+| 8192/1024 | 512 | 5,731.3 | 7,785.8 | +35.8% |
+
+Values are medians of three repetitions. Observed throughput ranges were
+7,927.3–7,998.0 and 9,572.0–10,106.5 token/s for the baseline and optimized short
+workload; long-workload ranges were 5,261.6–5,750.8 and 7,771.0–7,805.9 token/s.
+These are observed ranges, not confidence intervals. Median mean TTFT changed
+from 1,115.2 to 994.9 ms for short requests and 12,531.8 to 6,342.4 ms for long
+requests; median mean TPOT changed from 26.87 to 22.18 ms and 32.15 to 26.32 ms.
+Short-request p99 TPOT increased from 35.10 to 36.01 ms.
+
+Each configuration completed the same 19 measurements and 11,088 timed requests
+with exact token counts and no failed requests. The optimized deployment also
+passed 24 deterministic short chat checks, 24 retrieval checks at 8,049 input
+tokens, and a final routed OpenAI chat check. All eight replicas passed final
+health and process-identity checks, with zero captured runtime-error events or
+retraction log lines. During the same 8K/concurrency-256 run, snapshots covering
+all 32 H20 GPUs within 3.262 seconds showed at least 98% GPU utilization on each
+GPU. NVML utilization measures device activity, not kernel efficiency.
+
+The complete matrix includes regressions at lower concurrency: short requests at
+concurrency 64 measured 3,143.7 versus 4,368.0 token/s. This deployment targets
+high-concurrency throughput. The combined layout/backend/tuning change was
+validated end to end; its total gain cannot be attributed to MoE tuning alone.
+The equal-eight-GPU candidate measurements and the incomplete CUTLASS startup
+attempt are retained in [screening.json](screening.json).
+
+One node retained eight idle GPU contexts from the earlier shared-FUSE bytecode
+stall, consuming 4,418–4,658 MiB (about 4.3–4.5 GiB) per GPU. Both baseline and
+optimized measurements used that condition. The tested memory fraction leaves
+headroom, but this run does not establish capacity after a clean node restart or
+validate requests at the full native context limit. Response checks cover basic
+service behavior rather than a business quality evaluation.
+
+- [Machine-readable comparison, repetitions and ranges](comparison.json)
+- [Baseline aggregates](results/baseline32/aggregate.csv) and [per-request data](results/baseline32/requests.csv)
+- [Optimized aggregates](results/optimized32/aggregate.csv) and [per-request data](results/optimized32/requests.csv)
+- [Launch configuration](launch-tp4ep4-tuned.json), [preflight validation](preflight-validation.json), [postflight validation](postflight-validation.json), and [32-GPU activity evidence](gpu-evidence.json)
+- [Vector plot](throughput-comparison.svg)
+
+![Throughput and mean TTFT across the complete concurrency matrix](throughput-comparison.png)
+
 ## Runtime layout
 
 Set `QWEN38_PROJECT` to a persistent project directory. Copy these Python scripts
@@ -138,6 +195,10 @@ Each run retains the exact command, timings, raw per-request metrics and logs in
 output tokens/s together with concurrency, TTFT and TPOT, and retain repeated
 measurements for the chosen operating point. Synthetic random-token workloads
 measure serving performance and do not represent an application quality test.
+Timed requests use the native `/generate` endpoint with token IDs and fixed
+output lengths; they do not apply a chat template. The separate chat response
+checks use `enable_thinking=false`. Default thinking-enabled conversations are
+a different workload.
 
 Short requests also use a longer measurement window at concurrency 256:
 `--shapes 1024:256 --concurrency 256 --prompt-multiplier 8 --repeats 3`.
