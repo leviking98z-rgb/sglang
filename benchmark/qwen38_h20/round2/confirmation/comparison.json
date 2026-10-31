@@ -1,5 +1,5 @@
 {
-  "status": "Independent equal-eight-GPU control, MTP3 and MTP3+16K confirmations complete; full32 validation pending",
+  "status": "Independent equal-eight-GPU confirmations and subsequent complete32-H20 validation complete; see ../comparison-vs-round1.json",
   "gpus": 8,
   "tp": 4,
   "ep": 4,

@@ -37,6 +37,7 @@
   "base_points_preserved": true,
   "triton": "3.8.0",
   "hardware": "NVIDIA H20",
-  "role": "microbenchmark output; end-to-end comparison pending",
-  "nearest_batch_selection": "Existing main runner selects the nearest batch key. Merge sorts keys numerically and preserves all original point values."
+  "role": "microbenchmark output; end-to-end comparison complete with no consistent gain, original table retained",
+  "nearest_batch_selection": "Existing main runner selects the nearest batch key. Merge sorts keys numerically and preserves all original point values.",
+  "serving_comparison": "../moe-comparison/comparison.json"
 }

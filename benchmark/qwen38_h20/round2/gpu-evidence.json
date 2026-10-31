@@ -1,0 +1,3506 @@
+{
+  "scope": "Actual model inference during the same named8192/1024,C256 peak repetition; all four nodes had native Spin off and no known spinner CUDA contexts. NVML utilization is activity, not SM occupancy or a throughput measurement.",
+  "benchmark_attempt": "p2-final32-01-peak",
+  "run": "i8192-o1024-c256-r0",
+  "gpus": 32,
+  "co_sampled_snapshot_span_seconds": 0.9372494220733643,
+  "co_sampled_min_util_percent": 100,
+  "cohorts": [
+    {
+      "cohort_index": 0,
+      "raw_sha256": "c1818a37cb3b95d364dfd9008cb54e3fd7835dace7bcc776766f24af3e2793e7",
+      "samples": [
+        {
+          "started_unix": 1793468460.4370673,
+          "ended_unix": 1793468460.589776,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 99,
+              "memory_used_mib": 89945,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 89653,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 99,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 99,
+              "memory_used_mib": 89941,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 99,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468461.5915306,
+          "ended_unix": 1793468461.7525303,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 98,
+              "memory_used_mib": 89945,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 98,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 98,
+              "memory_used_mib": 89653,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 98,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 99,
+              "memory_used_mib": 89941,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 97,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 98,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468462.7544103,
+          "ended_unix": 1793468462.9256346,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 99,
+              "memory_used_mib": 89945,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 98,
+              "memory_used_mib": 89653,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 99,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 99,
+              "memory_used_mib": 89941,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 99,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468463.9280565,
+          "ended_unix": 1793468464.162282,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 98,
+              "memory_used_mib": 89945,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 98,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 89653,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 98,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 98,
+              "memory_used_mib": 89941,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 98,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 98,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 97,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468465.1642115,
+          "ended_unix": 1793468465.6837432,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 98,
+              "memory_used_mib": 89945,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 98,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 98,
+              "memory_used_mib": 89653,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 98,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 99,
+              "memory_used_mib": 89941,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 98,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468466.6861923,
+          "ended_unix": 1793468466.859408,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 99,
+              "memory_used_mib": 89945,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 98,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 89653,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 98,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 98,
+              "memory_used_mib": 89941,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 99,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 98,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 98,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468467.8612633,
+          "ended_unix": 1793468468.11028,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 98,
+              "memory_used_mib": 89945,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 98,
+              "memory_used_mib": 89653,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 99,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 99,
+              "memory_used_mib": 89941,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 98,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468469.1119878,
+          "ended_unix": 1793468469.37453,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 89945,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89653,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 89941,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468470.3762789,
+          "ended_unix": 1793468470.5648317,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 89945,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89653,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 89941,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468471.5666244,
+          "ended_unix": 1793468471.74546,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 89945,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89653,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 89941,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468472.747456,
+          "ended_unix": 1793468472.9394758,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 89945,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89653,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 89941,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468473.9411354,
+          "ended_unix": 1793468474.1222818,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 89945,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89653,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 89941,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468475.1239011,
+          "ended_unix": 1793468475.3219526,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 89945,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89653,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 89941,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468476.3236513,
+          "ended_unix": 1793468476.5049584,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 89945,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89653,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 89941,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468477.5069547,
+          "ended_unix": 1793468477.6817877,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 89945,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89653,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 89941,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89171,
+              "memory_total_mib": 97871
+            }
+          ]
+        }
+      ],
+      "selected_co_sampled_snapshot": {
+        "started_unix": 1793468473.9411354,
+        "ended_unix": 1793468474.1222818,
+        "gpus": [
+          {
+            "gpu": 0,
+            "util_percent": 100,
+            "memory_used_mib": 89945,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 1,
+            "util_percent": 100,
+            "memory_used_mib": 89651,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 2,
+            "util_percent": 100,
+            "memory_used_mib": 89653,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 3,
+            "util_percent": 100,
+            "memory_used_mib": 89171,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 4,
+            "util_percent": 100,
+            "memory_used_mib": 89941,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 5,
+            "util_percent": 100,
+            "memory_used_mib": 89647,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 6,
+            "util_percent": 100,
+            "memory_used_mib": 89649,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 7,
+            "util_percent": 100,
+            "memory_used_mib": 89171,
+            "memory_total_mib": 97871
+          }
+        ]
+      },
+      "cuda_process_set_matches_preflight": true,
+      "model_worker_contexts": 8,
+      "additional_sub_gib_contexts": 2,
+      "legacy_idle_contexts": 0
+    },
+    {
+      "cohort_index": 1,
+      "raw_sha256": "9bd37693101fb58d4117f27cc779215c893fd5b074fcea21bd89072c41ab49ea",
+      "samples": [
+        {
+          "started_unix": 1793468459.1511326,
+          "ended_unix": 1793468459.3045583,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 98,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 98,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 98,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 98,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 98,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 98,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468460.3065672,
+          "ended_unix": 1793468460.4647243,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 99,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 99,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 99,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468461.4665995,
+          "ended_unix": 1793468461.660184,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 98,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 98,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 97,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 97,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 98,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 98,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 98,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 98,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468462.6616888,
+          "ended_unix": 1793468462.8508465,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 99,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 99,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 99,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468463.852208,
+          "ended_unix": 1793468464.054962,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 97,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 96,
+              "memory_used_mib": 89905,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 97,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 98,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 97,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 98,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 98,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 98,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468465.0568411,
+          "ended_unix": 1793468465.370877,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 99,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 89905,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 99,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 98,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 98,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468466.372698,
+          "ended_unix": 1793468466.5464714,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 97,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 89905,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 98,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 99,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468467.547966,
+          "ended_unix": 1793468467.720928,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 99,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 89905,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 99,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 98,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 97,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468468.7224813,
+          "ended_unix": 1793468468.9091604,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 89905,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468469.9108016,
+          "ended_unix": 1793468470.086456,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89905,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468471.0885866,
+          "ended_unix": 1793468471.3534935,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89905,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468472.3551273,
+          "ended_unix": 1793468472.5249565,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89905,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468473.526579,
+          "ended_unix": 1793468473.7117682,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89905,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468474.713457,
+          "ended_unix": 1793468474.8986413,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89905,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468475.9002845,
+          "ended_unix": 1793468476.0670469,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89905,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 90195,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89903,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89423,
+              "memory_total_mib": 97871
+            }
+          ]
+        }
+      ],
+      "selected_co_sampled_snapshot": {
+        "started_unix": 1793468473.526579,
+        "ended_unix": 1793468473.7117682,
+        "gpus": [
+          {
+            "gpu": 0,
+            "util_percent": 100,
+            "memory_used_mib": 90195,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 1,
+            "util_percent": 100,
+            "memory_used_mib": 89905,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 2,
+            "util_percent": 100,
+            "memory_used_mib": 89903,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 3,
+            "util_percent": 100,
+            "memory_used_mib": 89423,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 4,
+            "util_percent": 100,
+            "memory_used_mib": 90195,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 5,
+            "util_percent": 100,
+            "memory_used_mib": 89903,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 6,
+            "util_percent": 100,
+            "memory_used_mib": 89903,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 7,
+            "util_percent": 100,
+            "memory_used_mib": 89423,
+            "memory_total_mib": 97871
+          }
+        ]
+      },
+      "cuda_process_set_matches_preflight": true,
+      "model_worker_contexts": 8,
+      "additional_sub_gib_contexts": 2,
+      "legacy_idle_contexts": 0
+    },
+    {
+      "cohort_index": 2,
+      "raw_sha256": "e37a1d43cac03820bcbc399543b71e1179aaecd4e468ac9b74c08980dafdb7e2",
+      "samples": [
+        {
+          "started_unix": 1793468457.2231555,
+          "ended_unix": 1793468457.384078,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 97,
+              "memory_used_mib": 90383,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 97,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 98,
+              "memory_used_mib": 89658,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 98,
+              "memory_used_mib": 90429,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 97,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 97,
+              "memory_used_mib": 89418,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468458.3857522,
+          "ended_unix": 1793468458.5533419,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 98,
+              "memory_used_mib": 90383,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 98,
+              "memory_used_mib": 89658,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 99,
+              "memory_used_mib": 90429,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 99,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89418,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468459.5551946,
+          "ended_unix": 1793468459.7041705,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 98,
+              "memory_used_mib": 90383,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 97,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 98,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 99,
+              "memory_used_mib": 89658,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 97,
+              "memory_used_mib": 90429,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 98,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 98,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 98,
+              "memory_used_mib": 89418,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468460.7056317,
+          "ended_unix": 1793468460.8820744,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 99,
+              "memory_used_mib": 90383,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 99,
+              "memory_used_mib": 89658,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 99,
+              "memory_used_mib": 90429,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 99,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89418,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468461.8839357,
+          "ended_unix": 1793468462.3714561,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 99,
+              "memory_used_mib": 90383,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 99,
+              "memory_used_mib": 89658,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 99,
+              "memory_used_mib": 90431,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 99,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89418,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468463.3736167,
+          "ended_unix": 1793468463.5343482,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 98,
+              "memory_used_mib": 90383,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 97,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 98,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 98,
+              "memory_used_mib": 89658,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 98,
+              "memory_used_mib": 90431,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 97,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 98,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 98,
+              "memory_used_mib": 89418,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468464.5359528,
+          "ended_unix": 1793468464.8144147,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 98,
+              "memory_used_mib": 90383,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 98,
+              "memory_used_mib": 89658,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 98,
+              "memory_used_mib": 90431,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 99,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 98,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89418,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468465.8165748,
+          "ended_unix": 1793468466.1343431,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 99,
+              "memory_used_mib": 90383,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 99,
+              "memory_used_mib": 89658,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 99,
+              "memory_used_mib": 90431,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 99,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89418,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468467.13606,
+          "ended_unix": 1793468467.3000002,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 98,
+              "memory_used_mib": 90383,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 97,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 97,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 97,
+              "memory_used_mib": 89658,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 98,
+              "memory_used_mib": 90431,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 97,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 98,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 98,
+              "memory_used_mib": 89418,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468468.3015678,
+          "ended_unix": 1793468468.4806519,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 99,
+              "memory_used_mib": 90383,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 99,
+              "memory_used_mib": 89658,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 99,
+              "memory_used_mib": 90431,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 99,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89418,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468469.4825969,
+          "ended_unix": 1793468469.8040776,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 90383,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89658,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 90431,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89418,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468470.8059573,
+          "ended_unix": 1793468471.008629,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 90383,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89658,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 90431,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89418,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468472.0102363,
+          "ended_unix": 1793468472.1834247,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 90383,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89658,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 90431,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89418,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468473.1850324,
+          "ended_unix": 1793468473.3819501,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 90383,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89658,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 90431,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89418,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468474.383728,
+          "ended_unix": 1793468474.6613784,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 90383,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89658,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 90431,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 90140,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 90138,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89418,
+              "memory_total_mib": 97871
+            }
+          ]
+        }
+      ],
+      "selected_co_sampled_snapshot": {
+        "started_unix": 1793468473.1850324,
+        "ended_unix": 1793468473.3819501,
+        "gpus": [
+          {
+            "gpu": 0,
+            "util_percent": 100,
+            "memory_used_mib": 90383,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 1,
+            "util_percent": 100,
+            "memory_used_mib": 90140,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 2,
+            "util_percent": 100,
+            "memory_used_mib": 90138,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 3,
+            "util_percent": 100,
+            "memory_used_mib": 89658,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 4,
+            "util_percent": 100,
+            "memory_used_mib": 90431,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 5,
+            "util_percent": 100,
+            "memory_used_mib": 90140,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 6,
+            "util_percent": 100,
+            "memory_used_mib": 90138,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 7,
+            "util_percent": 100,
+            "memory_used_mib": 89418,
+            "memory_total_mib": 97871
+          }
+        ]
+      },
+      "cuda_process_set_matches_preflight": true,
+      "model_worker_contexts": 8,
+      "additional_sub_gib_contexts": 2,
+      "legacy_idle_contexts": 8
+    },
+    {
+      "cohort_index": 3,
+      "raw_sha256": "62132fa0ce74acc4433908097791a2432930d3326558c4c211bb37af44fc1325",
+      "samples": [
+        {
+          "started_unix": 1793468460.0549517,
+          "ended_unix": 1793468460.2119884,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 98,
+              "memory_used_mib": 89943,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 98,
+              "memory_used_mib": 89645,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 98,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 99,
+              "memory_used_mib": 89165,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 98,
+              "memory_used_mib": 89937,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 97,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 98,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89169,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468461.2134893,
+          "ended_unix": 1793468461.3840137,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 99,
+              "memory_used_mib": 89943,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 89645,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 99,
+              "memory_used_mib": 89165,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 98,
+              "memory_used_mib": 89937,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 99,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89169,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468462.385577,
+          "ended_unix": 1793468462.5490487,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 99,
+              "memory_used_mib": 89943,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 98,
+              "memory_used_mib": 89645,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 98,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 98,
+              "memory_used_mib": 89165,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 99,
+              "memory_used_mib": 89937,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 97,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 98,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 98,
+              "memory_used_mib": 89169,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468463.550759,
+          "ended_unix": 1793468463.7664728,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 99,
+              "memory_used_mib": 89943,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 99,
+              "memory_used_mib": 89167,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 99,
+              "memory_used_mib": 89939,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 99,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89169,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468464.7681422,
+          "ended_unix": 1793468464.9935315,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 98,
+              "memory_used_mib": 89943,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 98,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 98,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 98,
+              "memory_used_mib": 89167,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 98,
+              "memory_used_mib": 89939,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 98,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 98,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 98,
+              "memory_used_mib": 89169,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468465.9956987,
+          "ended_unix": 1793468466.1508524,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 99,
+              "memory_used_mib": 89943,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 99,
+              "memory_used_mib": 89167,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 99,
+              "memory_used_mib": 89939,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 99,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89169,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468467.1524057,
+          "ended_unix": 1793468467.4181402,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 98,
+              "memory_used_mib": 89943,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 98,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 98,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 98,
+              "memory_used_mib": 89167,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 98,
+              "memory_used_mib": 89939,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 99,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 98,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 98,
+              "memory_used_mib": 89169,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468468.4195962,
+          "ended_unix": 1793468468.5890853,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 99,
+              "memory_used_mib": 89943,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 99,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 99,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 99,
+              "memory_used_mib": 89167,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 99,
+              "memory_used_mib": 89939,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 98,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 99,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 99,
+              "memory_used_mib": 89169,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468469.590514,
+          "ended_unix": 1793468469.7818742,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 89943,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89167,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 89939,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89169,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468470.783393,
+          "ended_unix": 1793468470.9988568,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 89943,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89167,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 89939,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89169,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468472.0009263,
+          "ended_unix": 1793468472.2295241,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 89943,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89167,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 89939,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89169,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468473.2310507,
+          "ended_unix": 1793468473.4108326,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 89943,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89167,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 89939,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89169,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468474.4124193,
+          "ended_unix": 1793468474.5921426,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 89943,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89167,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 89939,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89169,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468475.5969508,
+          "ended_unix": 1793468475.7869878,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 89943,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89167,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 89939,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89169,
+              "memory_total_mib": 97871
+            }
+          ]
+        },
+        {
+          "started_unix": 1793468476.7886171,
+          "ended_unix": 1793468476.9755604,
+          "gpus": [
+            {
+              "gpu": 0,
+              "util_percent": 100,
+              "memory_used_mib": 89943,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 1,
+              "util_percent": 100,
+              "memory_used_mib": 89647,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 2,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 3,
+              "util_percent": 100,
+              "memory_used_mib": 89167,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 4,
+              "util_percent": 100,
+              "memory_used_mib": 89939,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 5,
+              "util_percent": 100,
+              "memory_used_mib": 89649,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 6,
+              "util_percent": 100,
+              "memory_used_mib": 89651,
+              "memory_total_mib": 97871
+            },
+            {
+              "gpu": 7,
+              "util_percent": 100,
+              "memory_used_mib": 89169,
+              "memory_total_mib": 97871
+            }
+          ]
+        }
+      ],
+      "selected_co_sampled_snapshot": {
+        "started_unix": 1793468473.2310507,
+        "ended_unix": 1793468473.4108326,
+        "gpus": [
+          {
+            "gpu": 0,
+            "util_percent": 100,
+            "memory_used_mib": 89943,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 1,
+            "util_percent": 100,
+            "memory_used_mib": 89647,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 2,
+            "util_percent": 100,
+            "memory_used_mib": 89649,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 3,
+            "util_percent": 100,
+            "memory_used_mib": 89167,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 4,
+            "util_percent": 100,
+            "memory_used_mib": 89939,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 5,
+            "util_percent": 100,
+            "memory_used_mib": 89649,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 6,
+            "util_percent": 100,
+            "memory_used_mib": 89651,
+            "memory_total_mib": 97871
+          },
+          {
+            "gpu": 7,
+            "util_percent": 100,
+            "memory_used_mib": 89169,
+            "memory_total_mib": 97871
+          }
+        ]
+      },
+      "cuda_process_set_matches_preflight": true,
+      "model_worker_contexts": 8,
+      "additional_sub_gib_contexts": 2,
+      "legacy_idle_contexts": 0
+    }
+  ]
+}

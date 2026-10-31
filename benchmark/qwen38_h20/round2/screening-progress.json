@@ -1,5 +1,5 @@
 {
-  "status": "All bounded8GPU screens complete; selected MTP3/8K/originalMoE, full32 rollout and validation pending",
+  "status": "All bounded8GPU screens and full32 validation complete; selected MTP3/8K/originalMoE",
   "engine_commit": "a4a6eddd25343905245db7a8b54bcf24d9483c8b",
   "gpus_per_comparison": 8,
   "concurrency": 64,
@@ -539,5 +539,6 @@
       ]
     }
   },
-  "selected_configuration": "launch-tp4ep4-mtp3.json"
+  "selected_configuration": "launch-tp4ep4-mtp3.json",
+  "full32_result": "comparison-vs-round1.json"
 }

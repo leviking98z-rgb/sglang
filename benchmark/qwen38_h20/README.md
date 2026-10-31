@@ -2,8 +2,10 @@
 
 Operational scripts for four 8-GPU nodes, with a fixed source and model revision:
 
-This document records the completed first round. [Further optimization](round2/README.md)
-is in progress, with separate candidate, failure and confirmation evidence.
+This document records the completed first round. The current
+[MTP3 deployment and further tuning results](round2/README.md) complete the same
+32-H20 protocol: 11768.0/8879.3 output token/s for 1024/256 and 8192/1024,
+respectively (+21.6%/+14.0% versus the first-round best).
 
 - SGLang main: `a4a6eddd25343905245db7a8b54bcf24d9483c8b`
 - Model: `Qwen/Qwen3.8-Flash-Next`, revision `de4b8e4d43b917e7706784d8bb445c9af86a3540`
@@ -15,7 +17,7 @@ and editable references removed. It is an environment record, not a resolver loc
 
 ## Measured result
 
-The deployed configuration uses eight TP4/EP4 replicas on four eight-H20 nodes,
+The first-round configuration used eight TP4/EP4 replicas on four eight-H20 nodes,
 with two replicas per node. It keeps BF16 weights and recurrent state, CPU PLE
 embedding offload, the model's native 262,144-token context limit, FlashInfer GDN
 prefill, Triton GDN decode, and the tuned Triton MoE configuration. Per-replica

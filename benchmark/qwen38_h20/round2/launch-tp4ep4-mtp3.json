@@ -106,7 +106,14 @@
     "moe": "triton",
     "linear_attn_verify": "triton"
   },
-  "validation_status": "Independent 8-H20 repeated confirmation complete; complete32 validation pending",
+  "validation_status": "Complete32-H20 deployment and identical19-measurement/11088-request comparison passed;8 healthy replicas and basic routed chat verified",
   "resolved_speculative_algorithm": "EAGLE; main normalizes NEXTN to this name and loads model-embedded MTP weights",
-  "selection_note": "MTP3 confirmed against same-node control. Retain original MoE table, BF16 recurrent state, round-robin routing, 8K prefill chunks and existing NUMA binding."
+  "selection_note": "MTP3 confirmed against same-node control. Retain original MoE table, BF16 recurrent state, round-robin routing, 8K prefill chunks and existing NUMA binding.",
+  "validation_artifacts": [
+    "preflight-validation.json",
+    "postflight-validation.json",
+    "gpu-evidence.json",
+    "comparison-vs-round1.json",
+    "comparison-vs-initial.json"
+  ]
 }
