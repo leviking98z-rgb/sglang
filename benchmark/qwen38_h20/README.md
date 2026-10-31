@@ -70,6 +70,30 @@ when scaling four such cohorts to 32 GPUs. The final comparison repeats the
 complete 32-GPU protocol. Additional screens cover native interleaved SwiGLU
 fusion and the FlashInfer CUTLASS BF16 MoE backend.
 
+The TP4/EP4 tuned candidate is fully specified in `launch-tp4ep4-tuned.json`.
+Copy `moe-searches/plain/configs/` to
+`$QWEN38_PROJECT/data/moe-tuned-plain-tp4ep4/configs/`, preserving the JSON
+filename, and verify its recorded SHA256. On each allocated eight-GPU node:
+
+```bash
+export SGLANG_MOE_CONFIG_DIR="$QWEN38_PROJECT/data/moe-tuned-plain-tp4ep4"
+export SGLANG_OPT_FUSE_SWIGLU_INTERLEAVED=0 MAX_JOBS=8
+python3 "$QWEN38_PROJECT/scripts/manage_service.py" start \
+  --attempt "tuned-${NODE_LABEL}-a" --tp 4 --ep 4 --base-gpu 0 --port 31000 \
+  --max-running 64 --graph-bs 64 --mem-fraction 0.82 \
+  --extra --model-loader-extra-config '{"enable_multithread_load":true}' \
+  --linear-attn-prefill-backend flashinfer
+python3 "$QWEN38_PROJECT/scripts/manage_service.py" start \
+  --attempt "tuned-${NODE_LABEL}-b" --tp 4 --ep 4 --base-gpu 4 --port 31001 \
+  --max-running 64 --graph-bs 64 --mem-fraction 0.82 \
+  --extra --model-loader-extra-config '{"enable_multithread_load":true}' \
+  --linear-attn-prefill-backend flashinfer
+```
+
+Use a unique `NODE_LABEL` per node and run. The final router must contain all
+eight worker URLs, both ports on each node. Stop the screening routers before
+the full comparison so their health checks do not add background requests.
+
 ```bash
 python3 "$QWEN38_PROJECT/scripts/manage_router.py" start \
   --attempt baseline-router --workers http://WORKER0:31000 http://WORKER1:31000 \
