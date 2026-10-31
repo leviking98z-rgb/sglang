@@ -1,0 +1,42 @@
+{
+  "created_unix": 1793463154.8994281,
+  "tp": 4,
+  "ep": 4,
+  "source_tuner_sha256": "342555c255d43528e64b45426f970599ca101edd47208f92c9596d36706077fd",
+  "search_space_sha256": "9b67dfae81c4892435c42c1188e61c449bc2499f37b86c1cbb9fd98bd0f4fd31",
+  "search_configurations": 74,
+  "base_sha256": "2d788a1da86fbd8d74529745396b9abc3794fbbdff979cfd1e9101e050077286",
+  "new_points_sha256": "44ad6b9cd0f90649038455e8396400965151c87dc12bf3692732fc7216bb43d0",
+  "merged_sha256": "2c7ddc653a1d9dcae7c0e583c0dbbb1182425a886d8d414392a65528346e5ef1",
+  "added_batches": [
+    4,
+    96,
+    128,
+    160,
+    192,
+    256,
+    16384
+  ],
+  "all_batches": [
+    1,
+    4,
+    8,
+    16,
+    32,
+    64,
+    96,
+    128,
+    160,
+    192,
+    256,
+    512,
+    4096,
+    8192,
+    16384
+  ],
+  "base_points_preserved": true,
+  "triton": "3.8.0",
+  "hardware": "NVIDIA H20",
+  "role": "microbenchmark output; end-to-end comparison pending",
+  "nearest_batch_selection": "Existing main runner selects the nearest batch key. Merge sorts keys numerically and preserves all original point values."
+}
