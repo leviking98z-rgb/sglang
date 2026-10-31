@@ -37,6 +37,8 @@ rows, requests = [], []
 for attempt in args.attempts:
     directory = args.results / attempt
     manifest = json.loads((directory / "manifest.json").read_text())
+    if manifest.get("status") != "complete":
+        raise ValueError("benchmark attempt is not complete: " + attempt)
     for run in manifest["runs"]:
         if run.get("returncode") != 0:
             raise ValueError("failed benchmark run: " + run["id"])
@@ -59,6 +61,10 @@ for attempt in args.attempts:
             "output_len": run["output_len"],
             "concurrency": run["concurrency"],
             "num_prompts": count,
+            "timing": manifest.get("timing", "upstream"),
+            "benchmark_sha256": manifest.get("benchmark_provenance", {}).get(
+                "generated_sha256", ""
+            ),
             **{key: data[key] for key in metrics},
             "raw_sha256": hashlib.sha256(raw).hexdigest(),
         }
