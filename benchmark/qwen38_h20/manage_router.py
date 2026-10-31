@@ -55,14 +55,41 @@ if args.action == "start":
         "started_unix": time.time(),
         "log": str(log_path),
     }
+    info["process_start_ticks"] = int(
+        (Path("/proc") / str(process.pid) / "stat")
+        .read_text()
+        .rsplit(")", 1)[1]
+        .split()[19]
+    )
     with record.open("x") as f:
         json.dump(info, f, indent=2)
 else:
     info = json.loads(record.read_text())
     d = Path("/proc") / str(info["pid"])
-    alive = d.exists() and "sglang_router.launch_router" in (
-        d / "cmdline"
-    ).read_bytes().decode(errors="replace")
+    alive = False
+    if d.exists():
+        stat = (d / "stat").read_text().rsplit(")", 1)[1].split()
+        ticks = int(stat[19])
+        boot_unix = time.time() - float(Path("/proc/uptime").read_text().split()[0])
+        same_start = (
+            ticks == info["process_start_ticks"]
+            if "process_start_ticks" in info
+            else abs(
+                boot_unix + ticks / os.sysconf("SC_CLK_TCK") - info["started_unix"]
+            )
+            < 10
+        )
+        cmdline = (d / "cmdline").read_bytes().decode(errors="replace")
+        named_router = (
+            "sglang_router.launch_router" in cmdline
+            or cmdline.split("\0", 1)[0].strip() == "sglang::router"
+        )
+        alive = (
+            stat[0] != "Z"
+            and same_start
+            and named_router
+            and os.getpgid(info["pid"]) == info["pgid"]
+        )
     if args.action == "stop" and alive:
         if os.getpgid(info["pid"]) != info["pgid"]:
             raise RuntimeError("process group changed")
