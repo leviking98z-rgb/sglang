@@ -93,6 +93,10 @@ python3 "$QWEN38_PROJECT/scripts/manage_service.py" start \
 Use a unique `NODE_LABEL` per node and run. The final router must contain all
 eight worker URLs, both ports on each node. Stop the screening routers before
 the full comparison so their health checks do not add background requests.
+The router helper assigns the Prometheus listener to API port minus 1,000
+(29,000 for the final API, 29,001 for screening), with an explicit
+`--prometheus-port` override. Separate API ports alone do not prevent a metrics
+listener conflict between router processes on the same node.
 
 ```bash
 python3 "$QWEN38_PROJECT/scripts/manage_router.py" start \

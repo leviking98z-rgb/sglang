@@ -58,7 +58,8 @@
     "package": "sglang-router",
     "version": "0.3.2",
     "policy": "round_robin",
-    "port": 30000
+    "port": 30000,
+    "prometheus_port": 29000
   },
   "measurement": {
     "timing": "requests",

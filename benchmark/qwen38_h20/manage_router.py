@@ -13,6 +13,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("action", choices=["start", "stop", "status"])
 parser.add_argument("--attempt", required=True)
 parser.add_argument("--port", type=int, default=30000)
+parser.add_argument("--prometheus-port", type=int)
 parser.add_argument("--workers", nargs="+")
 args = parser.parse_args()
 if not args.attempt.replace("-", "").replace("_", "").isalnum():
@@ -21,8 +22,13 @@ record = PROJECT / "logs" / (args.attempt + ".process.json")
 if args.action == "start":
     if record.exists() or not args.workers:
         raise RuntimeError("existing attempt or missing workers")
-    with socket.socket() as sock:
-        sock.bind(("0.0.0.0", args.port))
+    metrics_port = args.prometheus_port or (args.port - 1000)
+    if not 1 <= metrics_port <= 65535 or metrics_port == args.port:
+        raise ValueError("choose a distinct valid --prometheus-port")
+    for port in [args.port, metrics_port]:
+        with socket.socket() as sock:
+            sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            sock.bind(("0.0.0.0", port))
     command = [
         PYTHON,
         "-m",
@@ -31,6 +37,8 @@ if args.action == "start":
         "0.0.0.0",
         "--port",
         str(args.port),
+        "--prometheus-port",
+        str(metrics_port),
         "--policy",
         "round_robin",
         "--worker-urls",
@@ -52,6 +60,7 @@ if args.action == "start":
         "pgid": process.pid,
         "command": command,
         "port": args.port,
+        "prometheus_port": metrics_port,
         "started_unix": time.time(),
         "log": str(log_path),
     }
