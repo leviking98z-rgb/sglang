@@ -1,0 +1,930 @@
+{
+  "engine_base_commit": "a4a6eddd25343905245db7a8b54bcf24d9483c8b",
+  "host_guard_patch": "fc2ad6c",
+  "host_guard_installed_unix": 1793459124.287593,
+  "source_note": "Early screens predate the empty-launch guard. Later attention-DP retries and independent confirmation use it. Nonempty device code is unchanged; no guard-only speedup is claimed.",
+  "algorithm_note": "NEXTN is normalized to the EAGLE engine path; Qwen MTP draft weights are embedded in the target checkpoint.",
+  "items": [
+    {
+      "name": "mtp1",
+      "gpus": 8,
+      "requested": {
+        "name": "mtp1",
+        "environment": {
+          "SGLANG_MOE_CONFIG_DIR": "${QWEN38_PROJECT}/data/moe-tuned-plain-tp4ep4",
+          "SGLANG_OPT_FUSE_SWIGLU_INTERLEAVED": "0",
+          "MAX_JOBS": "8"
+        },
+        "extra": [
+          "--speculative-algorithm",
+          "NEXTN",
+          "--speculative-num-steps",
+          "1",
+          "--speculative-num-draft-tokens",
+          "2",
+          "--speculative-eagle-topk",
+          "1",
+          "--linear-attn-verify-backend",
+          "triton"
+        ]
+      },
+      "preflight_unix": 1793456516.1899354,
+      "preflight_sha256": "5f278730f17735a814d4ccabbbd34e888e8e81da33a70ad9134d17da4d804680",
+      "resolved_per_replica": [
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": "EAGLE",
+          "speculative_num_steps": 1,
+          "speculative_num_draft_tokens": 2,
+          "speculative_eagle_topk": 1,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": "triton",
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        },
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": "EAGLE",
+          "speculative_num_steps": 1,
+          "speculative_num_draft_tokens": 2,
+          "speculative_eagle_topk": 1,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": "triton",
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        }
+      ]
+    },
+    {
+      "name": "mtp3",
+      "gpus": 8,
+      "requested": {
+        "name": "mtp3",
+        "environment": {
+          "SGLANG_MOE_CONFIG_DIR": "${QWEN38_PROJECT}/data/moe-tuned-plain-tp4ep4",
+          "SGLANG_OPT_FUSE_SWIGLU_INTERLEAVED": "0",
+          "MAX_JOBS": "8"
+        },
+        "extra": [
+          "--speculative-algorithm",
+          "NEXTN",
+          "--speculative-num-steps",
+          "3",
+          "--speculative-num-draft-tokens",
+          "4",
+          "--speculative-eagle-topk",
+          "1",
+          "--linear-attn-verify-backend",
+          "triton"
+        ]
+      },
+      "preflight_unix": 1793457576.8842018,
+      "preflight_sha256": "06ce587a757c985f5954c22f62a4ab86427c82c8c9b39ee7362e43e1ea0e3b39",
+      "resolved_per_replica": [
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": "EAGLE",
+          "speculative_num_steps": 3,
+          "speculative_num_draft_tokens": 4,
+          "speculative_eagle_topk": 1,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": "triton",
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        },
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": "EAGLE",
+          "speculative_num_steps": 3,
+          "speculative_num_draft_tokens": 4,
+          "speculative_eagle_topk": 1,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": "triton",
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        }
+      ]
+    },
+    {
+      "name": "mtp5",
+      "gpus": 8,
+      "requested": {
+        "name": "mtp5",
+        "environment": {
+          "SGLANG_MOE_CONFIG_DIR": "${QWEN38_PROJECT}/data/moe-tuned-plain-tp4ep4",
+          "SGLANG_OPT_FUSE_SWIGLU_INTERLEAVED": "0",
+          "MAX_JOBS": "8"
+        },
+        "extra": [
+          "--speculative-algorithm",
+          "NEXTN",
+          "--speculative-num-steps",
+          "5",
+          "--speculative-num-draft-tokens",
+          "6",
+          "--speculative-eagle-topk",
+          "1",
+          "--linear-attn-verify-backend",
+          "triton"
+        ]
+      },
+      "resolved_per_replica": null
+    },
+    {
+      "name": "mtp3-fi32",
+      "gpus": 8,
+      "requested": {
+        "name": "mtp3-fi32",
+        "environment": {
+          "SGLANG_MOE_CONFIG_DIR": "${QWEN38_PROJECT}/data/moe-tuned-plain-tp4ep4",
+          "SGLANG_OPT_FUSE_SWIGLU_INTERLEAVED": "0",
+          "MAX_JOBS": "8"
+        },
+        "ssm_dtype": "float32",
+        "mem_fraction": 0.8,
+        "extra": [
+          "--speculative-algorithm",
+          "NEXTN",
+          "--speculative-num-steps",
+          "3",
+          "--speculative-num-draft-tokens",
+          "4",
+          "--speculative-eagle-topk",
+          "1",
+          "--linear-attn-decode-backend",
+          "flashinfer",
+          "--linear-attn-verify-backend",
+          "flashinfer"
+        ]
+      },
+      "preflight_unix": 1793459251.5554888,
+      "preflight_sha256": "83ab799fc3db69d7e511ad22740615144e5502864d73058f3cb61291ea2742bc",
+      "resolved_per_replica": [
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.8,
+          "mamba_ssm_dtype": "float32",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": "EAGLE",
+          "speculative_num_steps": 3,
+          "speculative_num_draft_tokens": 4,
+          "speculative_eagle_topk": 1,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": "flashinfer",
+          "linear_attn_verify_backend": "flashinfer",
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        },
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.8,
+          "mamba_ssm_dtype": "float32",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": "EAGLE",
+          "speculative_num_steps": 3,
+          "speculative_num_draft_tokens": 4,
+          "speculative_eagle_topk": 1,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": "flashinfer",
+          "linear_attn_verify_backend": "flashinfer",
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        }
+      ]
+    },
+    {
+      "name": "decode2",
+      "gpus": 8,
+      "requested": {
+        "name": "decode2",
+        "environment": {
+          "SGLANG_MOE_CONFIG_DIR": "${QWEN38_PROJECT}/data/moe-tuned-plain-tp4ep4",
+          "SGLANG_OPT_FUSE_SWIGLU_INTERLEAVED": "0",
+          "MAX_JOBS": "8"
+        },
+        "extra": [
+          "--num-continuous-decode-steps",
+          "2"
+        ]
+      },
+      "preflight_unix": 1793456348.0768983,
+      "preflight_sha256": "fc04f9a71d479097f7a3f1c5ae73df53fe6839bd2466eb0cd2251be4768072f7",
+      "resolved_per_replica": [
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": null,
+          "speculative_num_steps": null,
+          "speculative_num_draft_tokens": null,
+          "speculative_eagle_topk": null,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": null,
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 2,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        },
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": null,
+          "speculative_num_steps": null,
+          "speculative_num_draft_tokens": null,
+          "speculative_eagle_topk": null,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": null,
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 2,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        }
+      ]
+    },
+    {
+      "name": "recv4",
+      "gpus": 8,
+      "requested": {
+        "name": "recv4",
+        "environment": {
+          "SGLANG_MOE_CONFIG_DIR": "${QWEN38_PROJECT}/data/moe-tuned-plain-tp4ep4",
+          "SGLANG_OPT_FUSE_SWIGLU_INTERLEAVED": "0",
+          "MAX_JOBS": "8"
+        },
+        "extra": [
+          "--scheduler-recv-interval",
+          "4"
+        ]
+      },
+      "preflight_unix": 1793457391.4092205,
+      "preflight_sha256": "6a17495b52aabdea16ee39f567a9346511274737bc57c41f219f22b431209997",
+      "resolved_per_replica": [
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": null,
+          "speculative_num_steps": null,
+          "speculative_num_draft_tokens": null,
+          "speculative_eagle_topk": null,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": null,
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 4,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        },
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": null,
+          "speculative_num_steps": null,
+          "speculative_num_draft_tokens": null,
+          "speculative_eagle_topk": null,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": null,
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 4,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        }
+      ]
+    },
+    {
+      "name": "lazy",
+      "gpus": 8,
+      "requested": {
+        "name": "lazy",
+        "environment": {
+          "SGLANG_MOE_CONFIG_DIR": "${QWEN38_PROJECT}/data/moe-tuned-plain-tp4ep4",
+          "SGLANG_OPT_FUSE_SWIGLU_INTERLEAVED": "0",
+          "MAX_JOBS": "8"
+        },
+        "extra": [
+          "--mamba-radix-cache-strategy",
+          "extra_buffer_lazy"
+        ]
+      },
+      "preflight_unix": 1793460674.458198,
+      "preflight_sha256": "dcd3ad31b4840a29d7481a011cc4b12b38897e75abcc0be1110184776a2dce3c",
+      "resolved_per_replica": [
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer_lazy",
+          "speculative_algorithm": null,
+          "speculative_num_steps": null,
+          "speculative_num_draft_tokens": null,
+          "speculative_eagle_topk": null,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": null,
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        },
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer_lazy",
+          "speculative_algorithm": null,
+          "speculative_num_steps": null,
+          "speculative_num_draft_tokens": null,
+          "speculative_eagle_topk": null,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": null,
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        }
+      ]
+    },
+    {
+      "name": "mixed",
+      "gpus": 8,
+      "requested": {
+        "name": "mixed",
+        "environment": {
+          "SGLANG_MOE_CONFIG_DIR": "${QWEN38_PROJECT}/data/moe-tuned-plain-tp4ep4",
+          "SGLANG_OPT_FUSE_SWIGLU_INTERLEAVED": "0",
+          "MAX_JOBS": "8"
+        },
+        "extra": [
+          "--enable-mixed-chunk"
+        ]
+      },
+      "preflight_unix": 1793461714.7031045,
+      "preflight_sha256": "e14a7b8af5c6301412a0822d075b25cdf219478b87bfff328d8afefdf948ed65",
+      "resolved_per_replica": [
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": null,
+          "speculative_num_steps": null,
+          "speculative_num_draft_tokens": null,
+          "speculative_eagle_topk": null,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": null,
+          "enable_mixed_chunk": true,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        },
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": null,
+          "speculative_num_steps": null,
+          "speculative_num_draft_tokens": null,
+          "speculative_eagle_topk": null,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": null,
+          "enable_mixed_chunk": true,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        }
+      ]
+    },
+    {
+      "name": "chunk4k",
+      "gpus": 8,
+      "requested": {
+        "name": "chunk4k",
+        "environment": {
+          "SGLANG_MOE_CONFIG_DIR": "${QWEN38_PROJECT}/data/moe-tuned-plain-tp4ep4",
+          "SGLANG_OPT_FUSE_SWIGLU_INTERLEAVED": "0",
+          "MAX_JOBS": "8"
+        },
+        "chunk_size": 4096
+      },
+      "preflight_unix": 1793456338.9094028,
+      "preflight_sha256": "6ec524b533c4f87e67aab789c3460c2dc7cf7d59d59d4af14dc8cd0a9282c194",
+      "resolved_per_replica": [
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 4096,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": null,
+          "speculative_num_steps": null,
+          "speculative_num_draft_tokens": null,
+          "speculative_eagle_topk": null,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": null,
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        },
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 4096,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": null,
+          "speculative_num_steps": null,
+          "speculative_num_draft_tokens": null,
+          "speculative_eagle_topk": null,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": null,
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        }
+      ]
+    },
+    {
+      "name": "chunk16k",
+      "gpus": 8,
+      "requested": {
+        "name": "chunk16k",
+        "environment": {
+          "SGLANG_MOE_CONFIG_DIR": "${QWEN38_PROJECT}/data/moe-tuned-plain-tp4ep4",
+          "SGLANG_OPT_FUSE_SWIGLU_INTERLEAVED": "0",
+          "MAX_JOBS": "8"
+        },
+        "chunk_size": 16384
+      },
+      "preflight_unix": 1793457380.499573,
+      "preflight_sha256": "8625f433f88bdb54752ae38b1fdfd088e90528dccb8bb6c6cccfb7e77a8d1460",
+      "resolved_per_replica": [
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 16384,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": null,
+          "speculative_num_steps": null,
+          "speculative_num_draft_tokens": null,
+          "speculative_eagle_topk": null,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": null,
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        },
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 16384,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": null,
+          "speculative_num_steps": null,
+          "speculative_num_draft_tokens": null,
+          "speculative_eagle_topk": null,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": null,
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        }
+      ]
+    },
+    {
+      "name": "interval4",
+      "gpus": 8,
+      "requested": {
+        "name": "interval4",
+        "environment": {
+          "SGLANG_MOE_CONFIG_DIR": "${QWEN38_PROJECT}/data/moe-tuned-plain-tp4ep4",
+          "SGLANG_OPT_FUSE_SWIGLU_INTERLEAVED": "0",
+          "MAX_JOBS": "8"
+        },
+        "extra": [
+          "--prefill-decode-interval",
+          "4",
+          "--prefill-decode-interval-min-bs",
+          "16"
+        ]
+      },
+      "preflight_unix": 1793458415.8761504,
+      "preflight_sha256": "648dbd9bcb6f856303cdc8f26a4e510f2efbc3b3cd0cf7400293a459e6aa2a5a",
+      "resolved_per_replica": [
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": null,
+          "speculative_num_steps": null,
+          "speculative_num_draft_tokens": null,
+          "speculative_eagle_topk": null,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": null,
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 4,
+          "prefill_decode_interval_min_bs": 16,
+          "disable_overlap_schedule": false
+        },
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 64,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": null,
+          "speculative_num_steps": null,
+          "speculative_num_draft_tokens": null,
+          "speculative_eagle_topk": null,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": null,
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 4,
+          "prefill_decode_interval_min_bs": 16,
+          "disable_overlap_schedule": false
+        }
+      ]
+    },
+    {
+      "name": "batch32",
+      "gpus": 8,
+      "requested": {
+        "name": "batch32",
+        "environment": {
+          "SGLANG_MOE_CONFIG_DIR": "${QWEN38_PROJECT}/data/moe-tuned-plain-tp4ep4",
+          "SGLANG_OPT_FUSE_SWIGLU_INTERLEAVED": "0",
+          "MAX_JOBS": "8"
+        },
+        "max_running": 32,
+        "graph_bs": 32
+      },
+      "preflight_unix": 1793459445.2289844,
+      "preflight_sha256": "300d5b5ea67d9e589caf0a498976710ad914b60c2c46d85f1180f8a9694bf9fd",
+      "resolved_per_replica": [
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 32,
+          "cuda_graph_max_bs_decode": 32,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": null,
+          "speculative_num_steps": null,
+          "speculative_num_draft_tokens": null,
+          "speculative_eagle_topk": null,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": null,
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        },
+        {
+          "tp_size": 4,
+          "ep_size": 4,
+          "attn_dp_size": 1,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 32,
+          "cuda_graph_max_bs_decode": 32,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": null,
+          "speculative_num_steps": null,
+          "speculative_num_draft_tokens": null,
+          "speculative_eagle_topk": null,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": null,
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        }
+      ]
+    },
+    {
+      "name": "attndp4fix",
+      "gpus": 8,
+      "requested": {
+        "name": "attndp4fix",
+        "tp": 8,
+        "ep": 8,
+        "replicas": 1,
+        "max_running": 128,
+        "graph_bs": 64,
+        "chunk_size": 32768,
+        "environment": {
+          "SGLANG_MOE_CONFIG_DIR": "${QWEN38_PROJECT}/data/moe-tuned-tp8ep8",
+          "SGLANG_OPT_FUSE_SWIGLU_INTERLEAVED": "0",
+          "MAX_JOBS": "8",
+          "SGLANG_USE_ATTN_TP_NGRAM": "1"
+        },
+        "extra": [
+          "--attn-dp-size",
+          "4"
+        ]
+      },
+      "preflight_unix": 1793460874.1907222,
+      "preflight_sha256": "b7b9f69f2155a116cc1d35c625b47d6632ff52dcffe752b11734584de38c3103",
+      "resolved_per_replica": [
+        {
+          "tp_size": 8,
+          "ep_size": 8,
+          "attn_dp_size": 4,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 128,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.82,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": null,
+          "speculative_num_steps": null,
+          "speculative_num_draft_tokens": null,
+          "speculative_eagle_topk": null,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": null,
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        }
+      ]
+    },
+    {
+      "name": "attndp8fix",
+      "gpus": 8,
+      "requested": {
+        "name": "attndp8fix",
+        "tp": 8,
+        "ep": 8,
+        "replicas": 1,
+        "max_running": 128,
+        "graph_bs": 64,
+        "chunk_size": 65536,
+        "environment": {
+          "SGLANG_MOE_CONFIG_DIR": "${QWEN38_PROJECT}/data/moe-tuned-tp8ep8",
+          "SGLANG_OPT_FUSE_SWIGLU_INTERLEAVED": "0",
+          "MAX_JOBS": "8",
+          "SGLANG_USE_ATTN_TP_NGRAM": "1"
+        },
+        "extra": [
+          "--attn-dp-size",
+          "8"
+        ],
+        "mem_fraction": 0.72
+      },
+      "preflight_unix": 1793462098.4815168,
+      "preflight_sha256": "50378bed1006eeee311c5113020eaa3eafe267a8c136b935928022f626a92c8a",
+      "resolved_per_replica": [
+        {
+          "tp_size": 8,
+          "ep_size": 8,
+          "attn_dp_size": 8,
+          "dp_size": 1,
+          "chunked_prefill_size": 8192,
+          "max_running_requests": 128,
+          "cuda_graph_max_bs_decode": 64,
+          "mem_fraction_static": 0.72,
+          "mamba_ssm_dtype": "bfloat16",
+          "mamba_radix_cache_strategy": "extra_buffer",
+          "speculative_algorithm": null,
+          "speculative_num_steps": null,
+          "speculative_num_draft_tokens": null,
+          "speculative_eagle_topk": null,
+          "linear_attn_prefill_backend": "flashinfer",
+          "linear_attn_decode_backend": null,
+          "linear_attn_verify_backend": null,
+          "enable_mixed_chunk": false,
+          "num_continuous_decode_steps": 1,
+          "scheduler_recv_interval": 1,
+          "prefill_decode_interval": 0,
+          "prefill_decode_interval_min_bs": 0,
+          "disable_overlap_schedule": false
+        }
+      ]
+    }
+  ]
+}

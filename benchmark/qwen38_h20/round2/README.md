@@ -41,7 +41,7 @@ nonempty and CUDA-graph regression coverage in `4b1c9d3`. Confirmation and final
 results must record this patch explicitly; no upstream PR was opened.
 
 Other completed screens cover 4K/16K prefill chunks, decode scheduling steps,
-scheduler receive intervals, lazy GDN metadata, prefill scheduling intervals,
+scheduler receive intervals, lazy Mamba cache checkpointing, prefill scheduling intervals,
 maximum running batch 32, and FP32 FlashInfer MTP verification. None is selected
 from the initial two-run screen. A 16K chunk and patched attention DP4 remain
 confirmation candidates. Attention DP8 at memory fraction 0.82 ran out of memory
