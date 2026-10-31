@@ -1,0 +1,81 @@
+import argparse
+import json
+import os
+import signal
+import socket
+import subprocess
+import time
+from pathlib import Path
+
+from runtime import PROJECT, PYTHON, environment
+
+parser = argparse.ArgumentParser()
+parser.add_argument("action", choices=["start", "stop", "status"])
+parser.add_argument("--attempt", required=True)
+parser.add_argument("--port", type=int, default=30000)
+parser.add_argument("--workers", nargs="+")
+args = parser.parse_args()
+if not args.attempt.replace("-", "").replace("_", "").isalnum():
+    raise ValueError("invalid attempt")
+record = PROJECT / "logs" / (args.attempt + ".process.json")
+if args.action == "start":
+    if record.exists() or not args.workers:
+        raise RuntimeError("existing attempt or missing workers")
+    with socket.socket() as sock:
+        sock.bind(("0.0.0.0", args.port))
+    command = [
+        PYTHON,
+        "-m",
+        "sglang_router.launch_router",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        str(args.port),
+        "--policy",
+        "round_robin",
+        "--worker-urls",
+        *args.workers,
+    ]
+    log_path = PROJECT / "logs" / (args.attempt + ".log")
+    with log_path.open("xb") as logfile:
+        process = subprocess.Popen(
+            command,
+            stdout=logfile,
+            stderr=subprocess.STDOUT,
+            stdin=subprocess.DEVNULL,
+            start_new_session=True,
+            env=environment(),
+        )
+    info = {
+        "attempt": args.attempt,
+        "pid": process.pid,
+        "pgid": process.pid,
+        "command": command,
+        "port": args.port,
+        "started_unix": time.time(),
+        "log": str(log_path),
+    }
+    with record.open("x") as f:
+        json.dump(info, f, indent=2)
+else:
+    info = json.loads(record.read_text())
+    d = Path("/proc") / str(info["pid"])
+    alive = d.exists() and "sglang_router.launch_router" in (
+        d / "cmdline"
+    ).read_bytes().decode(errors="replace")
+    if args.action == "stop" and alive:
+        if os.getpgid(info["pid"]) != info["pgid"]:
+            raise RuntimeError("process group changed")
+        os.killpg(info["pid"], signal.SIGTERM)
+        for _ in range(100):
+            if not d.exists() or (d / "stat").read_text().split()[2] == "Z":
+                break
+            time.sleep(0.2)
+        else:
+            raise RuntimeError("router did not stop")
+        info["stopped_unix"] = time.time()
+        record.write_text(json.dumps(info, indent=2))
+        alive = False
+    info["alive"] = alive
+    info["tail"] = Path(info["log"]).read_text(errors="replace")[-5000:]
+print(json.dumps(info))
