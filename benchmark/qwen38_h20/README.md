@@ -2,6 +2,9 @@
 
 Operational scripts for four 8-GPU nodes, with a fixed source and model revision:
 
+This document records the completed first round. [Further optimization](round2/README.md)
+is in progress, with separate candidate, failure and confirmation evidence.
+
 - SGLang main: `a4a6eddd25343905245db7a8b54bcf24d9483c8b`
 - Model: `Qwen/Qwen3.8-Flash-Next`, revision `de4b8e4d43b917e7706784d8bb445c9af86a3540`
 - Baseline: BF16 weights and BF16 recurrent state, without speculative decoding.
@@ -176,7 +179,9 @@ The benchmark invokes the pinned main branch's `sglang.benchmark.serving` module
 through the round-robin router. `prepare_benchmark.py` verifies the source SHA256
 and generates a separate benchmark script with one timing change: stop the timer
 immediately after all request tasks finish, before the post-run `/server_info`
-query. The original benchmark and all engine source files remain untouched.
+query. The original benchmark remains untouched. First-round measurements used
+unmodified engine source; follow-up attention-DP experiments use the empty-launch
+guard documented in [round2/kernel-fix.json](round2/kernel-fix.json).
 This removes metadata-query latency from the throughput denominator; the
 unmodified upstream mode remains available with `--timing upstream`.
 Comparisons must use the same timing mode on both configurations. Defaults:
@@ -246,4 +251,5 @@ an end-to-end serving comparison and response checks.
 With `--fused-swiglu`, the helper creates a SHA-tagged derivative of the pinned
 tuner that calls `fused_experts` directly with `fuse_swiglu_interleaved=True`.
 The public `fused_moe` wrapper at this commit does not accept this argument.
-Both source and derivative hashes are recorded; engine files remain untouched.
+Both source and derivative hashes are recorded; the tuning helper does not edit
+engine files.
