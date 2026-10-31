@@ -7,6 +7,9 @@ Operational scripts for four 8-GPU nodes, with a fixed source and model revision
 - Baseline: BF16 weights and BF16 recurrent state, without speculative decoding.
 - PyTorch 2.14.1 (CUDA 13.0), FlashInfer 0.7.2, SGLang kernel 0.4.10.
 
+`packages-tested.txt` records the observed package versions, with local paths
+and editable references removed. It is an environment record, not a resolver lock.
+
 ## Runtime layout
 
 Set `QWEN38_PROJECT` to a persistent project directory. Copy these Python scripts
@@ -60,6 +63,12 @@ state; use `--ssm-dtype float32` for that candidate. The other candidates keep
 BF16 state and Triton decode. GPU-resident PLE embeddings and kernel tuning
 can be evaluated on the best layout where memory permits. Supply candidate flags
 after `--extra`; command records preserve the resolved CLI inputs.
+
+Screening uses equal eight-GPU budgets and the geometric mean of output
+tokens/s for both shapes at concurrency 64. This corresponds to concurrency 256
+when scaling four such cohorts to 32 GPUs. The final comparison repeats the
+complete 32-GPU protocol. Additional screens cover native interleaved SwiGLU
+fusion and the FlashInfer CUTLASS BF16 MoE backend.
 
 ```bash
 python3 "$QWEN38_PROJECT/scripts/manage_router.py" start \

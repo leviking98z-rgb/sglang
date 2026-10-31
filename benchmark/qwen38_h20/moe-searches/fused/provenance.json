@@ -1,0 +1,24 @@
+{
+  "source_sha256": "342555c255d43528e64b45426f970599ca101edd47208f92c9596d36706077fd",
+  "fused_swiglu": true,
+  "generated_sha256": "2781390d8ea03cb5e0f8c023c929eda8b3f1a9a5fc3f0e2cf85993bb24a3027f",
+  "entrypoint": "fused_experts (supports fuse_swiglu_interleaved); wrapper fused_moe does not",
+  "search_space_sha256": "9b67dfae81c4892435c42c1188e61c449bc2499f37b86c1cbb9fd98bd0f4fd31",
+  "result_sha256": "cdc99714b31b21f5446ae1c99fb156bc4596fc0917a856b139cb044647be140d",
+  "tp": 4,
+  "ep": 4,
+  "hardware": "NVIDIA H20",
+  "triton": "3.8.0",
+  "batches": [
+    1,
+    8,
+    16,
+    32,
+    64,
+    512,
+    4096,
+    8192
+  ],
+  "search_configurations": 74,
+  "role": "microbenchmark candidate; requires end-to-end serving validation"
+}
