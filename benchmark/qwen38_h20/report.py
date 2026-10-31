@@ -79,8 +79,8 @@ for attempt in args.attempts:
                     "input_len": data["input_lens"][index],
                     "output_len": data["output_lens"][index],
                     "ttft_ms": data["ttfts"][index] * 1000,
-                    "e2e_ms": (data["ttfts"][index] + sum(data["itls"][index])) * 1000,
-                    "tpot_ms": sum(data["itls"][index])
+                    "first_to_last_token_ms": sum(data["itls"][index]) * 1000,
+                    "stream_tpot_ms": sum(data["itls"][index])
                     * 1000
                     / (run["output_len"] - 1),
                 }

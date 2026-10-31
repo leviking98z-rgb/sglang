@@ -12,6 +12,7 @@ parser.add_argument("--workers", nargs="+", required=True)
 parser.add_argument("--concurrency", nargs="+", type=int, default=[1, 16, 64, 128, 256])
 parser.add_argument("--shapes", nargs="+", default=["1024:256", "8192:1024"])
 parser.add_argument("--repeats", type=int, default=1)
+parser.add_argument("--prompt-multiplier", type=int, default=2)
 parser.add_argument("--timing", choices=["upstream", "requests"], default="requests")
 args = parser.parse_args()
 if not args.attempt.replace("-", "").replace("_", "").isalnum():
@@ -34,6 +35,8 @@ command = [
     *args.shapes,
     "--repeats",
     str(args.repeats),
+    "--prompt-multiplier",
+    str(args.prompt_multiplier),
     "--timing",
     args.timing,
 ]

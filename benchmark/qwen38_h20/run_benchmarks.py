@@ -15,8 +15,10 @@ parser.add_argument("--workers", nargs="+", required=True)
 parser.add_argument("--concurrency", nargs="+", type=int, default=[1, 16, 64, 128, 256])
 parser.add_argument("--shapes", nargs="+", default=["1024:256", "8192:1024"])
 parser.add_argument("--repeats", type=int, default=1)
+parser.add_argument("--prompt-multiplier", type=int, default=2)
 parser.add_argument("--timing", choices=["upstream", "requests"], default="requests")
 args = parser.parse_args()
+assert args.prompt_multiplier >= 1
 if args.timing == "requests":
     benchmark_path, benchmark_provenance = prepare()
     benchmark_entry = [str(benchmark_path)]
@@ -32,6 +34,7 @@ manifest = {
     "concurrency": args.concurrency,
     "shapes": args.shapes,
     "repeats": args.repeats,
+    "prompt_multiplier": args.prompt_multiplier,
     "started_unix": time.time(),
     "runs": [],
     "warmups": [],
@@ -97,7 +100,7 @@ try:
                     max_workers=len(args.workers)
                 ) as pool:
                     list(pool.map(flush, args.workers))
-                num_prompts = max(8, 2 * concurrency)
+                num_prompts = max(8, args.prompt_multiplier * concurrency)
                 run_id = f"i{input_len}-o{output_len}-c{concurrency}-r{repeat}"
                 command = [
                     PYTHON,
