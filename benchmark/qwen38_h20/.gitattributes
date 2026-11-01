@@ -1,0 +1,2 @@
+longctx32-interrupted/results/**/*.csv -text whitespace=cr-at-eol
+bj80-longctx/results/**/*.csv -text whitespace=cr-at-eol
