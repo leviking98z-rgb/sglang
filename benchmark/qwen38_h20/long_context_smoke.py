@@ -18,10 +18,13 @@ assert args.filler_tokens >= 8000
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
 filler_text = "A notebook records ordinary observations about weather, trees, books, and streets. "
 unit_tokens = len(tokenizer.encode(filler_text, add_special_tokens=False))
-filler = tokenizer.encode(
-    filler_text * (math.ceil(args.filler_tokens / unit_tokens) + 1),
-    add_special_tokens=False,
-)[: args.filler_tokens]
+repetitions = math.ceil(args.filler_tokens / unit_tokens) + 1
+filler = tokenizer.encode(filler_text * repetitions, add_special_tokens=False)
+while len(filler) < args.filler_tokens:
+    # Token boundaries can merge between repeated units.
+    repetitions *= 2
+    filler = tokenizer.encode(filler_text * repetitions, add_special_tokens=False)
+filler = filler[: args.filler_tokens]
 assert len(filler) == args.filler_tokens
 expected = "SKY7319"
 cases = []
