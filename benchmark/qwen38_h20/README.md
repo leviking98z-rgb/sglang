@@ -1,8 +1,9 @@
-# Qwen3.8-Flash-Next on 32 H20 GPUs
+# Qwen3.8-Flash-Next throughput on H20 GPUs
 
-Operational scripts for four 8-GPU nodes, with a fixed source and model revision:
+Operational scripts and measured results for 32-H20 and 16-H20 deployments,
+with a fixed source and model revision:
 
-This document records the completed first round. The current
+This document records the completed first round. The
 [MTP3 deployment and further tuning results](round2/README.md) complete the same
 32-H20 protocol: 11768.0/8879.3 output token/s for 1024/256 and 8192/1024,
 respectively (+21.6%/+14.0% versus the first-round best).
@@ -10,6 +11,13 @@ respectively (+21.6%/+14.0% versus the first-round best).
 The [16K/32K control comparison](longctx32-interrupted/README.md) records the
 completed TP8 and TP4 runs on a separate clean 32-H20 cohort. MTP was interrupted
 for the user-requested BJ80 migration; its completed points are labelled separately.
+
+The [matched BJ80 16K/32K comparison](bj80-longctx/README.md) completes all three
+configurations on the same two eight-H20 nodes: TP8 baseline, tuned TP4, and
+TP4 with MTP3. It includes the complete concurrency matrix, three C256
+repetitions per shape, latency tradeoffs, and checked per-request exports.
+All experiment allocations were released after their respective runs or the
+user-requested migration.
 
 - SGLang main: `a4a6eddd25343905245db7a8b54bcf24d9483c8b`
 - Model: `Qwen/Qwen3.8-Flash-Next`, revision `de4b8e4d43b917e7706784d8bb445c9af86a3540`

@@ -1,0 +1,1004 @@
+{
+  "gpus": 16,
+  "nodes": 2,
+  "hardware": "NVIDIA H20",
+  "main_base": "a4a6eddd25343905245db7a8b54bcf24d9483c8b",
+  "engine_patch": "fc2ad6c",
+  "engine_regression_tests": "4b1c9d3",
+  "guard_source_sha256": "37a1c53f132a5dc05e250ca5d94237e3acb65d9150fd0ff7a88b409a18a78267",
+  "model": "Qwen/Qwen3.8-Flash-Next",
+  "model_revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+  "preflight_cuda_processes": 0,
+  "measurement_counts": {
+    "baseline": 16,
+    "tp4": 16,
+    "mtp3": 16
+  },
+  "timed_request_counts": {
+    "baseline": 4944,
+    "tp4": 4944,
+    "mtp3": 4944
+  },
+  "request_errors": 0,
+  "allocation_released": true,
+  "release_verified_by": "Native allocation status and empty CUDA process checks before release",
+  "harness_sha256": {
+    "compare.py": "2b5477a0b16269d7de51bd8cf840f400694d00ffeddb2b3a1eb815aa1f42bb47",
+    "compare_longctx.py": "652eaa649af4ca000eca2a5e3e0504a9c63f9c231586f82c141a20e6b5d54c50",
+    "hc_microbenchmark.py": "45605fdfc66546824aa1d91c675896341613e8dcbb32a831a972d80a8397befe",
+    "long_context_smoke.py": "44f323ec8fad08a2810d45ba7bd4eb46670f735c9d150f5628a7d88b49a13002",
+    "manage_router.py": "3828ce0258ae30fecb99508019f297a071a3f817d3447c8a86b9d87204673251",
+    "manage_service.py": "18a82e615e136b468ae847d7d5fd5defe2dd45af2789ebdcbd96cef4a6e20f32",
+    "phase2_sweep.py": "23fc3267d194c1f400a42f799174744c3e895f1a626ff3db919f4821832e8f06",
+    "plot.py": "f4177b851bc87403b1dcdc458b0a563786093bef3bc865a791e60d913951fb46",
+    "precompile_cuda.py": "a4041d6d308727abc58c9f1688b669024ca99989fc48b544ed53d70c05786767",
+    "prepare_benchmark.py": "fae08c1d707a7988d4495cba7365c4ea6deaa013168dda93996a52a5575c0a40",
+    "profile_service.py": "547b81c59833f4df82a9fe5e92bbca2e4cc162c12d5ff5a3b3d0e2f70af9378c",
+    "record_longctx_runtime.py": "3e105e4030cb5dfcfe40a2c6a9e05a52562e8fad650e0b5d1d0653e22807232b",
+    "report.py": "6043525faa9e13dc82a7e7184b31cb534454cce09cde6757268f8888b98f122f",
+    "run_benchmarks.py": "e32742f083e9f566b0396eb22f427ecc49613f9eb78758ff773d4a9cd2aa5e03",
+    "run_stage.py": "a7b866fe0e75698afdbc295ec2b614f55b98560b9b28cd4a26f258f5a185b0f6",
+    "runtime.py": "756252c7bda10ef437947e0400b70d755e6bfa2120a1d2253af9ab301d686e20",
+    "smoke_services.py": "48750c36b9441b19efd8b3811d43995f4d12e6e60539ae389874dcfacfe6564d",
+    "start_benchmark.py": "484a5be0eef840e61c2bd1a470c099550036d8d2da605ec52e3eb94eb4442cd5",
+    "start_stage.py": "557f74eab59f526c7e1b047fff7159ddd5682089c3ed0bca52fdd9c499cd5d08",
+    "start_tuning.py": "b9cbc422d0089c9372b2328f62bf2cbfcac756f456f9aa4f9b246c2c78a8ecd2",
+    "record_baseline_runtime.py": "b86cd0d9e20c0592b910fa42f1c8b6009ad6beb617af891d27b472a9e16d3b95"
+  },
+  "csv_sha256": {
+    "baseline": {
+      "aggregate.csv": "8803e480da1fd08535d0d90ebb5d83860acc235a3aaf86cfd2377259fa83a624",
+      "requests.csv": "e112037f59d8f1daefffe6d5925352e6cc0c4a219c5f5ee281890592212fab9d"
+    },
+    "tp4": {
+      "aggregate.csv": "acfde5ce6ad78e50347adaff5ef1795dce1078a6a610a67edde2faba5b4f69d6",
+      "requests.csv": "743956f75bcf0d9d1d1e7c647db4b32beacf1a71bd6c6f75628e7558cecfe97a"
+    },
+    "mtp3": {
+      "aggregate.csv": "f3dacb44eb2e6c30b6ec025d6c021955e5fa15636d5b7ee1883e924e10078174",
+      "requests.csv": "5093c6c013b4e508efe9b0c8feff82293fb33d84d51ce9b435347a62d6a047b4"
+    }
+  },
+  "configurations": {
+    "baseline": {
+      "tp": 8,
+      "ep": 1,
+      "replicas": 2,
+      "healthy_router_workers": 2,
+      "short_smoke": {
+        "worker_count": 2,
+        "case_count": 6,
+        "passed_cases": 6,
+        "prompt_token_counts": [
+          20,
+          27
+        ],
+        "needle_fractions": []
+      },
+      "long_smoke": [
+        {
+          "worker_count": 2,
+          "case_count": 6,
+          "passed_cases": 6,
+          "prompt_token_counts": [
+            16305
+          ],
+          "needle_fractions": [
+            0.1,
+            0.5,
+            0.9
+          ]
+        },
+        {
+          "worker_count": 2,
+          "case_count": 6,
+          "passed_cases": 6,
+          "prompt_token_counts": [
+            32689
+          ],
+          "needle_fractions": [
+            0.1,
+            0.5,
+            0.9
+          ]
+        }
+      ],
+      "runtime_log_checks": {
+        "phase": "baseline",
+        "stage_status": "complete",
+        "stage_attempt": "lc-baseline",
+        "observed_unix": 1793557626.7694035,
+        "worker_count": 2,
+        "workers": [
+          {
+            "attempt": "lc-baseline-n0r0-01",
+            "log_sha256": "37a5b8bb463996c98f2033f0cdad276d0b82fefe437044dc6bff646cbce8d3fa",
+            "log_bytes": 2473243,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 0
+          },
+          {
+            "attempt": "lc-baseline-n1r0-01",
+            "log_sha256": "032e4ad6080cb6f9db4ea4cff77cfd8d584d7a0ca90959c588fe95f3fe808792",
+            "log_bytes": 2474650,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 0
+          }
+        ],
+        "runtime_error_events": 0,
+        "retraction_log_lines": 0,
+        "compiler_data_race_warnings": 0,
+        "scope": "Completed phase logs after worker postflight; counts of matching log events.",
+        "patterns": {
+          "runtime_errors": "Scheduler hit an exception|Traceback \\(most recent call last\\)|CUDA error:|RuntimeError:",
+          "retractions": "#retracted_reqs:"
+        }
+      },
+      "workers": [
+        {
+          "replica_index": 0,
+          "effective_configuration": {
+            "tp_size": 8,
+            "ep_size": 1,
+            "context_length": null,
+            "dtype": "auto",
+            "quantization": null,
+            "kv_cache_dtype": "auto",
+            "mamba_ssm_dtype": "bfloat16",
+            "mem_fraction_static": 0.85,
+            "max_running_requests": 128,
+            "chunked_prefill_size": 8192,
+            "attention_backend": "fa3",
+            "prefill_attention_backend": null,
+            "decode_attention_backend": null,
+            "linear_attn_prefill_backend": null,
+            "linear_attn_decode_backend": null,
+            "linear_attn_verify_backend": null,
+            "moe_runner_backend": "auto",
+            "moe_a2a_backend": "none",
+            "speculative_algorithm": null,
+            "speculative_num_steps": null,
+            "speculative_num_draft_tokens": null,
+            "speculative_eagle_topk": null,
+            "cuda_graph_max_bs_decode": 128,
+            "disable_overlap_schedule": false,
+            "enable_mixed_chunk": false,
+            "ple_offload_embedding": true,
+            "linear_attn_backend": "triton",
+            "max_mamba_cache_size": null
+          },
+          "runtime": [
+            {
+              "effective_max_running_requests_per_dp": 128,
+              "memory_usage": {
+                "weight": 30.998,
+                "kvcache": 25.397,
+                "startup_available": 7.357,
+                "token_capacity": 2088512,
+                "token_capacity_swa": null,
+                "graph": {
+                  "prefill": 4.064,
+                  "decode": 0.447,
+                  "target_verify": 0.0,
+                  "draft_prefill": 0.0,
+                  "draft_decode": 0.0,
+                  "draft_extend": 0.0
+                }
+              },
+              "startup_time": {
+                "load_weight": 352.9494055410032,
+                "kv_cache_allocation": 2.1493412550189532,
+                "scheduler_e2e": 454.1114796369802,
+                "cuda_graph": {
+                  "prefill": 64.79933930601692,
+                  "decode": 12.566019895020872,
+                  "target_verify": 0.0,
+                  "draft_prefill": 0.0,
+                  "draft_decode": 0.0,
+                  "draft_extend": 0.0
+                }
+              },
+              "avg_spec_accept_length": null
+            }
+          ]
+        },
+        {
+          "replica_index": 1,
+          "effective_configuration": {
+            "tp_size": 8,
+            "ep_size": 1,
+            "context_length": null,
+            "dtype": "auto",
+            "quantization": null,
+            "kv_cache_dtype": "auto",
+            "mamba_ssm_dtype": "bfloat16",
+            "mem_fraction_static": 0.85,
+            "max_running_requests": 128,
+            "chunked_prefill_size": 8192,
+            "attention_backend": "fa3",
+            "prefill_attention_backend": null,
+            "decode_attention_backend": null,
+            "linear_attn_prefill_backend": null,
+            "linear_attn_decode_backend": null,
+            "linear_attn_verify_backend": null,
+            "moe_runner_backend": "auto",
+            "moe_a2a_backend": "none",
+            "speculative_algorithm": null,
+            "speculative_num_steps": null,
+            "speculative_num_draft_tokens": null,
+            "speculative_eagle_topk": null,
+            "cuda_graph_max_bs_decode": 128,
+            "disable_overlap_schedule": false,
+            "enable_mixed_chunk": false,
+            "ple_offload_embedding": true,
+            "linear_attn_backend": "triton",
+            "max_mamba_cache_size": null
+          },
+          "runtime": [
+            {
+              "effective_max_running_requests_per_dp": 128,
+              "memory_usage": {
+                "weight": 30.998,
+                "kvcache": 25.397,
+                "startup_available": 7.357,
+                "token_capacity": 2088512,
+                "token_capacity_swa": null,
+                "graph": {
+                  "prefill": 4.064,
+                  "decode": 0.447,
+                  "target_verify": 0.0,
+                  "draft_prefill": 0.0,
+                  "draft_decode": 0.0,
+                  "draft_extend": 0.0
+                }
+              },
+              "startup_time": {
+                "load_weight": 334.2807232318446,
+                "kv_cache_allocation": 2.114749758504331,
+                "scheduler_e2e": 432.5019793342799,
+                "cuda_graph": {
+                  "prefill": 63.578463293612,
+                  "decode": 12.51063838135451,
+                  "target_verify": 0.0,
+                  "draft_prefill": 0.0,
+                  "draft_decode": 0.0,
+                  "draft_extend": 0.0
+                }
+              },
+              "avg_spec_accept_length": null
+            }
+          ]
+        }
+      ]
+    },
+    "tp4": {
+      "tp": 4,
+      "ep": 4,
+      "replicas": 4,
+      "healthy_router_workers": 4,
+      "short_smoke": {
+        "worker_count": 4,
+        "case_count": 12,
+        "passed_cases": 12,
+        "prompt_token_counts": [
+          20,
+          27
+        ],
+        "needle_fractions": []
+      },
+      "long_smoke": [
+        {
+          "worker_count": 4,
+          "case_count": 12,
+          "passed_cases": 12,
+          "prompt_token_counts": [
+            16305
+          ],
+          "needle_fractions": [
+            0.1,
+            0.5,
+            0.9
+          ]
+        },
+        {
+          "worker_count": 4,
+          "case_count": 12,
+          "passed_cases": 12,
+          "prompt_token_counts": [
+            32689
+          ],
+          "needle_fractions": [
+            0.1,
+            0.5,
+            0.9
+          ]
+        }
+      ],
+      "runtime_log_checks": {
+        "phase": "tp4",
+        "stage_status": "complete",
+        "stage_attempt": "lc-tp4",
+        "observed_unix": 1793547795.447179,
+        "worker_count": 4,
+        "workers": [
+          {
+            "attempt": "lc-tp4-n0r0-01",
+            "log_sha256": "ed11319c636e1c41a3f42f161f0a282ac41c081528b8e78c35a401f7458f5ca3",
+            "log_bytes": 1499717,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 21
+          },
+          {
+            "attempt": "lc-tp4-n0r1-01",
+            "log_sha256": "855a2410bb39adb621006c607631c30af4c420d996185edc7a077bc06a2e844b",
+            "log_bytes": 1482951,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 4
+          },
+          {
+            "attempt": "lc-tp4-n1r0-01",
+            "log_sha256": "05ff6eea63e53b65387143b1030d8e21464574e176ab98da07239b4fd99af315",
+            "log_bytes": 1499672,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 23
+          },
+          {
+            "attempt": "lc-tp4-n1r1-01",
+            "log_sha256": "e898b4384007732f52ac8e689f3acbf4a4e06208b55c646e8590f51b8039f5d1",
+            "log_bytes": 1499470,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 23
+          }
+        ],
+        "runtime_error_events": 0,
+        "retraction_log_lines": 0,
+        "compiler_data_race_warnings": 71,
+        "scope": "Completed phase logs after worker postflight; counts of matching log events.",
+        "patterns": {
+          "runtime_errors": "Scheduler hit an exception|Traceback \\(most recent call last\\)|CUDA error:|RuntimeError:",
+          "retractions": "#retracted_reqs:"
+        }
+      },
+      "workers": [
+        {
+          "replica_index": 0,
+          "effective_configuration": {
+            "tp_size": 4,
+            "ep_size": 4,
+            "context_length": null,
+            "dtype": "auto",
+            "quantization": null,
+            "kv_cache_dtype": "auto",
+            "mamba_ssm_dtype": "bfloat16",
+            "mem_fraction_static": 0.82,
+            "max_running_requests": 64,
+            "chunked_prefill_size": 8192,
+            "attention_backend": "fa3",
+            "prefill_attention_backend": null,
+            "decode_attention_backend": null,
+            "linear_attn_prefill_backend": "flashinfer",
+            "linear_attn_decode_backend": null,
+            "linear_attn_verify_backend": null,
+            "moe_runner_backend": "auto",
+            "moe_a2a_backend": "none",
+            "speculative_algorithm": null,
+            "speculative_num_steps": null,
+            "speculative_num_draft_tokens": null,
+            "speculative_eagle_topk": null,
+            "cuda_graph_max_bs_decode": 64,
+            "disable_overlap_schedule": false,
+            "enable_mixed_chunk": false,
+            "ple_offload_embedding": true,
+            "linear_attn_backend": "triton",
+            "max_mamba_cache_size": null
+          },
+          "runtime": [
+            {
+              "effective_max_running_requests_per_dp": 64,
+              "memory_usage": {
+                "weight": 60.131,
+                "kvcache": 8.592,
+                "startup_available": 11.089,
+                "token_capacity": 706496,
+                "token_capacity_swa": null,
+                "graph": {
+                  "prefill": 4.312,
+                  "decode": 0.203,
+                  "target_verify": 0.0,
+                  "draft_prefill": 0.0,
+                  "draft_decode": 0.0,
+                  "draft_extend": 0.0
+                }
+              },
+              "startup_time": {
+                "load_weight": 242.034432534012,
+                "kv_cache_allocation": 2.776100779999979,
+                "scheduler_e2e": 708.3047788440017,
+                "cuda_graph": {
+                  "prefill": 212.53893944300944,
+                  "decode": 28.14264459698461,
+                  "target_verify": 0.0,
+                  "draft_prefill": 0.0,
+                  "draft_decode": 0.0,
+                  "draft_extend": 0.0
+                }
+              },
+              "avg_spec_accept_length": null
+            }
+          ]
+        },
+        {
+          "replica_index": 1,
+          "effective_configuration": {
+            "tp_size": 4,
+            "ep_size": 4,
+            "context_length": null,
+            "dtype": "auto",
+            "quantization": null,
+            "kv_cache_dtype": "auto",
+            "mamba_ssm_dtype": "bfloat16",
+            "mem_fraction_static": 0.82,
+            "max_running_requests": 64,
+            "chunked_prefill_size": 8192,
+            "attention_backend": "fa3",
+            "prefill_attention_backend": null,
+            "decode_attention_backend": null,
+            "linear_attn_prefill_backend": "flashinfer",
+            "linear_attn_decode_backend": null,
+            "linear_attn_verify_backend": null,
+            "moe_runner_backend": "auto",
+            "moe_a2a_backend": "none",
+            "speculative_algorithm": null,
+            "speculative_num_steps": null,
+            "speculative_num_draft_tokens": null,
+            "speculative_eagle_topk": null,
+            "cuda_graph_max_bs_decode": 64,
+            "disable_overlap_schedule": false,
+            "enable_mixed_chunk": false,
+            "ple_offload_embedding": true,
+            "linear_attn_backend": "triton",
+            "max_mamba_cache_size": null
+          },
+          "runtime": [
+            {
+              "effective_max_running_requests_per_dp": 64,
+              "memory_usage": {
+                "weight": 60.131,
+                "kvcache": 8.592,
+                "startup_available": 11.089,
+                "token_capacity": 706496,
+                "token_capacity_swa": null,
+                "graph": {
+                  "prefill": 4.312,
+                  "decode": 0.203,
+                  "target_verify": 0.0,
+                  "draft_prefill": 0.0,
+                  "draft_decode": 0.0,
+                  "draft_extend": 0.0
+                }
+              },
+              "startup_time": {
+                "load_weight": 306.95981909695547,
+                "kv_cache_allocation": 2.2195353250135668,
+                "scheduler_e2e": 377.80626491399016,
+                "cuda_graph": {
+                  "prefill": 46.0180951479706,
+                  "decode": 8.32240309601184,
+                  "target_verify": 0.0,
+                  "draft_prefill": 0.0,
+                  "draft_decode": 0.0,
+                  "draft_extend": 0.0
+                }
+              },
+              "avg_spec_accept_length": null
+            }
+          ]
+        },
+        {
+          "replica_index": 2,
+          "effective_configuration": {
+            "tp_size": 4,
+            "ep_size": 4,
+            "context_length": null,
+            "dtype": "auto",
+            "quantization": null,
+            "kv_cache_dtype": "auto",
+            "mamba_ssm_dtype": "bfloat16",
+            "mem_fraction_static": 0.82,
+            "max_running_requests": 64,
+            "chunked_prefill_size": 8192,
+            "attention_backend": "fa3",
+            "prefill_attention_backend": null,
+            "decode_attention_backend": null,
+            "linear_attn_prefill_backend": "flashinfer",
+            "linear_attn_decode_backend": null,
+            "linear_attn_verify_backend": null,
+            "moe_runner_backend": "auto",
+            "moe_a2a_backend": "none",
+            "speculative_algorithm": null,
+            "speculative_num_steps": null,
+            "speculative_num_draft_tokens": null,
+            "speculative_eagle_topk": null,
+            "cuda_graph_max_bs_decode": 64,
+            "disable_overlap_schedule": false,
+            "enable_mixed_chunk": false,
+            "ple_offload_embedding": true,
+            "linear_attn_backend": "triton",
+            "max_mamba_cache_size": null
+          },
+          "runtime": [
+            {
+              "effective_max_running_requests_per_dp": 64,
+              "memory_usage": {
+                "weight": 60.131,
+                "kvcache": 8.592,
+                "startup_available": 11.089,
+                "token_capacity": 706496,
+                "token_capacity_swa": null,
+                "graph": {
+                  "prefill": 4.312,
+                  "decode": 0.203,
+                  "target_verify": 0.0,
+                  "draft_prefill": 0.0,
+                  "draft_decode": 0.0,
+                  "draft_extend": 0.0
+                }
+              },
+              "startup_time": {
+                "load_weight": 270.6526481816545,
+                "kv_cache_allocation": 2.0916885770857334,
+                "scheduler_e2e": 658.5449837651104,
+                "cuda_graph": {
+                  "prefill": 146.6416813293472,
+                  "decode": 30.10591903887689,
+                  "target_verify": 0.0,
+                  "draft_prefill": 0.0,
+                  "draft_decode": 0.0,
+                  "draft_extend": 0.0
+                }
+              },
+              "avg_spec_accept_length": null
+            }
+          ]
+        },
+        {
+          "replica_index": 3,
+          "effective_configuration": {
+            "tp_size": 4,
+            "ep_size": 4,
+            "context_length": null,
+            "dtype": "auto",
+            "quantization": null,
+            "kv_cache_dtype": "auto",
+            "mamba_ssm_dtype": "bfloat16",
+            "mem_fraction_static": 0.82,
+            "max_running_requests": 64,
+            "chunked_prefill_size": 8192,
+            "attention_backend": "fa3",
+            "prefill_attention_backend": null,
+            "decode_attention_backend": null,
+            "linear_attn_prefill_backend": "flashinfer",
+            "linear_attn_decode_backend": null,
+            "linear_attn_verify_backend": null,
+            "moe_runner_backend": "auto",
+            "moe_a2a_backend": "none",
+            "speculative_algorithm": null,
+            "speculative_num_steps": null,
+            "speculative_num_draft_tokens": null,
+            "speculative_eagle_topk": null,
+            "cuda_graph_max_bs_decode": 64,
+            "disable_overlap_schedule": false,
+            "enable_mixed_chunk": false,
+            "ple_offload_embedding": true,
+            "linear_attn_backend": "triton",
+            "max_mamba_cache_size": null
+          },
+          "runtime": [
+            {
+              "effective_max_running_requests_per_dp": 64,
+              "memory_usage": {
+                "weight": 60.131,
+                "kvcache": 8.592,
+                "startup_available": 11.089,
+                "token_capacity": 706496,
+                "token_capacity_swa": null,
+                "graph": {
+                  "prefill": 4.312,
+                  "decode": 0.203,
+                  "target_verify": 0.0,
+                  "draft_prefill": 0.0,
+                  "draft_decode": 0.0,
+                  "draft_extend": 0.0
+                }
+              },
+              "startup_time": {
+                "load_weight": 270.61034485232085,
+                "kv_cache_allocation": 2.0897220941260457,
+                "scheduler_e2e": 658.5178344352171,
+                "cuda_graph": {
+                  "prefill": 146.53903764579445,
+                  "decode": 30.107558987103403,
+                  "target_verify": 0.0,
+                  "draft_prefill": 0.0,
+                  "draft_decode": 0.0,
+                  "draft_extend": 0.0
+                }
+              },
+              "avg_spec_accept_length": null
+            }
+          ]
+        }
+      ]
+    },
+    "mtp3": {
+      "tp": 4,
+      "ep": 4,
+      "replicas": 4,
+      "healthy_router_workers": 4,
+      "short_smoke": {
+        "worker_count": 4,
+        "case_count": 12,
+        "passed_cases": 12,
+        "prompt_token_counts": [
+          20,
+          27
+        ],
+        "needle_fractions": []
+      },
+      "long_smoke": [
+        {
+          "worker_count": 4,
+          "case_count": 12,
+          "passed_cases": 12,
+          "prompt_token_counts": [
+            16305
+          ],
+          "needle_fractions": [
+            0.1,
+            0.5,
+            0.9
+          ]
+        },
+        {
+          "worker_count": 4,
+          "case_count": 12,
+          "passed_cases": 12,
+          "prompt_token_counts": [
+            32689
+          ],
+          "needle_fractions": [
+            0.1,
+            0.5,
+            0.9
+          ]
+        }
+      ],
+      "runtime_log_checks": {
+        "phase": "mtp3",
+        "stage_status": "complete",
+        "stage_attempt": "lc-mtp3",
+        "observed_unix": 1793552142.370332,
+        "worker_count": 4,
+        "workers": [
+          {
+            "attempt": "lc-mtp3-n0r0-01",
+            "log_sha256": "e62e153583caf5fc8b7d3d619e228779309f3dd6a78ff03e756efe49bc478b45",
+            "log_bytes": 1296404,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 0
+          },
+          {
+            "attempt": "lc-mtp3-n0r1-01",
+            "log_sha256": "ab76867cc7c4df3a80f30cde85f7d340bb475278c92f2180fdad029f13ea148c",
+            "log_bytes": 1297744,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 0
+          },
+          {
+            "attempt": "lc-mtp3-n1r0-01",
+            "log_sha256": "2d612ec256a99061ea610fece07c61b6e27f2a2e59cf664448bf13a2b9297bb2",
+            "log_bytes": 1293851,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 0
+          },
+          {
+            "attempt": "lc-mtp3-n1r1-01",
+            "log_sha256": "df5a245a6c112194986c9e9801048c01af0abed3958b0dd4cfd6a6bfa913c4f8",
+            "log_bytes": 1296759,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 0
+          }
+        ],
+        "runtime_error_events": 0,
+        "retraction_log_lines": 0,
+        "compiler_data_race_warnings": 0,
+        "scope": "Completed phase logs after worker postflight; counts of matching log events.",
+        "patterns": {
+          "runtime_errors": "Scheduler hit an exception|Traceback \\(most recent call last\\)|CUDA error:|RuntimeError:",
+          "retractions": "#retracted_reqs:"
+        }
+      },
+      "workers": [
+        {
+          "replica_index": 0,
+          "effective_configuration": {
+            "tp_size": 4,
+            "ep_size": 4,
+            "context_length": null,
+            "dtype": "auto",
+            "quantization": null,
+            "kv_cache_dtype": "auto",
+            "mamba_ssm_dtype": "bfloat16",
+            "mem_fraction_static": 0.82,
+            "max_running_requests": 64,
+            "chunked_prefill_size": 8192,
+            "attention_backend": "flashinfer",
+            "prefill_attention_backend": null,
+            "decode_attention_backend": null,
+            "linear_attn_prefill_backend": "flashinfer",
+            "linear_attn_decode_backend": null,
+            "linear_attn_verify_backend": "triton",
+            "moe_runner_backend": "auto",
+            "moe_a2a_backend": "none",
+            "speculative_algorithm": "EAGLE",
+            "speculative_num_steps": 3,
+            "speculative_num_draft_tokens": 4,
+            "speculative_eagle_topk": 1,
+            "cuda_graph_max_bs_decode": 64,
+            "disable_overlap_schedule": false,
+            "enable_mixed_chunk": false,
+            "ple_offload_embedding": true,
+            "linear_attn_backend": "triton",
+            "max_mamba_cache_size": null
+          },
+          "runtime": [
+            {
+              "effective_max_running_requests_per_dp": 55,
+              "memory_usage": {
+                "weight": 60.131,
+                "kvcache": 7.028,
+                "startup_available": 9.343,
+                "token_capacity": 577856,
+                "token_capacity_swa": null,
+                "graph": {
+                  "prefill": 4.477,
+                  "decode": 0.0,
+                  "target_verify": 0.738,
+                  "draft_prefill": 0.555,
+                  "draft_decode": 0.295,
+                  "draft_extend": 0.453
+                }
+              },
+              "startup_time": {
+                "load_weight": 565.4711145730107,
+                "kv_cache_allocation": 3.7235352839925326,
+                "scheduler_e2e": 665.5736560410005,
+                "cuda_graph": {
+                  "prefill": 53.11534086900065,
+                  "decode": 0.0,
+                  "target_verify": 16.85165396798402,
+                  "draft_prefill": 2.228808938001748,
+                  "draft_decode": 4.0991766470251605,
+                  "draft_extend": 1.627836098021362
+                }
+              },
+              "avg_spec_accept_length": 3.6837913628715646
+            }
+          ]
+        },
+        {
+          "replica_index": 1,
+          "effective_configuration": {
+            "tp_size": 4,
+            "ep_size": 4,
+            "context_length": null,
+            "dtype": "auto",
+            "quantization": null,
+            "kv_cache_dtype": "auto",
+            "mamba_ssm_dtype": "bfloat16",
+            "mem_fraction_static": 0.82,
+            "max_running_requests": 64,
+            "chunked_prefill_size": 8192,
+            "attention_backend": "flashinfer",
+            "prefill_attention_backend": null,
+            "decode_attention_backend": null,
+            "linear_attn_prefill_backend": "flashinfer",
+            "linear_attn_decode_backend": null,
+            "linear_attn_verify_backend": "triton",
+            "moe_runner_backend": "auto",
+            "moe_a2a_backend": "none",
+            "speculative_algorithm": "EAGLE",
+            "speculative_num_steps": 3,
+            "speculative_num_draft_tokens": 4,
+            "speculative_eagle_topk": 1,
+            "cuda_graph_max_bs_decode": 64,
+            "disable_overlap_schedule": false,
+            "enable_mixed_chunk": false,
+            "ple_offload_embedding": true,
+            "linear_attn_backend": "triton",
+            "max_mamba_cache_size": null
+          },
+          "runtime": [
+            {
+              "effective_max_running_requests_per_dp": 55,
+              "memory_usage": {
+                "weight": 60.131,
+                "kvcache": 7.028,
+                "startup_available": 9.343,
+                "token_capacity": 577856,
+                "token_capacity_swa": null,
+                "graph": {
+                  "prefill": 4.477,
+                  "decode": 0.0,
+                  "target_verify": 0.738,
+                  "draft_prefill": 0.555,
+                  "draft_decode": 0.295,
+                  "draft_extend": 0.453
+                }
+              },
+              "startup_time": {
+                "load_weight": 565.4314601829974,
+                "kv_cache_allocation": 3.7031470219953917,
+                "scheduler_e2e": 665.5672160779941,
+                "cuda_graph": {
+                  "prefill": 53.26477995701134,
+                  "decode": 0.0,
+                  "target_verify": 16.775718721968587,
+                  "draft_prefill": 2.2294609529781155,
+                  "draft_decode": 4.1289348540012725,
+                  "draft_extend": 1.6237379820086062
+                }
+              },
+              "avg_spec_accept_length": 3.7465571807373195
+            }
+          ]
+        },
+        {
+          "replica_index": 2,
+          "effective_configuration": {
+            "tp_size": 4,
+            "ep_size": 4,
+            "context_length": null,
+            "dtype": "auto",
+            "quantization": null,
+            "kv_cache_dtype": "auto",
+            "mamba_ssm_dtype": "bfloat16",
+            "mem_fraction_static": 0.82,
+            "max_running_requests": 64,
+            "chunked_prefill_size": 8192,
+            "attention_backend": "flashinfer",
+            "prefill_attention_backend": null,
+            "decode_attention_backend": null,
+            "linear_attn_prefill_backend": "flashinfer",
+            "linear_attn_decode_backend": null,
+            "linear_attn_verify_backend": "triton",
+            "moe_runner_backend": "auto",
+            "moe_a2a_backend": "none",
+            "speculative_algorithm": "EAGLE",
+            "speculative_num_steps": 3,
+            "speculative_num_draft_tokens": 4,
+            "speculative_eagle_topk": 1,
+            "cuda_graph_max_bs_decode": 64,
+            "disable_overlap_schedule": false,
+            "enable_mixed_chunk": false,
+            "ple_offload_embedding": true,
+            "linear_attn_backend": "triton",
+            "max_mamba_cache_size": null
+          },
+          "runtime": [
+            {
+              "effective_max_running_requests_per_dp": 55,
+              "memory_usage": {
+                "weight": 60.131,
+                "kvcache": 7.028,
+                "startup_available": 9.343,
+                "token_capacity": 577856,
+                "token_capacity_swa": null,
+                "graph": {
+                  "prefill": 4.477,
+                  "decode": 0.0,
+                  "target_verify": 0.738,
+                  "draft_prefill": 0.555,
+                  "draft_decode": 0.295,
+                  "draft_extend": 0.453
+                }
+              },
+              "startup_time": {
+                "load_weight": 529.0524585731328,
+                "kv_cache_allocation": 3.955980126745999,
+                "scheduler_e2e": 627.0327545255423,
+                "cuda_graph": {
+                  "prefill": 52.23269947897643,
+                  "decode": 0.0,
+                  "target_verify": 16.649391899816692,
+                  "draft_prefill": 2.1982564739882946,
+                  "draft_decode": 3.9311003824695945,
+                  "draft_extend": 1.4780984986573458
+                }
+              },
+              "avg_spec_accept_length": 3.787714647919788
+            }
+          ]
+        },
+        {
+          "replica_index": 3,
+          "effective_configuration": {
+            "tp_size": 4,
+            "ep_size": 4,
+            "context_length": null,
+            "dtype": "auto",
+            "quantization": null,
+            "kv_cache_dtype": "auto",
+            "mamba_ssm_dtype": "bfloat16",
+            "mem_fraction_static": 0.82,
+            "max_running_requests": 64,
+            "chunked_prefill_size": 8192,
+            "attention_backend": "flashinfer",
+            "prefill_attention_backend": null,
+            "decode_attention_backend": null,
+            "linear_attn_prefill_backend": "flashinfer",
+            "linear_attn_decode_backend": null,
+            "linear_attn_verify_backend": "triton",
+            "moe_runner_backend": "auto",
+            "moe_a2a_backend": "none",
+            "speculative_algorithm": "EAGLE",
+            "speculative_num_steps": 3,
+            "speculative_num_draft_tokens": 4,
+            "speculative_eagle_topk": 1,
+            "cuda_graph_max_bs_decode": 64,
+            "disable_overlap_schedule": false,
+            "enable_mixed_chunk": false,
+            "ple_offload_embedding": true,
+            "linear_attn_backend": "triton",
+            "max_mamba_cache_size": null
+          },
+          "runtime": [
+            {
+              "effective_max_running_requests_per_dp": 55,
+              "memory_usage": {
+                "weight": 60.131,
+                "kvcache": 7.028,
+                "startup_available": 9.343,
+                "token_capacity": 577856,
+                "token_capacity_swa": null,
+                "graph": {
+                  "prefill": 4.477,
+                  "decode": 0.0,
+                  "target_verify": 0.738,
+                  "draft_prefill": 0.555,
+                  "draft_decode": 0.295,
+                  "draft_extend": 0.453
+                }
+              },
+              "startup_time": {
+                "load_weight": 528.834704451263,
+                "kv_cache_allocation": 3.933947647921741,
+                "scheduler_e2e": 627.0504773259163,
+                "cuda_graph": {
+                  "prefill": 52.402228710241616,
+                  "decode": 0.0,
+                  "target_verify": 16.72602090984583,
+                  "draft_prefill": 2.2103474531322718,
+                  "draft_decode": 3.9293369641527534,
+                  "draft_extend": 1.4977607345208526
+                }
+              },
+              "avg_spec_accept_length": 3.718267217474959
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "passed_smoke_cases": 90
+}
