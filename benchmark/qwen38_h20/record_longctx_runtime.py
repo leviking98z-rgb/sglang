@@ -12,8 +12,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--project", type=Path, required=True)
     parser.add_argument("--timeout", type=int, default=14400)
+    parser.add_argument("--gpus", type=int, choices=[16, 24, 32], default=32)
+    parser.add_argument("--phase", choices=["baseline", "tp4", "mtp3"])
     args = parser.parse_args()
-    pending = {"baseline": 4, "tp4": 8, "mtp3": 8}
+    pending = {"baseline": args.gpus // 8, "tp4": args.gpus // 4, "mtp3": args.gpus // 4}
+    if args.phase:
+        pending = {args.phase: pending[args.phase]}
     deadline = time.monotonic() + args.timeout
     error_pattern = re.compile(
         r"Scheduler hit an exception|Traceback \(most recent call last\)|"
