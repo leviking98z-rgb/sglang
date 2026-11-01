@@ -1,0 +1,266 @@
+{
+  "gpus": 32,
+  "nodes": 4,
+  "hardware": "NVIDIA H20",
+  "preflight_cuda_processes": 0,
+  "allocation_released": true,
+  "complete_configuration_request_errors": 0,
+  "configurations": {
+    "baseline": {
+      "worker_count": 4,
+      "stage_status_at_migration": "complete",
+      "smokes": {
+        "short_smoke.json": {
+          "worker_count": 4,
+          "case_count": 12,
+          "passed_cases": 12,
+          "prompt_token_counts": [
+            20,
+            27
+          ],
+          "needle_fractions": []
+        },
+        "long_context_smoke_16256.json": {
+          "worker_count": 4,
+          "case_count": 12,
+          "passed_cases": 12,
+          "prompt_token_counts": [
+            16305
+          ],
+          "needle_fractions": [
+            0.1,
+            0.5,
+            0.9
+          ]
+        },
+        "long_context_smoke_32640.json": {
+          "worker_count": 4,
+          "case_count": 12,
+          "passed_cases": 12,
+          "prompt_token_counts": [
+            32689
+          ],
+          "needle_fractions": [
+            0.1,
+            0.5,
+            0.9
+          ]
+        }
+      },
+      "runtime_log_checks": {
+        "phase": "baseline",
+        "stage_status": "complete",
+        "stage_attempt": "lc-baseline-02",
+        "observed_unix": 1793537176.4040222,
+        "worker_count": 4,
+        "workers": [
+          {
+            "attempt": "lc-baseline-n0r0-01",
+            "log_sha256": "56d31d60992b422ec0d8abb6bc0cc3031e21d267d0a2f36ec20eedbae51e4952",
+            "log_bytes": 1394981,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 47
+          },
+          {
+            "attempt": "lc-baseline-n1r0-01",
+            "log_sha256": "1f29868de148af5a904c3512cfc3f2be09d2774fe7ea9a4e71dad900a8a5e82e",
+            "log_bytes": 1400909,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 39
+          },
+          {
+            "attempt": "lc-baseline-n2r0-01",
+            "log_sha256": "f01ea5779349f972fb56f09c74976393ea1d92d787e970679033bb406fc285d5",
+            "log_bytes": 1396957,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 43
+          },
+          {
+            "attempt": "lc-baseline-n3r0-01",
+            "log_sha256": "50c2e56ccb260b131e84f54d8c74ea6843588eb0067db09c6f7503e3cc71b487",
+            "log_bytes": 1395527,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 46
+          }
+        ],
+        "runtime_error_events": 0,
+        "retraction_log_lines": 0,
+        "compiler_data_race_warnings": 175,
+        "scope": "Completed phase logs after worker postflight; counts of matching log events.",
+        "patterns": {
+          "runtime_errors": "Scheduler hit an exception|Traceback \\(most recent call last\\)|CUDA error:|RuntimeError:",
+          "retractions": "#retracted_reqs:"
+        }
+      }
+    },
+    "tp4": {
+      "worker_count": 8,
+      "stage_status_at_migration": "complete",
+      "smokes": {
+        "short_smoke.json": {
+          "worker_count": 8,
+          "case_count": 24,
+          "passed_cases": 24,
+          "prompt_token_counts": [
+            20,
+            27
+          ],
+          "needle_fractions": []
+        },
+        "long_context_smoke_16256.json": {
+          "worker_count": 8,
+          "case_count": 24,
+          "passed_cases": 24,
+          "prompt_token_counts": [
+            16305
+          ],
+          "needle_fractions": [
+            0.1,
+            0.5,
+            0.9
+          ]
+        },
+        "long_context_smoke_32640.json": {
+          "worker_count": 8,
+          "case_count": 24,
+          "passed_cases": 24,
+          "prompt_token_counts": [
+            32689
+          ],
+          "needle_fractions": [
+            0.1,
+            0.5,
+            0.9
+          ]
+        }
+      },
+      "runtime_log_checks": {
+        "phase": "tp4",
+        "stage_status": "complete",
+        "stage_attempt": "lc-tp4",
+        "observed_unix": 1793540447.9913502,
+        "worker_count": 8,
+        "workers": [
+          {
+            "attempt": "lc-tp4-n0r0-01",
+            "log_sha256": "c4a7ff0d2cd7445eb326d7321cb851b0590a9653e8f56b66d0da43893b6fe133",
+            "log_bytes": 832287,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 0
+          },
+          {
+            "attempt": "lc-tp4-n0r1-01",
+            "log_sha256": "30a760d009fb77fafb6dfab63eed928119b036c80f68c255cf2022f1e549921e",
+            "log_bytes": 832644,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 0
+          },
+          {
+            "attempt": "lc-tp4-n1r0-01",
+            "log_sha256": "6fb1600f8f671118f840cc49db024914a684592376d13a474effd02f7c79cbfe",
+            "log_bytes": 832282,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 0
+          },
+          {
+            "attempt": "lc-tp4-n1r1-01",
+            "log_sha256": "15eb125c520b1d665c8440d1ac359a4fcadad22b2a650b1b845a732083657d8e",
+            "log_bytes": 832431,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 0
+          },
+          {
+            "attempt": "lc-tp4-n2r0-01",
+            "log_sha256": "c5dae6e472fb08e064ce0ca4e62b7b84a9c8f89b2feeb25723618783740ad22d",
+            "log_bytes": 833506,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 0
+          },
+          {
+            "attempt": "lc-tp4-n2r1-01",
+            "log_sha256": "e791805dcec56659b13e4de7ea151fb59dbf49b2e5dc2142be3075d6ab63a340",
+            "log_bytes": 833259,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 0
+          },
+          {
+            "attempt": "lc-tp4-n3r0-01",
+            "log_sha256": "05d553844b15163185c09ede5c5827fefd9e5471e69be68a0026905e64e9b2c2",
+            "log_bytes": 832658,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 0
+          },
+          {
+            "attempt": "lc-tp4-n3r1-01",
+            "log_sha256": "ab5869a7d98a00f55a8c9912c073f46912426ad14cd882f7ce5b1c15e0257816",
+            "log_bytes": 832309,
+            "runtime_error_events": 0,
+            "retraction_log_lines": 0,
+            "compiler_data_race_warnings": 0
+          }
+        ],
+        "runtime_error_events": 0,
+        "retraction_log_lines": 0,
+        "compiler_data_race_warnings": 0,
+        "scope": "Completed phase logs after worker postflight; counts of matching log events.",
+        "patterns": {
+          "runtime_errors": "Scheduler hit an exception|Traceback \\(most recent call last\\)|CUDA error:|RuntimeError:",
+          "retractions": "#retracted_reqs:"
+        }
+      }
+    },
+    "mtp3": {
+      "worker_count": 8,
+      "stage_status_at_migration": "failed",
+      "smokes": {
+        "short_smoke.json": {
+          "worker_count": 8,
+          "case_count": 24,
+          "passed_cases": 24,
+          "prompt_token_counts": [
+            20,
+            27
+          ],
+          "needle_fractions": []
+        },
+        "long_context_smoke_16256.json": {
+          "worker_count": 8,
+          "case_count": 24,
+          "passed_cases": 24,
+          "prompt_token_counts": [
+            16305
+          ],
+          "needle_fractions": [
+            0.1,
+            0.5,
+            0.9
+          ]
+        },
+        "long_context_smoke_32640.json": {
+          "worker_count": 8,
+          "case_count": 24,
+          "passed_cases": 24,
+          "prompt_token_counts": [
+            32689
+          ],
+          "needle_fractions": [
+            0.1,
+            0.5,
+            0.9
+          ]
+        }
+      }
+    }
+  }
+}

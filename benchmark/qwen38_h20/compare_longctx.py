@@ -1,4 +1,4 @@
-"""Compare matched 16K/32K measurements on the same 32-GPU cohort."""
+"""Compare matched 16K/32K measurements on the same H20 cohort."""
 
 import argparse
 import csv
@@ -28,7 +28,7 @@ def key(row):
     )
 
 
-def read(path, label, tp, ep, replicas):
+def read(path, label, tp, ep, replicas, gpus=32):
     with path.open(newline="") as stream:
         rows = list(csv.DictReader(stream))
     assert Counter(key(row) for row in rows) == EXPECTED
@@ -37,7 +37,7 @@ def read(path, label, tp, ep, replicas):
     for row in rows:
         assert row["configuration"] == label
         assert row["timing"] == "requests"
-        assert int(row["gpus"]) == 32 == tp * replicas
+        assert int(row["gpus"]) == gpus == tp * replicas
         assert (int(row["tp"]), int(row["ep"]), int(row["replicas"])) == (
             tp, ep, replicas
         )
@@ -75,14 +75,17 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--results", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--gpus", type=int, choices=[16, 24, 32], default=32)
     args = parser.parse_args()
-    configs = {"baseline": (8, 1, 4), "tp4": (4, 4, 8), "mtp3": (4, 4, 8)}
+    configs = {"baseline": (8, 1, args.gpus // 8),
+               "tp4": (4, 4, args.gpus // 4), "mtp3": (4, 4, args.gpus // 4)}
     paths = {name: args.results / name / "aggregate.csv" for name in configs}
-    measurements = {name: read(paths[name], name, *values) for name, values in configs.items()}
+    measurements = {name: read(paths[name], name, *values, gpus=args.gpus)
+                    for name, values in configs.items()}
     shas = {row["benchmark_sha256"] for rows in measurements.values() for row in rows}
     assert len(shas) == 1 and len(next(iter(shas))) == 64
     result = {
-        "gpus": 32,
+        "gpus": args.gpus,
         "shapes": SHAPES,
         "concurrency": CONCURRENCY,
         "measurements_per_configuration": 16,

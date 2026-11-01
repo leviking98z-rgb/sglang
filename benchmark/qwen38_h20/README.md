@@ -7,6 +7,10 @@ This document records the completed first round. The current
 32-H20 protocol: 11768.0/8879.3 output token/s for 1024/256 and 8192/1024,
 respectively (+21.6%/+14.0% versus the first-round best).
 
+The [16K/32K control comparison](longctx32-interrupted/README.md) records the
+completed TP8 and TP4 runs on a separate clean 32-H20 cohort. MTP was interrupted
+for the user-requested BJ80 migration; its completed points are labelled separately.
+
 - SGLang main: `a4a6eddd25343905245db7a8b54bcf24d9483c8b`
 - Model: `Qwen/Qwen3.8-Flash-Next`, revision `de4b8e4d43b917e7706784d8bb445c9af86a3540`
 - Baseline: BF16 weights and BF16 recurrent state, without speculative decoding.
