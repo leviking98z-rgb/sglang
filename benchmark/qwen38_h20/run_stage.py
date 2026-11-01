@@ -17,6 +17,7 @@ parser.add_argument("--router-attempt")
 parser.add_argument("--router-port", type=int, default=30000)
 parser.add_argument("--health-wait", type=int, default=900)
 parser.add_argument("--concurrency", nargs="+", type=int, default=[1, 16, 64, 128, 256])
+parser.add_argument("--shapes", nargs="+", default=["1024:256", "8192:1024"])
 parser.add_argument("--peak-repeats", type=int, default=3)
 parser.add_argument("--timing", choices=["upstream", "requests"], default="requests")
 args = parser.parse_args()
@@ -115,16 +116,23 @@ try:
             str(directory / "short_smoke.json"),
         ],
     )
-    step(
-        "long_context_smoke",
-        [
-            str(scripts / "long_context_smoke.py"),
-            "--workers",
-            *args.workers,
-            "--output",
-            str(directory / "long_context_smoke.json"),
-        ],
+    smoke_lengths = sorted(
+        {max(8000, int(shape.split(":")[0]) - 128) for shape in args.shapes}
     )
+    for filler_tokens in smoke_lengths:
+        name = f"long_context_smoke_{filler_tokens}"
+        step(
+            name,
+            [
+                str(scripts / "long_context_smoke.py"),
+                "--workers",
+                *args.workers,
+                "--filler-tokens",
+                str(filler_tokens),
+                "--output",
+                str(directory / (name + ".json")),
+            ],
+        )
     if args.router_attempt:
         step(
             "start_router",
@@ -158,6 +166,8 @@ try:
             *args.workers,
             "--concurrency",
             *map(str, args.concurrency),
+            "--shapes",
+            *args.shapes,
             "--timing",
             args.timing,
         ],
@@ -176,6 +186,8 @@ try:
                 *args.workers,
                 "--concurrency",
                 str(max(args.concurrency)),
+                "--shapes",
+                *args.shapes,
                 "--repeats",
                 str(args.peak_repeats),
                 "--timing",

@@ -1,6 +1,7 @@
 import argparse
 import concurrent.futures
 import json
+import math
 import time
 import urllib.request
 from pathlib import Path
@@ -11,13 +12,17 @@ from transformers import AutoTokenizer
 parser = argparse.ArgumentParser()
 parser.add_argument("--workers", nargs="+", required=True)
 parser.add_argument("--output", type=Path, required=True)
+parser.add_argument("--filler-tokens", type=int, default=8000)
 args = parser.parse_args()
+assert args.filler_tokens >= 8000
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
+filler_text = "A notebook records ordinary observations about weather, trees, books, and streets. "
+unit_tokens = len(tokenizer.encode(filler_text, add_special_tokens=False))
 filler = tokenizer.encode(
-    "A notebook records ordinary observations about weather, trees, books, and streets. "
-    * 1800,
+    filler_text * (math.ceil(args.filler_tokens / unit_tokens) + 1),
     add_special_tokens=False,
-)[:8000]
+)[: args.filler_tokens]
+assert len(filler) == args.filler_tokens
 expected = "SKY7319"
 cases = []
 for fraction in [0.1, 0.5, 0.9]:
@@ -59,7 +64,7 @@ def check(url):
         usage = data["usage"]
         passed = (
             content.strip("`\"' .\n") == expected
-            and 8000 <= usage["prompt_tokens"] <= 8500
+            and args.filler_tokens <= usage["prompt_tokens"] <= args.filler_tokens + 512
         )
         results.append(
             {
@@ -80,5 +85,13 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=len(args.workers)) as poo
     results = list(pool.map(check, args.workers))
 args.output.parent.mkdir(parents=True, exist_ok=True)
 with args.output.open("x") as f:
-    json.dump({"workers": results, "created_unix": time.time()}, f, indent=2)
+    json.dump(
+        {
+            "workers": results,
+            "filler_tokens": args.filler_tokens,
+            "created_unix": time.time(),
+        },
+        f,
+        indent=2,
+    )
 assert all(x["passed"] for x in results), "long context smoke response mismatch"
