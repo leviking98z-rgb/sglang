@@ -1,0 +1,196 @@
+{
+  "passed": true,
+  "chunk_size": 4,
+  "cases": [
+    {
+      "case": "fixed24",
+      "images": 24,
+      "passed": true,
+      "original": {
+        "seconds": 0.4509398639202118,
+        "peak_torch_bytes": 3526317056,
+        "free_before_bytes": 101663571968,
+        "free_after_bytes": 101600657408
+      },
+      "chunked": {
+        "seconds": 0.6297874450683594,
+        "peak_torch_bytes": 716395520,
+        "free_before_bytes": 101600657408,
+        "free_after_bytes": 101600657408
+      },
+      "outputs": {
+        "pixel_values": {
+          "shape": [
+            199680,
+            1536
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            1536,
+            1
+          ],
+          "bitwise_equal": true,
+          "sha256": "cfa93f67118a7bce30b01ac52c90966833b1ef4e1dad5f643b48d4c585d5f07a"
+        },
+        "image_grid_thw": {
+          "shape": [
+            24,
+            3
+          ],
+          "dtype": "torch.int64",
+          "stride": [
+            3,
+            1
+          ],
+          "bitwise_equal": true,
+          "sha256": "c8a9808980e33d9f96a46baf3c87132e90a722d3dbe865f67089e117cbc04d3f"
+        }
+      },
+      "image_tokens": 49920
+    },
+    {
+      "case": "fixed47",
+      "images": 47,
+      "passed": true,
+      "original": {
+        "seconds": 0.790022499859333,
+        "peak_torch_bytes": 6905615872,
+        "free_before_bytes": 101600657408,
+        "free_after_bytes": 101600657408
+      },
+      "chunked": {
+        "seconds": 1.1843159794807434,
+        "peak_torch_bytes": 861558272,
+        "free_before_bytes": 101600657408,
+        "free_after_bytes": 101600657408
+      },
+      "outputs": {
+        "pixel_values": {
+          "shape": [
+            391040,
+            1536
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            1536,
+            1
+          ],
+          "bitwise_equal": true,
+          "sha256": "c1f1fcb6164fe7e1a439d8997fc2a28eec45eadff16cea434a4001a107aa43a9"
+        },
+        "image_grid_thw": {
+          "shape": [
+            47,
+            3
+          ],
+          "dtype": "torch.int64",
+          "stride": [
+            3,
+            1
+          ],
+          "bitwise_equal": true,
+          "sha256": "b7d4f2f0db6a6b5974e3e90d29b5b8378aac23c534b57ccfd590a7176e44d9e9"
+        }
+      },
+      "image_tokens": 97760
+    },
+    {
+      "case": "mixed47",
+      "images": 47,
+      "passed": true,
+      "original": {
+        "seconds": 0.6310999616980553,
+        "peak_torch_bytes": 5366177280,
+        "free_before_bytes": 101600657408,
+        "free_after_bytes": 101600657408
+      },
+      "chunked": {
+        "seconds": 0.9845692366361618,
+        "peak_torch_bytes": 672423424,
+        "free_before_bytes": 101600657408,
+        "free_after_bytes": 101600657408
+      },
+      "outputs": {
+        "pixel_values": {
+          "shape": [
+            306560,
+            1536
+          ],
+          "dtype": "torch.float32",
+          "stride": [
+            1536,
+            1
+          ],
+          "bitwise_equal": true,
+          "sha256": "427363f1b198ade78b58a678d607a615dcd5f2bd3024e2667986458c0f8bccef"
+        },
+        "image_grid_thw": {
+          "shape": [
+            47,
+            3
+          ],
+          "dtype": "torch.int64",
+          "stride": [
+            3,
+            1
+          ],
+          "bitwise_equal": true,
+          "sha256": "5517da36fe96044f8af78337e61fd596397fe82003ee85cb8aa1a748980e476a"
+        }
+      },
+      "image_tokens": 76640
+    }
+  ],
+  "fixed_fixture_sha256": [
+    "3117488fc8b689a9b90a039076ba1f4a9f5fc425fcc3e54714d519aa2a476e9d",
+    "477b9061f6ffa4895d72244e41d9824bf441b47783742a204b8a249a9f2f697c",
+    "c2be66e8cec77929f177231fc6ef213ffc06a80a369728308c0287c6a43d16d3",
+    "8dc1cee3f2d0ed2ac983ac542ef11775f4b3a5491873cb540f3aedc6afa98733",
+    "89ba20b306be43fa2487a3045a3ea15bd426a00fa1666ad2c2a30a408a4233e1",
+    "42c5506f969b89d31d337790406cd3361c1de38a27033a63113a98ef796405fa",
+    "ebd7417e171a5079f3530f022afecaac5357bf372411fde38ded6d3da73dd76c",
+    "ebd06d5961ff558f2f1232fc7ed6d33b7a33d1d7cc50c5900a4c13a949c877ba",
+    "9a84109aa75df8aaa8444a7aa4008a913f0b88aa25e0e5fa1175a20ab7bcab4b",
+    "62e36ae63b5d7768347a4688d9c14be483a91da620a3225bd40ef4d1b35dd303",
+    "2d95c6ac07989c2afd639475a7e9e7f3bbf8b7d94d3a674d55905f879b1e0a81",
+    "3bfc9f8d114ac2d9fc4e4dfd454bb67ab5ae9fb5c14ab6c0cdec5fe6cbabbe64",
+    "bb0e7b038335e861be2e259969c97d8e2ffe40008b0febf5c0f7b50b55e411d0",
+    "3b3c53310918f5d02f69e4d2474efcaffaa58463282f7f2e6f696b6a05506147",
+    "b70349e5d5a8f1d70f60d6fc96003fc30da8d2704799da551b50bd0f7de1762c",
+    "25189ade3e6e91aea3f7bfb1d9afb232e72aecf7bbbe920551f4d3a5e105f46c",
+    "9d9445237d54d3b97e3db046915b3cb6425306f16f2204306f796fc04615db1e",
+    "0fc3394042f14e17f3410a8cc82c3582b455a6fa1024d43d82ad3fa5cce1d3ff",
+    "9e5f5361031846120ab6b19de555a228b8e45e3cf6031fc1cf29da166a23d58d",
+    "3d24ec854749f9311bba10d37ad1229af61cb8c8d2895fe152a5bc909b75b703",
+    "9f1e2b61d699072482906df2ef2c0e20a842585a706dc06ea3eeb2654fc6f23b",
+    "0aa2a0c2711aa93f0767f86597f491dec184f3273f3ae5a7453bcdc2b748afaa",
+    "db568eb3d447b3b9cab736c2dbe88b8262ff529f434dd38cf6a35cbdaf2c8172",
+    "34b6c8e505fe8363fdfad0cddeb2bdab00ad05d89e5f91a248237a6c38cc0074",
+    "69fca0b1e1f53e0c301692fa806d11ed3d152d3b571dafa643cdc2da0d1179e9",
+    "e0e26ffc142ee11ac31646d54cb58fdc7e2088d43a72d322fdf60d083b2d6d5c",
+    "25d263b19c9a540ac9a06be8e2d0217288c80aeb8831861ef068b21b6de92d67",
+    "fd164c50155ec0943b7cacbf999d3beb8082c2829fbf850c41a1a262ba68640b",
+    "18d62f13f8d3c83f464907960da7ecd05b467ed7f74dee5025f586c745f2f3e0",
+    "4dc60893b3464b78b702184ad8295667a4bad3daff810916c7bb6a055e3cd6c5",
+    "8ce3530de50ab0a191ae172dad3855d040d691c67718d8c7d8b3da9df4affb0c",
+    "3cd1591764c7922f070e7b0cce3f78ea086f795c57557e89ea78e855997d8334",
+    "8f2970b96915bec9200a3966a1199433167806b79c5f1569eb5dfca63fc69c44",
+    "3df1969c46622b2ee4b663f94edbe88092765ec32fc5675898d99434b4d8de77",
+    "f61cae6da64e5322b3a15958dc63037b97a31887ab1153158935f643b5009cf6",
+    "a198da6777a4f6c63fd703b0b87aa6d6acbcbc7e7d386d29bfa0a177cb4dcc15",
+    "636d10c1f1f42371a05a0e4283c5843d204b4bf87f66b296475606ef0150aabf",
+    "d0901c4e1f3ffee4ff9da4184e8e4b2974665f5c79645f96b63a87088f52af18",
+    "cff4e4b8248970b3e411f67aa2ad4482372aea62449c197a5301c476a9081289",
+    "541522c0b653479265e1c9e3295fcb5cea2d3b52415b697d7a5b86fff08b9788",
+    "099f7949c78bbf32610b7df9c3d260618fdddb897ae377c8783cac184ba19029",
+    "7f0ccc3a9e22b249a83028db00d6dfb08dd3edbc36bf55b5089e1a0afaf772c8",
+    "0e004192fffc1ee6363aada78f638a09ada42f60acd6cedbbaaa3489bee6086b",
+    "33e6cfdf083192864da2bea41eec17f351f68d3f13ca19f84fc9f579083caf28",
+    "8f5a9cef0a50952896333c233687b2eb7f5ea1360f6dc6e6f52debc4a1e00c5d",
+    "ed31c46f8b6ca58a7e286dcc6417b082f50332ae107f771adfcb872065603393",
+    "b36ef7f8287e18de3c338bedafd01e390f9f7821ff51455e345534fb84ceddec"
+  ],
+  "helper_sha256": "1f878652e064f6c1767bfe8808df42957ffdef4eb4d11250e9c973ffa8daddf4",
+  "created_unix": 1793590888.4503222,
+  "scope": "Same 24/47 synthetic fixtures and mixed sizes, original full GPU batch versus bounded GPU transforms with CPU concat; no resize or dtype changes"
+}
