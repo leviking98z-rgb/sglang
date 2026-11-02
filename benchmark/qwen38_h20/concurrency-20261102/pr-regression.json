@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "base_commit": "1ced9a9eb0224e5c12c9ed236b188868a635cd5c",
+  "runtime_patch_commit": "e5ff703d",
+  "final_pr_head": "a7205960",
+  "hardware": "NVIDIA H20",
+  "pytest": "8.4.2",
+  "passed": 52,
+  "failed": 0,
+  "skipped": 0,
+  "pytest_seconds": 92.22,
+  "supervisor_wall_seconds": 97.97013640403748,
+  "pre_commit_changed_files": "passed",
+  "test_environment": "isolated source and test-only dependency directory; deployed services unchanged",
+  "test_files": [
+    "test/registered/kernels/ops/layernorm/test_grouped_gemma_rmsnorm.py",
+    "test/registered/kernels/ops/embeddings/test_qwen4_ple_registered.py",
+    "test/registered/unit/multimodal/test_qwen_vl_image_chunks.py",
+    "test/registered/unit/utils/test_common.py"
+  ],
+  "scope": "current-main runtime patch regression; historical throughput figures retain their original pinned revisions"
+}
