@@ -46,7 +46,7 @@ compile(code, "remote-qualification", "exec")
 r = execute([
     "cb", "alloc", plan["allocation"], "run", "--node", plan["router_node"],
     "--timeout", "300", "--", "python3", "-c", code,
-], key="functional-local-ple04", timeout=345)
+], key="functional-"+plan.get("qualification_round","local-ple04"), timeout=345)
 (ROOT / "new-worker-qualification-01.receipt.txt").write_text(r.stdout + r.stderr)
 if r.returncode:
     raise RuntimeError(r.stdout[-4000:] + r.stderr[-4000:])

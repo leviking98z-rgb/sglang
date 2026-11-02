@@ -23,6 +23,8 @@ SCRIPT_HASHES = {
 SOURCE = Path(str(ROOT / "sglang/python/sglang"))
 SOURCE_FILES = [
     "srt/environ.py",
+    "srt/multimodal/processors/qwen_vl.py",
+    "srt/multimodal/processors/qwen_vl_image_chunks.py",
     "srt/utils/common.py", "srt/multimodal/processors/base_processor.py",
     "srt/models/qwen4_exp.py", "srt/models/qwen4_exp_mtp.py",
     "srt/models/qwen4_exp_ple_table.py", "srt/configs/qwen4_exp.py",

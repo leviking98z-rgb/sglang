@@ -23,13 +23,17 @@ workers=[]
 for rep in {node['replicas']!r}:
  record=json.loads((p/'logs'/(rep['attempt']+'.process.json')).read_text());proc=Path('/proc')/str(record['pid']);fields=(proc/'stat').read_text().rsplit(')',1)[1].split();cmd=[x.decode() for x in (proc/'cmdline').read_bytes().rstrip(bytes([0])).split(bytes([0]))]
  assert fields[0]!='Z' and cmd==(record['command'][2:] if record['command'][:2]==['/usr/bin/numactl','--interleave=all'] else record['command']) and os.getpgid(record['pid'])==record['pgid']
- workers.append({{'attempt':rep['attempt'],'url':rep['url'],'pid':record['pid'],'pgid':record['pgid'],'start_ticks':int(fields[19]),'command':cmd}})
+ live_env=dict(item.decode().split('=',1) for item in (proc/'environ').read_bytes().split(bytes([0])) if b'=' in item)
+ selected_env={{key:live_env.get(key) for key in ['SGLANG_QWEN4_PLE_HOST_REGISTER_CHUNK_MB','SGLANG_QWEN4_IMAGE_PREPROCESS_CHUNK_SIZE']}}
+ assert selected_env['SGLANG_QWEN4_PLE_HOST_REGISTER_CHUNK_MB']=='256'
+ if {plan.get('qualification_round')!r}=='image10':assert selected_env['SGLANG_QWEN4_IMAGE_PREPROCESS_CHUNK_SIZE']=='4'
+ workers.append({{'attempt':rep['attempt'],'url':rep['url'],'pid':record['pid'],'pgid':record['pgid'],'start_ticks':int(fields[19]),'command':cmd,'selected_runtime_environment':selected_env}})
 result={{'passed':True,'node':{node['node']!r},'engine_commit':{plan['software_commit']!r},'local_source':str(source),'local_model':str(m),'source_sha256':actual,'model_metadata':metadata,'worker_identities':workers,'created_unix':time.time(),'supersedes':'Earlier asset-fingerprints source fields describe shared staging; this record fingerprints actual node-local deployed source'}}
 (p/'results'/('runtime-identity-'+{node['node']!r}+'-04.json')).write_text(json.dumps(result,indent=2)+'\\n');print(json.dumps(result))
 """
     result = execute(["cb", "alloc", plan["allocation"], "run", "--node", node["node"],
                       "--timeout", "90", "--", "python3", "-c", code],
-                     key="runtime-identity-04-" + str(plan["nodes"].index(node)), timeout=135)
+                     key="runtime-identity-"+plan.get("qualification_round","04")+"-" + str(plan["nodes"].index(node)), timeout=135)
     assert result.returncode == 0, result.stdout[-1000:] + result.stderr[-2000:]
     return json_result(result.stdout)
 
