@@ -13,7 +13,7 @@ def post(url,path,body,timeout=600):
 def base(messages,**kwargs):
  return {'model':MODEL,'messages':messages,'temperature':0,'max_tokens':128,'chat_template_kwargs':{'enable_thinking':False},**kwargs}
 fixtures=[]
-for mode,color,fmt,size in [('RGB',(220,20,20),'JPEG',(630,525)),('L',128,'JPEG',(630,525)),('L',128,'JPEG',(640,640)),('L',128,'JPEG',(512,640)),('RGB',(220,20,20),'PNG',(630,525))]:
+for mode,color,fmt,size in [('RGB',(220,20,20),'JPEG',(630,525)),('L',128,'JPEG',(630,525)),('L',128,'JPEG',(630,630)),('L',128,'JPEG',(640,640)),('L',128,'JPEG',(512,640)),('RGB',(220,20,20),'PNG',(630,525))]:
  img=Image.new(mode,size,color);buf=io.BytesIO();img.save(buf,format=fmt);raw=buf.getvalue()
  fixtures.append({'mode':mode,'format':fmt,'source_size':list(size),'sha256':hashlib.sha256(raw).hexdigest(),'uri':'data:image/'+fmt.lower()+';base64,'+base64.b64encode(raw).decode()})
 def qualify(url):
@@ -21,7 +21,7 @@ def qualify(url):
  for fixture in fixtures:
   messages=[{'role':'user','content':[{'type':'text','text':'Describe the color of this image in one short sentence.'},{'type':'image_url','image_url':{'url':fixture['uri']}}]}]
   count=post(url,'/tokenize',{'model':MODEL,'messages':messages,'chat_template_kwargs':{'enable_thinking':False}})['count']
-  result=post(url,'/v1/chat/completions',base(messages));answer=result['choices'][0]['message'].get('content')
+  result=post(url,'/v1/chat/completions',base(messages,max_tokens=65536 if fixture['mode']=='L' else 128));answer=result['choices'][0]['message'].get('content')
   assert answer and result['usage']['prompt_tokens']>count,result
   assert ('gray' in answer.lower() or 'grey' in answer.lower()) if fixture['mode']=='L' else 'red' in answer.lower(),result
   vision.append({k:v for k,v in fixture.items() if k!='uri'}|{'content':answer,'usage':result['usage'],'template_count':count,'usage_counter':'chat_usage_1'})
