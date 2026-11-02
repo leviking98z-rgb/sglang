@@ -2,7 +2,7 @@ import importlib.util,json,sys,time,unittest
 from pathlib import Path
 import sglang
 p=Path(PROJECT)
-assert Path(sglang.__file__).resolve().is_relative_to(p/'workdir/sglang/python'),sglang.__file__
+assert Path(sglang.__file__).resolve().is_relative_to(Path('/root/.cache')/('qwen38-runtime-'+p.name)/'sglang/python'),sglang.__file__
 suite=unittest.TestSuite()
 for relative,classes in [('test/registered/unit/utils/test_common.py',['TestLoadImage']),('test/registered/unit/multimodal/test_base_processor_image_decode.py',['TestLoadSingleItemImageDecode'])]:
  spec=importlib.util.spec_from_file_location('localtests_'+str(len(suite._tests)),p/'workdir/sglang'/relative);mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)
