@@ -23,6 +23,7 @@ def qualify(url):
   count=post(url,'/tokenize',{'model':MODEL,'messages':messages,'chat_template_kwargs':{'enable_thinking':False}})['count']
   result=post(url,'/v1/chat/completions',base(messages));answer=result['choices'][0]['message'].get('content')
   assert answer and result['usage']['prompt_tokens']>count,result
+  assert ('gray' in answer.lower() or 'grey' in answer.lower()) if fixture['mode']=='L' else 'red' in answer.lower(),result
   vision.append({k:v for k,v in fixture.items() if k!='uri'}|{'content':answer,'usage':result['usage'],'template_count':count,'usage_counter':'chat_usage_1'})
  thinking=post(url,'/v1/chat/completions',{'model':MODEL,'messages':[{'role':'user','content':'What is 17 times 19? Give the integer as your final answer.'}],'temperature':0,'max_tokens':1024})
  message=thinking['choices'][0]['message'];assert '323' in message.get('content','') and message.get('reasoning_content'),thinking
