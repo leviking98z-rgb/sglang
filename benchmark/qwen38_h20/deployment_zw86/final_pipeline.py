@@ -53,6 +53,11 @@ r=subprocess.run([PYTHON,'-c',{code!r}],env=environment(),capture_output=True,te
     r=execute(['cb','alloc',plan['allocation'],'run','--node',plan['router_node'],'--timeout','600','--','python3','-c',code],key='export-'+run_tag,timeout=645)
     (ROOT/'evidence-export-01.receipt.txt').write_text(r.stdout+r.stderr);assert r.returncode==0,r.stdout[-2500:]+r.stderr[-2500:]
     manifest=json_result(r.stdout);(ROOT/'evidence-export-01.json').write_text(json.dumps(manifest,indent=2)+'\n')
+    plan.update(fully_qualified=True,status='ready;32H20 fully qualified; awaiting benchmark handoff',completed_unix=time.time())
+    (ROOT/'task.json').write_text(json.dumps(plan,indent=2)+'\n')
+    service=json.loads((ROOT/'service.json').read_text())
+    service.update(status='running; fully qualified',software_commit=plan['software_commit'],validation_scripts_commit=plan['validation_scripts_commit'],new_allocation_owner=plan['session'],validation=plan['combined_validation'],image_preprocess_chunk_size=4,evidence_export=manifest)
+    (ROOT/'service.json').write_text(json.dumps(service,indent=2)+'\n')
     print(json.dumps({'phase':'fully qualified; ready for benchmark handoff','export':manifest}),flush=True)
     (ROOT/'final-pipeline-complete.json').write_text(json.dumps({'passed':True,'created_unix':time.time(),'export':manifest},indent=2)+'\n')
 except BaseException as exc:
