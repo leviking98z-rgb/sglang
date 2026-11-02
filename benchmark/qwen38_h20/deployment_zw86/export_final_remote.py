@@ -2,6 +2,14 @@ import concurrent.futures,hashlib,json,os,subprocess,tarfile,time
 from pathlib import Path
 p=Path(PROJECT)
 plan=PLAN
+assert plan['ready_workers']==8
+assert len(plan['post_protocol_final_checks'])==4
+for check in plan['post_protocol_final_checks']:
+ assert len(check['processes'])==2
+ assert all(log['runtime_error_events']==0 and log['retraction_lines']==0 for log in check['logs'])
+for name in ['new-worker-vision-tools-budget.json','vision-thinking-qualification.json','context-boundary-qualification.json']:
+ result=json.loads((p/'results'/name).read_text())
+ assert result['passed'],name
 checks=[]
 for node in plan['nodes']:
  result=json.loads((p/'results'/('runtime-cache-'+node['node']+'.json')).read_text());assert result['passed'];checks.append(result)
@@ -17,6 +25,9 @@ qualification={'passed':True,'created_unix':time.time(),'engine_commit':plan['so
 for filename in qualification['evidence']:assert (p/'results'/filename).is_file(),filename
 pressure=json.loads((p/'results/visual-pressure-qualification.json').read_text());assert pressure['passed'];qualification['visual_pressure']={k:pressure[k] for k in ['source_dimensions','client_concurrency','results','scope']};qualification['evidence'].append('visual-pressure-qualification.json')
 qualification['validation_scripts_commit']=plan['validation_scripts_commit']
+qualification['export_orchestration_commit']=plan.get('export_orchestration_commit')
+qualification['post_protocol_process_checks']=plan['post_protocol_final_checks']
+qualification['visual_memory_summaries']=[]
 for node in plan['nodes']:
  identity_name='runtime-identity-'+node['node']+'-04.json'
  identity=json.loads((p/'results'/identity_name).read_text())
@@ -25,6 +36,7 @@ for node in plan['nodes']:
  memory_name='visual-memory-'+node['node']+('-10.json' if plan.get('qualification_round')=='image10' else '-04.json')
  memory=json.loads((p/'results'/memory_name).read_text())
  assert memory['sample_count']>0 and memory['reason']=='visual qualification result published'
+ qualification['visual_memory_summaries'].append({'node':node['node'],'evidence':memory_name,**{k:v for k,v in memory.items() if k not in ['samples']}})
  qualification['evidence'].append(memory_name)
 qualification['actual_runtime_identity_evidence']='runtime-identity-<NodeId>-04.json supersedes earlier shared-staging source fields in asset-fingerprints.json'
 qualification['software_difference_from_bj87'].append('Opt-in four-image GPU transforms with CPU feature concatenation, exact original outputs')

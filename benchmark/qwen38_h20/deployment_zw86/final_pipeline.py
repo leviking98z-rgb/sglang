@@ -6,6 +6,7 @@ import time
 import concurrent.futures
 from pathlib import Path
 from native_run import execute, json_result
+from export_evidence import run_export
 ROOT=Path(__file__).parent
 plan=json.loads((ROOT/'task.json').read_text())
 assert os.environ['CB_SID']==plan['session']
@@ -49,10 +50,7 @@ r=subprocess.run([PYTHON,'-c',{code!r}],env=environment(),capture_output=True,te
     (ROOT/'post-protocol-process-checks.json').write_text(json.dumps(post_checks,indent=2)+'\n')
     plan['post_protocol_final_checks']=post_checks
     (ROOT/'task.json').write_text(json.dumps(plan,indent=2)+'\n')
-    code=(ROOT/'export_final_remote.py').read_text().replace('PROJECT',repr(plan['project'])).replace('PLAN',repr(plan))
-    r=execute(['cb','alloc',plan['allocation'],'run','--node',plan['router_node'],'--timeout','600','--','python3','-c',code],key='export-'+run_tag,timeout=645)
-    (ROOT/'evidence-export-01.receipt.txt').write_text(r.stdout+r.stderr);assert r.returncode==0,r.stdout[-2500:]+r.stderr[-2500:]
-    manifest=json_result(r.stdout);(ROOT/'evidence-export-01.json').write_text(json.dumps(manifest,indent=2)+'\n')
+    manifest=run_export(plan,run_tag)
     plan.update(fully_qualified=True,status='ready;32H20 fully qualified; awaiting benchmark handoff',completed_unix=time.time())
     (ROOT/'task.json').write_text(json.dumps(plan,indent=2)+'\n')
     service=json.loads((ROOT/'service.json').read_text())
