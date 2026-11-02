@@ -13,9 +13,9 @@ def post(url,path,body,timeout=600):
 def base(messages,**kwargs):
  return {'model':MODEL,'messages':messages,'temperature':0,'max_tokens':128,'chat_template_kwargs':{'enable_thinking':False},**kwargs}
 fixtures=[]
-for mode,color,fmt in [('RGB',(220,20,20),'JPEG'),('L',128,'JPEG'),('RGB',(220,20,20),'PNG')]:
- img=Image.new(mode,(630,525),color);buf=io.BytesIO();img.save(buf,format=fmt);raw=buf.getvalue()
- fixtures.append({'mode':mode,'format':fmt,'sha256':hashlib.sha256(raw).hexdigest(),'uri':'data:image/'+fmt.lower()+';base64,'+base64.b64encode(raw).decode()})
+for mode,color,fmt,size in [('RGB',(220,20,20),'JPEG',(630,525)),('L',128,'JPEG',(630,525)),('L',128,'JPEG',(640,640)),('L',128,'JPEG',(512,640)),('RGB',(220,20,20),'PNG',(630,525))]:
+ img=Image.new(mode,size,color);buf=io.BytesIO();img.save(buf,format=fmt);raw=buf.getvalue()
+ fixtures.append({'mode':mode,'format':fmt,'source_size':list(size),'sha256':hashlib.sha256(raw).hexdigest(),'uri':'data:image/'+fmt.lower()+';base64,'+base64.b64encode(raw).decode()})
 def qualify(url):
  vision=[]
  for fixture in fixtures:
