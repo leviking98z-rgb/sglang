@@ -113,6 +113,7 @@ if args.action == "start":
                 "SGLANG_MOE_CONFIG_DIR",
                 "SGLANG_OPT_FUSE_SWIGLU_INTERLEAVED",
                 "SGLANG_FLASHINFER_MOE_FUSED_FINALIZE",
+                "SGLANG_QWEN4_PLE_HOST_REGISTER_CHUNK_MB",
             ]
         },
     }

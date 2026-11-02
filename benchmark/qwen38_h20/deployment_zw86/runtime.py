@@ -4,7 +4,7 @@ from pathlib import Path
 PROJECT = Path(os.environ["QWEN38_PROJECT"])
 RUNTIME = Path("/root/.cache") / ("qwen38-runtime-" + PROJECT.name)
 PYTHON = str(RUNTIME / "venv/bin/python")
-MODEL = str(PROJECT / "checkpoints/Qwen3.8-Flash-Next")
+MODEL = str(RUNTIME / "model/Qwen3.8-Flash-Next")
 MODEL_NAME = "Qwen/Qwen3.8-Flash-Next"
 
 
@@ -31,6 +31,7 @@ def environment():
     env["TOKENIZERS_PARALLELISM"] = "false"
     env["OMP_NUM_THREADS"] = "8"
     env["PYTHONUNBUFFERED"] = "1"
+    env["SGLANG_QWEN4_PLE_HOST_REGISTER_CHUNK_MB"] = "256"
     cache_root = Path("/root/.cache") / ("sglang-" + PROJECT.name + "-cu130")
     env["SGLANG_CACHE_DIR"] = str(cache_root)
     env["SGLANG_JIT_CACHE_DIR"] = str(cache_root / "jit")
