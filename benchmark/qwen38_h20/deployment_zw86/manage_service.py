@@ -22,6 +22,7 @@ parser.add_argument("--graph-bs", type=int)
 parser.add_argument("--chunk-size", type=int, default=8192)
 parser.add_argument("--mem-fraction", type=float, default=0.85)
 parser.add_argument("--ssm-dtype", choices=["bfloat16", "float32"], default="bfloat16")
+parser.add_argument("--interleave-memory", action="store_true")
 parser.add_argument("--extra", nargs=argparse.REMAINDER, default=[])
 args = parser.parse_args()
 if not args.attempt.replace("-", "").replace("_", "").isalnum():
@@ -78,6 +79,8 @@ if args.action == "start":
         "--watchdog-timeout",
         "1200",
     ] + args.extra
+    if args.interleave_memory:
+        command = ["/usr/bin/numactl", "--interleave=all", *command]
     log_path = PROJECT / "logs" / (args.attempt + ".log")
     run_env = environment()
     with open(log_path, "xb") as logfile:
