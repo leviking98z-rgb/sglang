@@ -270,6 +270,16 @@ async def start_router(runtime, session, name, workers, *, timeout, dp_aware=Tru
     process = runtime.start(name, argv, [port, metric_port])
     url = f"http://127.0.0.1:{port}"
     await ready(session, process, url + "/readiness")
+    topology = await state(session, url + "/workers")
+    observed = {worker["url"].split("@", 1)[0] for worker in topology["workers"]}
+    require(
+        observed == set(workers),
+        "router port does not point exclusively to our canary workers",
+    )
+    require(process.poll() is None, "our router exited before topology verification")
+    runtime.report.setdefault("routers", []).append(
+        {"name": name, "url": url, "worker_urls": sorted(observed), "timeout": timeout}
+    )
     return url, f"http://127.0.0.1:{metric_port}/metrics"
 
 
