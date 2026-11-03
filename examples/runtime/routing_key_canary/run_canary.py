@@ -71,6 +71,10 @@ class Runtime:
         self.logs.mkdir(mode=0o700)
         self.result = self.root / "data" / (attempt + ".json")
         require(not self.result.exists(), "refuse to replay an existing attempt")
+        self.process_state = self.root / "data" / (attempt + "-processes.json")
+        require(
+            not self.process_state.exists(), "attempt already has a process journal"
+        )
         self.children = []
         self.reserved = {}
         self.report = {
@@ -116,6 +120,11 @@ class Runtime:
         self.report["processes"].append(
             {"name": name, "pid": process.pid, "start_ticks": ticks, "ports": ports}
         )
+        save_json(
+            self.process_state,
+            {"attempt_id": self.attempt, "processes": self.report["processes"]},
+        )
+        print(f"Started isolated {name} (pid={process.pid})", flush=True)
         return process
 
     def check_children(self):
@@ -788,9 +797,9 @@ async def run(runtime):
             )
             engine = f"http://127.0.0.1:{port}"
             await ready(session, process, engine + "/health", seconds=600)
-            info = await state(session, engine + "/get_server_info")
+            info = await state(session, engine + "/model_info")
             require(
-                info["server_args"]["model_path"] == str(model),
+                info.get("model_path") == str(model),
                 "engine is not our pinned model",
             )
             engines.append(engine)

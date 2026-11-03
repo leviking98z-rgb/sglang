@@ -16,7 +16,8 @@ def create_app(instance_id):
     async def server_info(request):
         return web.json_response(
             {
-                "server_args": {"model_path": "canary-mock", "dp_size": 1},
+                "model_path": "canary-mock",
+                "served_model_name": "canary-mock",
                 "dp_size": 1,
                 "max_total_num_tokens": 4096,
             }
@@ -72,7 +73,9 @@ def create_app(instance_id):
     app.router.add_get("/health", health)
     app.router.add_get("/health_generate", health)
     app.router.add_get("/get_server_info", server_info)
+    app.router.add_get("/server_info", server_info)
     app.router.add_get("/get_model_info", model_info)
+    app.router.add_get("/model_info", model_info)
     app.router.add_get("/v1/models", models)
     app.router.add_get("/canary_mock/state", state)
     app.router.add_post("/v1/chat/completions", chat)
